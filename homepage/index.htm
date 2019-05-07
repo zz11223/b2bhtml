@@ -47,4 +47,20 @@
     </div>
   </div>
 </div> -->
+
+ 
+<!--{php $tags=tag("table=link&condition=status=3 and username='$username'&order=listorder desc&template=null");}-->
+ 
+ {if $tags}
+<div class="link_box">
+  <div class="container"><span class="link_title">友情链接</span>
+    <button id="link_btn" class="glyphicon glyphicon-plus" aria-hidden="true"></button>
+    <span class="link_list">
+    {loop $tags $t}
+    <a href="{$t[linkurl]}" target="_blank">{$t[title]}</a> 
+    {/loop}</span></div>
+</div>
+{/if}
+<script src="{DT_STATIC}/company/htmlnew/js/jquery.smoove.min.js"></script><script>$('.product_head,.product_img,.advantage_head,.advantage_col,.about_head,.about_content,.case_head,.news_head,.news_index').smoove({offset:'10%'});</script> 
+  
 {template 'footer', $template}
