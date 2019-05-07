@@ -1,0 +1,17 @@
+{if $file != 'honor'}
+<!--{php $tags=tag("table=honor&condition=status=3 and username='$username'&pagesize=".$side_num[$HS]."&order=addtime desc&template=null")}-->
+<div class="left_news">
+    <h2 class="left_h">{$side_name[$HS]}</h2>
+    <ul class="left_news">
+     {if $tags}
+		{loop $tags $t}
+		<li><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></li>
+		{/loop}
+	{else}
+		<li>暂未上传</li>
+	{/if}
+	</ul> 
+</div>
+{/if}
+
+ 

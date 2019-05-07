@@ -1,0 +1,63 @@
+{template 'header', $template}
+</head>
+{template 'top', $template}
+<div class="container">
+  <div class="row"> 
+ 
+{if $itemid}
+	<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+      <div class="list_box">
+        <h2 class="left_h">{$title}</h2>
+      	<div class="info">上传日期：{$adddate}{if $MOD[hits]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放次数：{$hits}{/if}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
+        <div class="t_c" style="padding:15px 0 15px 0;">{template 'player', 'chip'}</div>	
+        {if $content}
+		<div class="main_head"><div><strong>详细信息</strong></div></div>
+		<div class="main_body">
+			{if $CP}{template 'property_show', 'chip'}{/if}
+			<div class="content" id="content">{$content}</div>
+		</div>
+		<script type="text/javascript">
+		var content_id = 'content';
+		var img_max_width = {$MOD[max_width]};
+		</script>
+		<script type="text/javascript" src="{DT_STATIC}file/script/content.js"></script>
+		{/if} 
+      </div> 
+    </div>  
+	 
+{else}
+	<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+      <div class="list_box">
+        <h2 class="left_h">{$MENU[$menuid][name]}</h2>
+        <div class="product_list product_list2">  
+        	{loop $lists $k $v}
+          <div class="col-sm-4 col-md-4 col-mm-6 product_img"> <a href="{$v[linkurl]}"> <img  src="{$v[thumb]}" class="img-thumbnail" alt="{$v[alt]}"/> </a>
+            <p class="product_title"><a href="{$v[linkurl]}" title="{$v[alt]}">{$v[title]}</a></p>
+            {if $MOD[hits]}<p>{$v[hits]}次播放</p>{/if}
+            <p>{timetodate($v[addtime], 3)}</p>
+          </div>
+          {/loop} 
+ 
+      </div>
+        <div class="page">{$pages}</div>
+      </div>
+    </div>
+
+	 
+{/if}
+{template 'side', $template}</div>
+</div>
+{if $itemid && $video_i}
+<script type="text/javascript" src="{DT_STATIC}file/script/player.js"></script>
+<script type="text/javascript">
+var UA = navigator.userAgent.toLowerCase();
+if(UA.match(/(iphone|ipad|ipod|android|mac os)/i)) {
+	if(Dd('player').innerHTML.indexOf('embed')!=-1) {
+		Dd('player').innerHTML = '<div class="player">'+player('{$video_s}', {$video_w}, {$video_h}, {$video_a})+'</div>';
+	}
+}
+</script>
+{/if}
+
+
+{template 'footer', $template}

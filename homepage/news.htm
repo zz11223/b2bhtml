@@ -1,0 +1,38 @@
+{template 'header', $template}
+</head>
+{template 'top', $template}
+<div class="container">
+  <div class="row"> 
+ {if $itemid}  
+	<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+      <div class="list_box">
+        <h2 class="left_h">{$title}</h2>
+        <div class="info">发布时间：{timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
+        <div class="contents">
+          <h1 class="contents_title">{$title}</h1>
+          <span style="color:#505050;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;line-height:22px;">{$content}</span> </div>
+       
+      </div>
+      
+    </div>
+ {else} 
+    <!-- right -->
+    
+    <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+      <div class="list_box">
+        <h2 class="left_h">{$MENU[$menuid][name]}</h2>
+        <ul class="list_news">
+          {loop $lists $v}
+          <li><a href="{$v[linkurl]}" title="{$v[title]}">{$v[title]}</a><span class="news_time">{timetodate($v[addtime], 3)}</span></li>
+         {/loop}
+        </ul>
+        <div class="page">{$pages}</div>
+      </div>
+    </div>
+
+ {/if}
+
+   {template 'side', $template}</div>
+</div>
+ 
+{template 'footer', $template}

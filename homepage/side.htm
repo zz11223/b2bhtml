@@ -1,0 +1,6 @@
+<div class="col-xs-12 col-sm-4 col-md-3">
+{template 'side_page', $template}
+{loop $HSIDE $HS $SIDE}
+{template 'side_'.$side_file[$HS], $template}
+{/loop}
+</div>

@@ -1,0 +1,19 @@
+{if $file != 'contact' && $could_contact}
+ 
+<div class="index_contact">
+    <h2 class="left_h"><a href="{userurl($username, 'file=contact', $domain)}">联系我们{$side_name[$HS]}</a></h2>
+    {if $COM[telephone]}
+	<p title="{$COM[telephone]}">电话：{$COM[telephone]}</p>
+	{/if}
+	{if $COM[mail]}
+	<p title="{$COM[mail]}">邮件：{$COM[mail]}</p>
+	{/if}
+	{if $COM[mobile]}
+	<p title="{$COM[mobile]}">手机：{$COM[mobile]}</p>
+	{/if}
+	{if $COM[fax]}
+	<p title="{$COM[fax]}">传真：{$COM[fax]}</p>
+	{/if}
+ 
+  </div>
+{/if}

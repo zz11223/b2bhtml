@@ -1,0 +1,63 @@
+ 
+ <nav class="navbar navbar-default navbar-fixed-bottom footer_nav">
+  <div class="foot_nav btn-group dropup"> <a class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"> <span class="glyphicon glyphicon-share btn-lg" aria-hidden="true"></span> 分享</a>
+    <div class="dropdown-menu webshare"> 
+      
+      <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END --></div>
+  </div>
+  <div class="foot_nav"><a href="tel:13965035866"><span class="glyphicon glyphicon-phone btn-lg" aria-hidden="true"></span>手机</a></div>
+  <div class="foot_nav"  aria-hidden="true"  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-th-list btn-lg"></span>分类</div>
+  <div class="foot_nav"><a id="gototop" href="#"><span class="glyphicon glyphicon-circle-arrow-up btn-lg" aria-hidden="true"></span>顶部</a></div>
+</nav>
+<footer>
+  <div class="copyright">
+    <p>CopyRight {timetodate($DT_TIME, 'Y')} All Right Reserved {$COM[company]}&nbsp; 
+    技术支持：<a href="{DT_PATH}" target="_blank">{$DT[sitename]}</a>&nbsp;&nbsp;
+		{if $show_stats}访问量:{$COM[hits]}&nbsp;&nbsp;{/if}
+		{if $COM[icp]} | <a href="http://www.miibeian.gov.cn" target="_blank">{$COM[icp]}</a>{/if}
+		{if $api_stats && $stats}
+		{php include DT_ROOT.'/api/stats/'.$HOME['stats_type'].'/show.inc.php';}
+		{/if}
+	</p>
+    <p class="copyright_p">地址：{$COM[address]} &nbsp;
+    	 {if $COM[telephone]}电话：{$COM[telephone]}&nbsp;
+	{/if}
+	{if $COM[mail]}
+	 邮件：{$COM[mail]}&nbsp;
+	{/if}
+	{if $COM[mobile]}
+	 手机：{$COM[mobile]}&nbsp;
+	{/if}
+	{if $COM[fax]}
+	 传真：{$COM[fax]}&nbsp;
+	{/if} </p>
+	<p>
+		<a href="{$MODULE[2][linkurl]}">管理入口</a><i>|</i>
+		 <a href="javascript:void(0);" onclick="$('html, body').animate({scrollTop:0}, 200);">返回顶部</a> 
+	</p>
+	<div  >
+		 {loop $citys $v}
+		 <a href="{userurl($username, 'file='.$file.'&city='.$v['pname'].'_'.$v['id'], $domain)}" >{$v['name']}</a>
+		 {/loop}
+	</div>
+  </div>
+</footer>
+ 
+ 
+ 
+{if $album_js}<script type="text/javascript" src="{DT_STATIC}file/script/album.js"></script>{/if}
+{if 0 && $api_kf && $kf}
+{php include DT_ROOT.'/api/kf/'.$HOME['kf_type'].'/show.inc.php';}
+{/if}
+</body>
+</html>

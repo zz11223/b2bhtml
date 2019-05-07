@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{aspcms:sorttitle}-{aspcms:sitetitle}</title>
+<meta name="Keywords" content="{aspcms:sortkeyword}" />
+<meta name="Description" content="{aspcms:sortdesc}" />
+<meta name="applicable-device"content="pc,mobile">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/bootstrap.css" rel="stylesheet">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/bxslider.css" rel="stylesheet">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/style.css" rel="stylesheet">
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/jquery.min.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/bxslider.min.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/common.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/bootstrap.js"></script>
+
+<!--[if lt IE 9]>
+
+	  <script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/html5shiv.min.js"></script>
+
+	  <script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/respond.min.js"></script>
+
+	<![endif]-->
+
+</head>
+
+<body>
+{aspcms:top}
+<div class="page_bg" style="background: url({aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/images/insideB.jpg) center top no-repeat;"></div>
+
+<!-- main -->
+
+<div class="container">
+  <div class="row"> 
+    
+    <!-- right -->
+    
+    <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+      <div class="list_box">
+        <h2 class="left_h">{aspcms:sortname}</h2>
+        <ul class="list_news">
+          {aspcms:list size=15 order=order}
+          <li><a href="[list:link]" title="[list:title]">[list:title]</a><span class="news_time">[list:date style=yy-m-d]</span></li>
+          {/aspcms:list}
+        </ul>
+        <div class="page">[list:pagenumber len=5]</div>
+      </div>
+    </div>
+    {aspcms:left} </div>
+</div>
+{aspcms:foot}
+</body>
+</html>

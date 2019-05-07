@@ -1,0 +1,17 @@
+
+
+{if $file != 'link'}
+<!--{php $tags=tag("table=link&condition=status=3 and username='$username'&pagesize=".$side_num[$HS]."&order=listorder desc&template=null");}-->
+<div class="left_news">
+    <h2 class="left_h">{$side_name[$HS]}</h2>
+    <ul class="left_news">
+     {if $tags}
+		{loop $tags $t}
+		<li><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></li>
+		{/loop}
+	{else}
+		<li>暂无链接</li>
+	{/if}
+	</ul> 
+</div>
+{/if}

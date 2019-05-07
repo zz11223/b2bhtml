@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{aspcms:sitetitle}{aspcms:additiontitle}</title>
+<meta name="Keywords" content="{aspcms:sitekeywords}" >
+<meta name="Description" content="{aspcms:sitedesc}" >
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/bootstrap.css" rel="stylesheet">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/bxslider.css" rel="stylesheet">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/style.css" rel="stylesheet">
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/jquery.min.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/bxslider.min.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/common.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/bootstrap.js"></script>
+</head>
+
+<body>
+{aspcms:top}
+<div class="page_bg" style="background: url({aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/images/insideB.jpg) center top no-repeat;"></div>
+<div class="container">
+  <div class="row"> 
+    
+    <!-- right -->
+    
+    <div class="col-xs-12 col-sm-12 col-md-12" style="float:right"> {aspcms:navlist}
+      <h2> <a href="[navlist:link]">[navlist:name]</a></h2>
+      <br />
+      {aspcms:subnavlist type=[navlist:sortid]}
+      <h3><a href="[subnavlist:link]">[subnavlist:name]</a></h3>
+      {/aspcms:subnavlist}
+      <hr />
+      {/aspcms:navlist} </div>
+    
+    <!-- left --> 
+    
+  </div>
+</div>
+{aspcms:foot}
+</body>
+</html>

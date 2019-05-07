@@ -1,0 +1,34 @@
+<!-- 招商代理 -->
+ <!--{php $tags=tag("moduleid=22&condition=status=3 and username='$username'&pagesize=".$main_num[$HM]."&order=edittime desc&template=null");}--> 
+ 	{if $tags}
+<div class="news_box">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="news_head" data-move-y="-50px">
+          <h2><a href="{userurl($username, 'file=info'.$city_url, $domain)}">
+          	{$HMAIN[$HM]}</a></h2> 
+        </div>
+        <!--{php $tags=tag("moduleid=22&condition=status=3 and username='$username'&pagesize=".$main_num[$HM]."&order=edittime desc&template=null");}-->
+        <div class="col-sm-4 col-md-4 col-mm-6 news_img" style="background-image: url({DT_STATIC}/company/htmlnew/images/57344e66ec33d.jpg);"></div>
+        <div class="col-sm-12 col-md-8 col-mm-12">
+          <ul class="news_index" data-move-y="200px">
+           
+			{loop $tags $t}
+           
+            <li><span><strong>{timetodate($t[edittime], 1)}</strong><i>{timetodate($t[edittime], 2)}</i></span><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=info&itemid='.$t[itemid], $domain)}{/if}">{$city_name}{$t[title]}</a>
+            	<br>
+            	<!-- len=50 -->
+              <em>{$t[introduce]}</em></li>
+            </li>
+            {/loop}
+	 
+	
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/if}  
+ 

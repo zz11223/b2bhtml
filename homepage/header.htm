@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="{DT_CHARSET}"/>
+<title>{if $city==1}{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$COM[company]}{/if}{else}{$COM[company]}{$zz_keywords}{/if}</title>
+<meta name="keywords" content="{if $city>1}{$COM[company]},{/if}{$head_keywords}"/>
+{if $city==1}
+	{if $head_description}
+<meta name="description" content="{$head_description}"/>
+	{/if}
+{else}
+<meta name="description" content="{$COM[company]}，联系电话：{$COM[telephone]}，{$head_keywords1}。"/>
+{/if}
+<meta name="generator" content="DESTOON B2B - www.destoon.com"/>
+<meta name="template" content="{$template}"/>
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
+{/if}
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link href="{DT_STATIC}/company/htmlnew/css/bootstrap.css" rel="stylesheet">
+<link href="{DT_STATIC}/company/htmlnew/css/bxslider.css" rel="stylesheet">
+<link href="{DT_STATIC}/company/htmlnew/css/style.css" rel="stylesheet">
+<script src="{DT_STATIC}/company/htmlnew/js/jquery.min.js"></script>
+
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+  
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+ 
+<script type="text/javascript" src="{DT_STATIC}file/script/homepage.js"></script>
+{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+
+<script src="{DT_STATIC}/company/htmlnew/js/bxslider.min.js"></script>
+<script src="{DT_STATIC}/company/htmlnew/js/common.js"></script>
+<script src="{DT_STATIC}/company/htmlnew/js/bootstrap.js"></script>
+<!--[if lt IE 9]>
+<script src="{DT_STATIC}/company/htmlnew/js/html5shiv.min.js"></script>
+<script src="{DT_STATIC}/company/htmlnew/js/respond.min.js"></script>
+<![endif]-->
+
+
+ 
+ 
+ 
+ 
+ 

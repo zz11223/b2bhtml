@@ -1,0 +1,51 @@
+<body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor}{/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
+<div class="top" id="top"><div class="m"><span class="f_r"><a href="{DT_PATH}">返回主站</a><i>|</i><a href="{$MODULE[2][linkurl]}">会员中心</a></span><script type="text/javascript">addFav('收藏本页');</script><i>|</i><a href="{DT_PATH}api/shortcut.php?itemid={$userid}">保存桌面</a>{if $head_mobile}<i>|</i><a href="javascript:Dqrcode();">手机浏览</a>{/if}</div></div>
+{if $head_mobile}<div id="destoon_qrcode" style="display:none;"></div>{/if}
+<header>
+  <div class="top_menu">
+    <div class="container"><span class="top_name">欢迎光临<a href="{$COM[linkurl]}{$city_url1}">{$COM[company]}-{if $city==1}总站{else}{$city_name}分站{/if}</a></span>
+      
+    </div>
+  </div>
+   <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-8"> <a href="/"><img src="{$logo}" class="logo"/></a></a></div>
+      <div id="topsearch" class="col-xs-12 col-sm-4 col-md-4">
+        <form id="searchform" method="get" action="{$MODULE[4][linkurl]}home.php">
+          <div class="input-group search_group">
+            <input type="hidden" name="action" value="search"/>
+          <input type="hidden" name="homepage" value="{$username}"/>
+            <input type="text" name="kw" class="form-control input-sm" value="{if $kw}{$kw}{else}输入关键词{/if}">
+             <select name="file">
+                {loop $MENU $k $v}
+                {if in_array($menu_file[$k], array('sell', 'buy', 'news', 'credit', 'job', 'photo', 'info', 'brand', 'video', 'mall'))}<option value="{$menu_file[$k]}"{if $file==$menu_file[$k]} selected{/if}>{$v[name]}</option>{/if}
+                {/loop}
+                </select>&nbsp;
+            <span class="input-group-btn"><span id="submit_search" onClick="searchform.submit();" title="搜索" class="glyphicon glyphicon-search btn-lg" aria-hidden="true"></span></span></div>
+        </form>
+  
+      </div>
+    </div>
+  </div>
+  <!-- Fixed navbar -->
+  <nav id="top_nav" class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">导航菜单</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="#">导航菜单</a> </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{$COM[linkurl]}{$city_url1}">网站首页</a></li>
+ 
+
+          {loop $MENU $k $v}
+          <li class="dropdown"> <a href="{$v[linkurl]}{$city_url1}">{$v[name]}</a> <a href="{$v[linkurl]}{$city_url1}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
+          </li>
+          {/loop}
+        </ul>
+      </div>
+    
+      
+    </div>
+  </nav>
+</header>

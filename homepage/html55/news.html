@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[news:title]-{aspcms:sortname}-{aspcms:sitetitle}</title>
+<meta name="Keywords" content="[news:keyword]" />
+<meta name="Description" content="[news:desc]" />
+<meta name="applicable-device"content="pc,mobile">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/bootstrap.css" rel="stylesheet">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/bxslider.css" rel="stylesheet">
+<link href="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/css/style.css" rel="stylesheet">
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/jquery.min.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/bxslider.min.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/common.js"></script>
+<script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/bootstrap.js"></script>
+
+<!--[if lt IE 9]>
+
+	  <script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/html5shiv.min.js"></script>
+
+	  <script src="{aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/js/respond.min.js"></script>
+
+	<![endif]-->
+
+</head>
+
+<body>
+{aspcms:top}
+<div class="page_bg" style="background: url({aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/images/insideB.jpg) center top no-repeat;"></div>
+
+<!-- main -->
+
+<div class="container">
+  <div class="row"> 
+    
+    <!-- right -->
+    
+    <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+      <div class="list_box">
+        <h2 class="left_h">{aspcms:sortname}</h2>
+        <div class="contents">
+          <h1 class="contents_title">[news:title]</h1>
+          <span style="color:#505050;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;line-height:22px;">[news:info]</span> </div>
+        <div class="point"> <span class="to_prev col-xs-12 col-sm-6 col-md-6">上一条：{aspcms:prev}</span> <span class="to_next col-xs-12 col-sm-6 col-md-6">下一条：{aspcms:next}</span> </div>
+      </div>
+      <div class="list_related">
+        <h2 class="left_h">相关新闻</h2>
+        <ul class="list_news related_news">
+          {aspcms:content sort={aspcms:sortid} num=5 order=order}
+          <li><a href="[content:link]" title="[content:title]">[content:title]</a><span class="news_time">[content:date style=yy-m-d]</span></li>
+          {/aspcms:content}
+        </ul>
+      </div>
+    </div>
+    {aspcms:left} </div>
+</div>
+{aspcms:foot}
+</body>
+</html>
