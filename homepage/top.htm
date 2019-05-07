@@ -1,29 +1,32 @@
 <body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor}{/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
-<div class="top" id="top"><div class="m"><span class="f_r"><a href="{DT_PATH}">返回主站</a><i>|</i><a href="{$MODULE[2][linkurl]}">会员中心</a></span><script type="text/javascript">addFav('收藏本页');</script><i>|</i><a href="{DT_PATH}api/shortcut.php?itemid={$userid}">保存桌面</a>{if $head_mobile}<i>|</i><a href="javascript:Dqrcode();">手机浏览</a>{/if}</div></div>
-{if $head_mobile}<div id="destoon_qrcode" style="display:none;"></div>{/if}
+
 <header>
   <div class="top_menu">
-    <div class="container"><span class="top_name">欢迎光临<a href="{$COM[linkurl]}{$city_url1}">{$COM[company]}-{if $city==1}总站{else}{$city_name}分站{/if}</a></span>
+    <div class="container"><span style="float: right; color: #333;"><a href="http://destoon11.cc/">返回主站</a><i>|</i><a href="http://destoon11.cc/member/">会员中心</a></span><script type="text/javascript">addFav('收藏本页');</script><a href="http://www.chengxin315.com/com/qkmysh1/" title="成都圣浪服饰有限公司" rel="sidebar" onclick="if(UA.indexOf('chrome') != -1){alert('请按快捷键Ctrl+D收藏本页，谢谢');return false;}window.external.addFavorite(this.href, this.title);return false;">收藏本页</a><i>|</i><a href="http://destoon11.cc/api/shortcut.php?itemid=2">保存桌面</a><i>|</i><a href="javascript:Dqrcode();">手机浏览</a>
+
       
     </div>
   </div>
    <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-md-8"> <a href="/"><img src="{$logo}" class="logo"/></a></a></div>
+      <div class="col-xs-12 col-sm-8 col-md-8">
+        <h1 class="row_h1">成都圣浪服饰有限公司-总站</h1>
+        <h4 class="row_h4">童鞋|童装|外贸童鞋|外贸童装|外贸童装批发|外贸童装批发|童鞋批发</h4>
+      </div>
       <div id="topsearch" class="col-xs-12 col-sm-4 col-md-4">
         <form id="searchform" method="get" action="{$MODULE[4][linkurl]}home.php">
           <div class="input-group search_group">
             <input type="hidden" name="action" value="search"/>
-          <input type="hidden" name="homepage" value="{$username}"/>
-            <input type="text" name="kw" class="form-control input-sm" value="{if $kw}{$kw}{else}输入关键词{/if}">
-             <select name="file">
+            <input type="hidden" name="homepage" value="{$username}"/>
+            <input type="text" name="kw" class="form-control input-sm" style="display:inline-block;width:222px;" value="{if $kw}{$kw}{else}输入关键词{/if}">
+            <select name="file" class="form-control" style="display:inline-block;width:90px;">
                 {loop $MENU $k $v}
                 {if in_array($menu_file[$k], array('sell', 'buy', 'news', 'credit', 'job', 'photo', 'info', 'brand', 'video', 'mall'))}<option value="{$menu_file[$k]}"{if $file==$menu_file[$k]} selected{/if}>{$v[name]}</option>{/if}
                 {/loop}
-                </select>&nbsp;
+            </select> 
             <span class="input-group-btn"><span id="submit_search" onClick="searchform.submit();" title="搜索" class="glyphicon glyphicon-search btn-lg" aria-hidden="true"></span></span></div>
         </form>
-  
+       
       </div>
     </div>
   </div>
