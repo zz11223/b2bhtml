@@ -1,17 +1,16 @@
 <body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor}{/if}{if $background}url('{$background}') no-repeat center 0{/if};"{/if}>
-
 <header>
   <div class="top_menu">
-    <div class="container"><span style="float: right; color: #333;"><a href="http://destoon11.cc/">返回主站</a><i>|</i><a href="http://destoon11.cc/member/">会员中心</a></span><script type="text/javascript">addFav('收藏本页');</script><a href="http://www.chengxin315.com/com/qkmysh1/" title="成都圣浪服饰有限公司" rel="sidebar" onclick="if(UA.indexOf('chrome') != -1){alert('请按快捷键Ctrl+D收藏本页，谢谢');return false;}window.external.addFavorite(this.href, this.title);return false;">收藏本页</a><i>|</i><a href="http://destoon11.cc/api/shortcut.php?itemid=2">保存桌面</a><i>|</i><a href="javascript:Dqrcode();">手机浏览</a>
-
+    <div class="container"><span style="float: right; color: #333;"><a href="{DT_PATH}">返回主站</a><i>|</i><a href="{$MODULE[2][linkurl]}">会员中心</a></span><script type="text/javascript">addFav('收藏本页');</script><a href="{userurl($username, 'file='.$file.'&city='.$v['pname'].'_'.$v['id'], $domain)}" title="{$COM[company]}" rel="sidebar" onclick="if(UA.indexOf('chrome') != -1){alert('请按快捷键Ctrl+D收藏本页，谢谢');return false;}window.external.addFavorite(this.href, this.title);return false;">收藏本页</a><i>|</i><a href="{DT_PATH}api/shortcut.php?itemid={$userid}">保存桌面</a><i>|</i><a href="javascript:Dqrcode();">手机浏览</a>
+  {if $head_mobile}<div id="destoon_qrcode" style="display:none;"></div>{/if}
       
     </div>
   </div>
-   <div class="container">
+<div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-md-8">
-        <h1 class="row_h1">成都圣浪服饰有限公司-总站</h1>
-        <h4 class="row_h4">童鞋|童装|外贸童鞋|外贸童装|外贸童装批发|外贸童装批发|童鞋批发</h4>
+        <h1 class="row_h1">{$COM[company]}-{if $city==1}总站{else}{$city_name}分站{/if}</h1>
+        <h4 class="row_h4">{dsubstr($COM['business'], $logo ? 60 : 80, '...')}</h4>
       </div>
       <div id="topsearch" class="col-xs-12 col-sm-4 col-md-4">
         <form id="searchform" method="get" action="{$MODULE[4][linkurl]}home.php">
@@ -30,6 +29,8 @@
       </div>
     </div>
   </div>
+
+  
   <!-- Fixed navbar -->
   <nav id="top_nav" class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -52,3 +53,12 @@
     </div>
   </nav>
 </header>
+
+ <!-- bxslider -->
+{if $banner}
+<div class="flash">
+  <ul class="bxslider"> 
+    <li><a href="###"><img src="{$banner}" /></a></li> 
+  </ul>
+</div>
+{/if}

@@ -1,39 +1,9 @@
 {template 'header', $template}
 </head>
 {template 'top', $template}
+
  
- 
-<!-- bxslider -->
-<div class="flash">
-  <ul class="bxslider">
-   
-	{if $banner1}<a {if $bannerlink1}href="{$bannerlink1}" target="_blank"{else}href="###"{/if}><img src="{$banner1}"  /></a>{/if}
-	{if $banner2}<a {if $bannerlink2}href="{$bannerlink2}" target="_blank"{else}href="###"{/if}><img src="{$banner2}"  /></a>{/if}
-  	{if $banner3}<a {if $bannerlink3}href="{$bannerlink3}" target="_blank"{else}href="###"{/if}><img src="{$banner3}"  /></a>{/if}
-	{if $banner4}<a {if $bannerlink4}href="{$bannerlink4}" target="_blank"{else}href="###"{/if}><img src="{$banner4}"  /></a>{/if}
-	{if $banner5}<a {if $bannerlink5}href="{$bannerlink5}" target="_blank"{else}href="###"{/if}><img src="{$banner5}" /></a>{/if}
-
-   
-     
-  </ul>
-</div>
-<script type="text/javascript">    
-$('.bxslider').bxSlider({
-
-      adaptiveHeight: true,
-
-      infiniteLoop: true,
-
-      hideControlOnEnd: true,
-
-      auto:true
-
-    });
-
-</script>
 {loop $HMAIN $HM $MAIN}
-{$main_file[$HM]}
-
 {template 'main_'.$main_file[$HM], $template}
 {/loop}
  
