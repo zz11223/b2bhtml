@@ -14,16 +14,16 @@ if($file == 'mall') {
 }
 $_TYPE = get_type($_item);
 $_TP = $_TYPE ? sort_type($_TYPE) : array();
-var_dump($_TP);
 ?>
-
+ 
 <div class="left_nav" id="categories">
     <h2 class="left_h"><a href="{userurl($username, 'file='.$_file, $domain)}">{$_name}</a></h2>
     <ul class="left_nav_ul" id="firstpane">
     {if $_TYPE}
       {loop $_TP[0] $v0}
       <li> 
-      	<a class="biglink" href="{userurl($username, 'file='.$_file.'&typeid='.$v0['typeid'], $domain)}" title="{$v0[typename]}">{set_style($v0[typename], $v0[style])}</a>
+      	<a class="biglink" href="{userurl($username, 'file='.$_file.'&typeid='.$v0['typeid'], $domain)}" title="{$v0[typename]}">
+      		{set_style($v0[typename], $v0[style])}</a>
       	<span class="menu_head">+</span>  
       	{if isset($_TP[1][$v0[typeid]])}
       		 <ul class="left_snav_ul menu_body">
