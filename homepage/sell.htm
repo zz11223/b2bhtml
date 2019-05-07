@@ -1,123 +1,78 @@
 {template 'header', $template}
+<link href="{DT_STATIC}/company/htmlnew/css/lightbox.css" rel="stylesheet">
+<script src="{DT_STATIC}/company/htmlnew/js/lightbox.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){ 
+        $('.showpic_flash').bxSlider({ 
+          pagerCustom: '#pic-page', 
+           adaptiveHeight: true, 
+        }); 
+    });
+
+</script>
 </head>
 {template 'top', $template}
 <div class="container">
   <div class="row"> 
 
 {if $itemid}
-<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+	<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
       <div class="list_box">
         <h2 class="left_h">{$city_name}{$title}</h2>
-        <table width="100%" align="center">
-		<tr>
-		<td width="250" valign="top">
-			<div id="mid_pos"></div>
-			<div id="mid_div" onmouseover="SAlbum();" onmouseout="HAlbum();" onclick="PAlbum(Dd('mid_pic'));">
-			<img src="{$albums[0]}" width="240" height="180" id="mid_pic"/><span id="zoomer"></span>
-			</div>
-			<div class="b5"></div>
-			<div>
-			{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');" class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
-			</div>
-			<div class="b5"></div>
-			<div onclick="PAlbum(Dd('mid_pic'));" class="c_b t_c c_p"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 点击图片查看原图</div>
-		</td>
-		<td width="15"> </td>
-		<td valign="top">
-			<div id="big_div" style="display:none;"><img src="" id="big_pic"/></div>
-			<table width="100%" cellpadding="4" cellspacing="4">
-			{if $MOD[hits]}
-			<tr>
-			<td class="f_dblue">产品：</td>
-			<td><span id="hits" class="f_r">浏览次数：{$hits}</span><strong>{$city_name}{$title}</strong>&nbsp;</td>
-			</tr>
+        <!-- showpic -->
+       
+        <div class="col-sm-12 col-md-6 showpic_box">
+ 
+          <ul class="showpic_flash">
+          	{loop $albums $k $v} 
+            <li><a class="example-image-link" data-lightbox="example-set" target="_blank"><img class="example-image" src="{$v}"/></a></li>
+            {/loop}
+          </ul>
+          <div id="pic-page">
+			{loop $thumbs $k $v}
+ 			<a data-slide-index="{$k}" href="{$v}"><img src="{$v}" /></a>  
+ 			{/loop}
+ 		  </div>
+        </div>
+        
+        <!-- product_info -->
+        
+        <div class="col-sm-12 col-md-6 proinfo_box">
+          <h1 class="product_h1">{$city_name}{$title}</h1>
+          <ul class="product_info">
+          	{if $MOD[hits]}
+			<li>浏览次数：{$hits}</li>
+		 
 			{/if}
-			{if $brand}
-			<tr>
-			<td class="f_dblue">品牌：</td>
-			<td>{$brand}</td>
-			</tr>
+			{if $brand} 
+			<li>品牌： {$brand}</li>
+			 
 			{/if}
 			{if $n1 && $v1}
-			<tr>
-			<td class="f_dblue">{$n1}：</td>
-			<td>{$v1}</td>
-			</tr>
+			<li>{$n1}： {$v1}</li>
 			{/if}
 			{if $n2 && $v2}
-			<tr>
-			<td class="f_dblue">{$n2}：</td>
-			<td>{$v2}</td>
-			</tr>
+			<li>{$n2}： {$v2}</li>
 			{/if}
 			{if $n3 && $v3}
-			<tr>
-			<td class="f_dblue">{$n3}：</td>
-			<td>{$v3}</td>
-			</tr>
+			<li>{$n3}： {$v3}</li>
 			{/if}
-			<tr>
-			<td class="f_dblue">单价：</td>
-			<td class="f_b f_orange">{if $price>0}{$price}{$DT[money_unit]}/{$unit}{else}面议{/if}</td>
-			</tr>
-			<tr>
-			<td class="f_dblue">最小起订量：</td>
-			<td class="f_b f_orange">{if $minamount}{$minamount} {$unit}{/if}</td>
-			</tr>
-			<tr>
-			<td class="f_dblue">供货总量：</td>
-			<td class="f_b f_orange">{if $amount}{$amount} {$unit}{/if}</td>
-			</tr>
-			<tr>
-			<td class="f_dblue">发货期限：</td>
-			<td>自买家付款之日起  <span class="f_b f_orange">{if $days}{$days}{/if}</span> 天内发货</td>
-			</tr>
-			<tr>
-			<td class="f_dblue">有效期至：</td>
-			<td>{if $todate}{$todate}{else}长期有效{/if}{if $expired} <span class="f_red">[已过期]</span>{/if}</td>
-			</tr>
-			<tr>
-			<td width="80" class="f_dblue">最后更新：</td>
-			<td>{$editdate}</td>
-			</tr>
-			{if $could_inquiry && !$expired}
-			<tr>
-			<td class="f_dblue">&nbsp;</td>
-			<td><a href="#message"><img src="{DT_SKIN}image/btn_inquiry.gif" alt="询价"/></a></td>
-			</tr>
-			{/if}
-			</table>
-			<script type="text/javascript">
-			document.write('<br/><br/><center><a href="{$MODULE[4][linkurl]}home.php?action=prev&itemid={$itemid}&username={$username}{$city_url}" class="t">&#171;上一个产品</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MODULE[4][linkurl]}home.php?action=next&itemid={$itemid}&username={$username}{$city_url}" class="t">下一个产品&#187;</a></center>');
-			</script>
-		</td>
-		</tr>
-		</table>
-         
-         </div>
-         <div class="main_head"><div><strong>详细信息</strong></div></div>
-	<div class="main_body">
-		{if $CP}{template 'property_show', 'chip'}{/if}
-		<div class="content" id="content">{$content}</div>
-	</div>
-	{if $could_inquiry}
-	<div class="main_head"><div><strong><span id="message_title">询价单</span><a name="message"></a></strong></div></div>
-	<div class="main_body"><script type="text/javascript">Df('{$inquiry_url}', 'name="fra" id="fra" style="width:98%;height:488px;"');</script></div>
-	{/if}
-	{if $could_comment && in_array($moduleid, explode(',', $EXT['comment_module']))}
-	<div id="comment_div" style="display:;">
-		<div class="main_head"><div><span class="f_r px12">共<span id="comment_count">0</span>条&nbsp;&nbsp;</span><strong><span id="message_title">相关评论</span></strong></div></div>
-		<div class="main_body"><script type="text/javascript">Df('{DT_PATH}api/comment.php?mid={$moduleid}&itemid={$itemid}&proxy={$comment_proxy}', 'id="destoon_comment" style="width:100%;"');</script></div>
-	</div>
-	{/if}
-	<script type="text/javascript">
-	try {Dd('type_{$typeid}').style.backgroundColor = '#F1F1F1';}catch (e){}
-	var content_id = 'content';
-	var img_max_width = {$MOD[max_width]};
-	</script>
-	<script type="text/javascript" src="{DT_STATIC}file/script/content.js"></script>
-     </div>
- 
+			<li>单价： {if $price>0}{$price}{$DT[money_unit]}/{$unit}{else}面议{/if}</li>
+			<li>最小起订量： {if $minamount}{$minamount} {$unit}{/if}</li>
+			<li>供货总量： {if $amount}{$amount} {$unit}{/if}</li>
+			<li>发货期限：</li>
+			<li>自买家付款之日起    天内发货</li>
+			<li>有效期至： {if $todate}{$todate}{else}长期有效{/if}{if $expired}  [已过期] {/if}</li>
+			<li>最后更新： {$editdate}</li>
+            
+          </ul>
+        </div>
+ 		<div class="product_con">{$content} </div>
+        <div class="point"> <span class="to_prev col-xs-12 col-sm-6 col-md-6"><a href="{$MODULE[4][linkurl]}home.php?action=prev&itemid={$itemid}&username={$username}{$city_url}" class="t">&#171;上一个产品</a></span> <span class="to_next col-xs-12 col-sm-6 col-md-6"><a href="{$MODULE[4][linkurl]}home.php?action=next&itemid={$itemid}&username={$username}{$city_url}" class="t">下一个产品&#187;</a></span> </div>
+          
+       </div>
+    </div>  
 {else}
  
  <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
@@ -125,8 +80,14 @@
         <h2 class="left_h">{$MENU[$menuid][name]}</h2>
         <div class="product_list product_list2"> 
         	{loop $lists $k $v}
-          <div class="col-sm-4 col-md-4 col-mm-6 product_img"> <a href="{$v[linkurl]}"> <img  src="{imgurl($v[thumb])}" class="img-thumbnail" alt="{$city_name}{$v[title]}"/> </a>
-            <p class="product_title"><a href="{$v[linkurl]}" title="{$city_name}{$v[title]}">{$city_name}{$v[title]}</a></p>
+          <div class="col-sm-4 col-md-4 col-mm-6 product_img"> 
+          	<a href="{$v[linkurl]}"> 
+          		<img  src="{imgurl($v[thumb])}" class="img-thumbnail" alt="{$city_name}{$v[title]}"/> 
+          	</a>
+            <p class="product_title">
+            	<a href="{$v[linkurl]}" title="{$city_name}{$v[title]}">{$city_name}{$v[title]}
+            	</a>
+            </p>
           </div>
           {/loop} </div>
         <div class="page">{$pages}</div>

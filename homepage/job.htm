@@ -1,11 +1,14 @@
 {template 'header', $template}
 </head>
 {template 'top', $template}
-<div class="dsn" id="pos_show"><a href="{$COM[linkurl]}">首页</a> <i>&gt;</i> <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} <i>&gt;</i> {$title}{/if}</div>
+<div class="container">
+  <div class="row"> 
+   <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+  <div class="list_box">
+   
 {if $itemid}
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
-	<div class="title">{$title}</div>
+  	<h2 class="left_h">{$title}</h2>
+ 
 	<div class="info">发布时间：{timetodate($addtime, 3)}{if $MOD[hits]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}{/if}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
 
 		<div class="content">
@@ -54,7 +57,7 @@
 		</tr>
 		</table>
 		</div>
-	</div>
+	 
 	<div class="main_head"><div><strong>职位描述</strong></div></div>
 	<div class="main_body">
 		{if $CP}{template 'property_show', 'chip'}{/if}
@@ -99,14 +102,15 @@
 		</div>
 	</div>
 	{/if}
+ 
 	<script type="text/javascript">
 	var content_id = 'content';
 	var img_max_width = {$MOD[max_width]};
 	</script>
 	<script type="text/javascript" src="{DT_STATIC}file/script/content.js"></script>
 {else}
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
+
+ 	<h2 class="left_h">{$MENU[$menuid][name]}</h2>
 	<table cellpadding="10" cellspacing="1" width="100%" align="center">
 	{loop $lists $k $v}
 	<tr>
@@ -118,6 +122,10 @@
 	{/loop}
 	</table>
 	<div class="pages">{$pages}</div>
-</div>
+
 {/if}
+</div>
+</div>
+{template 'side', $template}</div>
+</div>
 {template 'footer', $template}
