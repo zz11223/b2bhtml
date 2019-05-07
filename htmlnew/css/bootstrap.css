@@ -4500,6 +4500,8 @@ table {
 
   background-color: transparent;
 
+  margin-top: 20px;
+
 }
 
 caption {
@@ -4516,7 +4518,7 @@ caption {
 
 th {
 
-  text-align: left;
+  text-align: center;
 
 }
 
