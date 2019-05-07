@@ -31,21 +31,19 @@
       </div>
     </div>
   </div>
-
-  
+ 
   <!-- Fixed navbar -->
   <nav id="top_nav" class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">导航菜单</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <a class="navbar-brand" href="#">导航菜单</a> </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+      <div id="navbar" class="navbar-collapse collapse" >
+        <ul class="nav navbar-nav"  >
           <li><a href="{$COM[linkurl]}{$city_url1}">网站首页</a></li>
- 
 
           {loop $MENU $k $v}
-          <li class="dropdown"> <a href="{$v[linkurl]}{$city_url1}">{$v[name]}</a> <a href="{$v[linkurl]}{$city_url1}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
+          <li class="dropdown" > <a href="{$v[linkurl]}{$city_url1}">{$v[name]}</a> <a href="{$v[linkurl]}{$city_url1}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
           </li>
           {/loop}
         </ul>
@@ -54,6 +52,7 @@
       
     </div>
   </nav>
+ 
 </header>
 
  <!-- bxslider -->

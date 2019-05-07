@@ -11,16 +11,17 @@
 
 	 <div class="list_box">
         <h2 class="left_h">{$MENU[$menuid][name]}</h2>
-        
-		<table width="98%" cellpadding="3" cellspacing="3" align="center">
+        	<table width="98%" cellpadding="3" cellspacing="3" align="center">
 			{loop $lists $k $v}
-			{if $k%3==0}<tr align="center">{/if}
-			<td width="33%"><a href="{$v[linkurl]}" target="_blank">{$v[title]}</a></td>
+			 
+			{if $k%3==0}<tr align="left" height="50px">{/if}
+			<td width="24%"><a href="{$v[linkurl]}" target="_blank">◆   {$v[title]}</a></td>
 			{if $k%3==2}</tr>{/if}
 			{/loop}
 		</table>
+ 
 	 
-		<div class="pages">{$pages}</div>
+		<div class="page">{$pages}</div>
      </div>
     </div>
 {template 'side', $template}</div>

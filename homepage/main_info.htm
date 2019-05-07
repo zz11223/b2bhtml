@@ -19,7 +19,7 @@
             <li><span><strong>{timetodate($t[edittime], 1)}</strong><i>{timetodate($t[edittime], 2)}</i></span><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=info&itemid='.$t[itemid], $domain)}{/if}">{$city_name}{$t[title]}</a>
             	<br>
             	<!-- len=50 -->
-              <em>{$t[introduce]}</em></li>
+              <em>{mb_substr($t[introduce],0,50,'utf-8')}</em></li>
             </li>
             {/loop}
 	 

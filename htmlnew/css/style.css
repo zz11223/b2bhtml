@@ -443,7 +443,7 @@ footer{ text-align:center; background: url(../images/foot_bg.gif) center center;
 
       .navbar-nav > li > a {text-align: center; font-size:16px;}
 
-      .navbar-default .navbar-nav > li > a{color: #fff;padding: 14px 30px 14px 30px;}
+      .navbar-default .navbar-nav > li > a{color: #fff;padding: 14px 11px 14px 12px;}
 
       .navbar-default .navbar-nav > li > a:hover,
 

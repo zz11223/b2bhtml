@@ -4,3 +4,7 @@
 .page input{width: 50px;}
 
 .contents h1{ font-size: 24px;  margin: 0px; color: #333333;}
+
+.main_head div{padding: 0 16px; font-size: 14px; height: 44px; margin-bottom: 20px; line-height: 44px; overflow: hidden; background-color: #f1f1f1; }
+
+.main_body{  background: #FFFFFF;margin: 0 0 20px;}

@@ -3,31 +3,19 @@
 {template 'top', $template}
 <div class="container">
   <div class="row"> 
- 
+ <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+      <div class="list_box">
 {if $itemid}
-	<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
-      <div class="list_box">
-        <h2 class="left_h">{$title}</h2>
-      	<div class="info">上传日期：{$adddate}{if $MOD[hits]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放次数：{$hits}{/if}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
-        <div class="t_c" style="padding:15px 0 15px 0;">{template 'player', 'chip'}</div>	
-        {if $content}
-		<div class="main_head"><div><strong>详细信息</strong></div></div>
-		<div class="main_body">
-			{if $CP}{template 'property_show', 'chip'}{/if}
-			<div class="content" id="content">{$content}</div>
-		</div>
-		<script type="text/javascript">
-		var content_id = 'content';
-		var img_max_width = {$MOD[max_width]};
-		</script>
-		<script type="text/javascript" src="{DT_STATIC}file/script/content.js"></script>
-		{/if} 
-      </div> 
-    </div>  
-	 
+	
+        <h2 class="left_h">{$MENU[$menuid][name]}</h2>
+        
+          <h1 class="contents_title">{$title}</h1>
+           <div class="info">发布时间：{timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
+           <div class="t_c" style="padding:15px 0 15px 0;">{template 'player', 'chip'}</div>  
+          <span style=" padding-top:30px;color:#505050;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;line-height:22px;">{$content}</span>  
+ 
 {else}
-	<div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
-      <div class="list_box">
+ 
         <h2 class="left_h">{$MENU[$menuid][name]}</h2>
         <div class="product_list product_list2">  
         	{loop $lists $k $v}
@@ -40,11 +28,12 @@
  
       </div>
         <div class="page">{$pages}</div>
-      </div>
-    </div>
+      
 
 	 
 {/if}
+</div>
+    </div>
 {template 'side', $template}</div>
 </div>
 {if $itemid && $video_i}
