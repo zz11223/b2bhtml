@@ -68,27 +68,26 @@
 </header>
  
  <!-- bxslider -->
-{if $banner}
+{if $file=='homepage' && $bannert == 2}
+<div class="flash">
+  <ul class="bxslider">
+    <li><a {if $bannerlink1}href="{$bannerlink1}" target="_blank"{else}href="###"{/if}><img src="{$banner1}" width="{$bannerw}" height="{$bannerh}" alt=""/></a></li>
+    <li><a {if $bannerlink2}href="{$bannerlink2}" target="_blank"{else}href="###"{/if}><img src="{$banner2}" width="{$bannerw}" height="{$bannerh}" alt=""/></a></li>
+    {if $banner3}<li><a {if $bannerlink3}href="{$bannerlink3}" target="_blank"{else}href="###"{/if}><img src="{$banner3}" width="{$bannerw}" height="{$bannerh}" alt=""/></a></li>{/if}
+    {if $banner4}<li><a {if $bannerlink4}href="{$bannerlink4}" target="_blank"{else}href="###"{/if}><img src="{$banner4}" width="{$bannerw}" height="{$bannerh}" alt=""/></a></li>{/if}
+    {if $banner5}<li><a {if $bannerlink5}href="{$bannerlink5}" target="_blank"{else}href="###"{/if}><img src="{$banner5}" width="{$bannerw}" height="{$bannerh}" alt=""/></a></li>{/if}
+     
+  </ul>
+</div>
+<script type="text/javascript">    
+$('.bxslider').bxSlider({ 
+      adaptiveHeight: true, 
+      infiniteLoop: true, 
+      hideControlOnEnd: true, 
+      auto:true 
+    }); 
+</script>
+{elseif $banner}
 <img src="{$banner}" style="display: inline-block;width: 100%;"/>
 {/if}
-{if 0 && ($bannert || $banner)}
-<div class="m">
-  <div class="banner">
-  {if $bannert == 2}
-    <div id="slide_banner" style="width:{$bannerw}px;height:{$bannerh}px;background:#FAFAFA;overflow:hidden;">
-      <a {if $bannerlink1}href="{$bannerlink1}" target="_blank"{else}href="###"{/if}><img src="{$banner1}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>
-      <a {if $bannerlink2}href="{$bannerlink2}" target="_blank"{else}href="###"{/if}><img src="{$banner2}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>
-      {if $banner3}<a {if $bannerlink3}href="{$bannerlink3}" target="_blank"{else}href="###"{/if}><img src="{$banner3}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>{/if}
-      {if $banner4}<a {if $bannerlink4}href="{$bannerlink4}" target="_blank"{else}href="###"{/if}><img src="{$banner4}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>{/if}
-      {if $banner5}<a {if $bannerlink5}href="{$bannerlink5}" target="_blank"{else}href="###"{/if}><img src="{$banner5}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>{/if}
-    </div>
-    {load('slide.js')}
-    <script type="text/javascript">new dslide('slide_banner');</script>
-  {elseif $bannert == 1}
-    <embed src="{$bannerf}" quality="high" loop="true" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" width="{$bannerw}" height="{$bannerh}" allowscriptaccess="never"></embed>
-  {elseif $banner}
-    <img src="{$banner}" width="100%"/>
-  {/if}
-  </div>
-</div>
-{/if}
+  
