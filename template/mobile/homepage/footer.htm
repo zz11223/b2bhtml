@@ -1,0 +1,17 @@
+{if $share_icon == 'auto'}<div class="share_icon"><img src="{DT_PATH}apple-touch-icon-precomposed.png"/></div>{/if}
+	<div style="margin:10px;" >
+			<label style="display:inline-block;padding-left:2px;"><a style="color:grey;" href="{DT_PATH}" >{$DT[sitename]}</a></label>
+		 {loop $citys $v}
+		 	<label style="display:inline-block;padding-left:2px;"><a style="color:grey;" href="{userurl($username, 'file='.$file.'&city='.$v['pname'].'_'.$v['id'], $domain)}" >{$v['name']}</a></label>
+		 {/loop}
+	</div>
+</div>
+
+{if $api_stats && $stats}
+{php include DT_ROOT.'/api/stats/'.$HOME['stats_type'].'/show.inc.php';}
+{/if}
+{if $api_kf && $kf}
+{php include DT_ROOT.'/api/kf/'.$HOME['kf_type'].'/show.inc.php';}
+{/if}
+</body>
+</html>
