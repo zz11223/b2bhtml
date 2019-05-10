@@ -23,9 +23,12 @@
         <h2 class="left_h">公司档案</h2>
         <div class="contents"> 
       		<div class="px14 lh18">
-				<table width="100%" cellpadding="10" cellspacing="1">
-					<tr>
-					<td width="100" class="f_b">公司名称：</td>
+      			 
+      			 <table class="table zztable-border0" >
+				<!-- <table width="100%" cellpadding="10" cellspacing="1"> -->
+				  
+					<tr >
+					<td  width="100" class="f_b">公司名称：</td>
 					<td width="340">{$COM[company]}</td>
 					<td width="100" class="f_b">公司类型：</td>
 					<td>{$COM[type]} ({$COM[mode]})</td>
@@ -42,8 +45,10 @@
 					<td class="f_b">注册年份：</td>
 					<td>{$COM[regyear]}</td>
 					</tr>
-					</table>
-					<table width="100%" cellpadding="10" cellspacing="1">
+				 
+				</table>
+				<table class="table zztable-border0" >
+					<!-- <table width="100%" cellpadding="10" cellspacing="1"> -->
 					<tr>
 					<td width="100" class="f_b">资料认证：</td>
 					<td>
@@ -88,17 +93,16 @@
 					{if $COM[catid]}
 					<tr>
 					<td class="f_b">主营行业：</td>
-					<td>
-					{php $catids = explode(',', substr($COM['catid'], 1, -1));}
-					<table cellpadding="6" cellspacing="1" width="100%">
-					{loop $catids $i $c}
-					{if $i%3==0}<tr>{/if}
-					<td width="33%">{cat_pos(get_cat($c), ' / ', '_blank')}</td>
-					{if $i%3==2}</tr>{/if}
-					{/loop}
-					</table>
+					<td>  
+						{php $catids = explode(',', substr($COM['catid'], 1, -1));}
+						{loop $catids $i $c} 
+						 	{cat_pos(get_cat($c), ' / ', '_blank')} 
+							 &nbsp;&nbsp;&nbsp; 
+						{/loop} 
+						 
 					</td>
 					</tr>
+					 
 					{/if}
 				</table>
 			</div> 

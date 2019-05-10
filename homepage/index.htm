@@ -6,27 +6,7 @@
 {loop $HMAIN $HM $MAIN}
 {template 'main_'.$main_file[$HM], $template}
 {/loop}
- 
- 
-<!-- <div class="case_box">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="case_head" data-move-y="-30px">
-          <h2>成功案例</h2> 
-        </div>
-        <div class="case_list"> 
-       loop
-          <div class="col-sm-4 col-md-4 col-mm-6 product_img" data-move-y="200px"><a href="[content:link]"><img src="[content:pic]" class="opacity_img" alt="[content:title]"></a>
-            <p class="product_title"><a href="[content:link]" title="[content:title]">[content:title]</a></p>
-          </div>
-         /loop
-           </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- 暂时不显示
+   
 <div class="news_box">
   <div class="container">
     <div class="row">
@@ -34,20 +14,23 @@
         <div class="news_head" data-move-y="-50px">
           <h2>新闻中心</h2> 
         </div>
-        <div class="col-sm-4 col-md-4 col-mm-6 news_img" style="background-image: url({aspcms:sitepath}/Templates/{aspcms:defaulttemplate}/images/57344e66ec33d.jpg);"></div>
-        <div class="col-sm-12 col-md-8 col-mm-12">
-          <ul class="news_index" data-move-y="200px">
-            {aspcms:content sort=3 order=order num=4}
-            <li><span><strong>[content:date style=d]</strong><i>[content:date style=yy-m]</i></span><a href="[content:link]" title="[content:title]">[content:title]</a><br>
-              <em>[content:desc len=50]</em></li>
-            {/aspcms:content}
+         
+        <div class="col-sm-12 col-md-8 col-mm-12" style="width:100%;">
+          <ul class="news_index" >
+            {loop $news_list $t}
+           
+            <li><span><strong>{timetodate($t[edittime], 1)}</strong><i>{timetodate($t[edittime], 2)}</i></span><a href="{userurl($username, 'file=news&itemid='.$t[itemid].$city_url, $domain)}">{$t[title]}</a>
+              <br>
+              <!-- len=50 -->
+              <em>{$t['introduce']}</em></li>
+            </li>
+            {/loop}
           </ul>
         </div>
       </div>
     </div>
   </div>
-</div> -->
-
+</div>
  
 <!--{php $tags=tag("table=link&condition=status=3 and username='$username'&order=listorder desc&template=null");}-->
  

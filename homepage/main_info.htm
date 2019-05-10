@@ -10,16 +10,16 @@
           	{$HMAIN[$HM]}</a></h2> 
         </div>
         <!--{php $tags=tag("moduleid=22&condition=status=3 and username='$username'&pagesize=".$main_num[$HM]."&order=edittime desc&template=null");}-->
-        <div class="col-sm-4 col-md-4 col-mm-6 news_img" style="background-image: url({DT_STATIC}/company/htmlnew/images/57344e66ec33d.jpg);"></div>
-        <div class="col-sm-12 col-md-8 col-mm-12">
-          <ul class="news_index" data-move-y="200px">
+       <!--  <div class="col-sm-4 col-md-4 col-mm-6 news_img" style="background-image: url({DT_STATIC}/company/htmlnew/images/57344e66ec33d.jpg);"></div> -->
+        <div class="col-sm-12 col-md-8 col-mm-12" style="width:100%;">
+          <ul class="news_index" >
            
-			{loop $tags $t}
+			      {loop $tags $t}
            
-            <li><span><strong>{timetodate($t[edittime], 1)}</strong><i>{timetodate($t[edittime], 2)}</i></span><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=info&itemid='.$t[itemid], $domain)}{/if}">{$city_name}{$t[title]}</a>
+            <li><span><strong>{timetodate($t[edittime], 1)}</strong><i>{timetodate($t[edittime], 2)}</i></span><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=info&itemid='.$t[itemid].$city_url, $domain)}{/if}">{$t[title]}</a>
             	<br>
             	<!-- len=50 -->
-              <em>{mb_substr($t[introduce],0,50,'utf-8')}</em></li>
+              <em>{dsubstr($t['introduce'], 100, '...')}</em></li>
             </li>
             {/loop}
 	 

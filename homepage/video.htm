@@ -20,9 +20,11 @@
         <div class="product_list product_list2">  
         	{loop $lists $k $v}
           <div class="col-sm-4 col-md-4 col-mm-6 product_img"> <a href="{$v[linkurl]}"> <img  src="{$v[thumb]}" class="img-thumbnail" alt="{$v[alt]}"/> </a>
-            <p class="product_title"><a href="{$v[linkurl]}" title="{$v[alt]}">{$v[title]}</a></p>
-            {if $MOD[hits]}<p>{$v[hits]}次播放</p>{/if}
-            <p>{timetodate($v[addtime], 3)}</p>
+            <p class="product_title"><a href="{$v[linkurl]}" title="{$v[alt]}">{$v[title]}</a><br/>
+              {if $MOD[hits]}{$v[hits]}次播放&nbsp;&nbsp;&nbsp;{/if}
+              {timetodate($v[addtime], 3)}
+            </p>
+            
           </div>
           {/loop} 
  

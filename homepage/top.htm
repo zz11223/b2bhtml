@@ -3,24 +3,36 @@
  
 
   <div class="top_menu">
-    <div class="container"><span style="float: right; color: #333;"><a href="{DT_PATH}">返回主站</a><i>|</i><a href="{$MODULE[2][linkurl]}">会员中心</a></span>  <a href="{DT_PATH}api/shortcut.php?itemid={$userid}">保存桌面</a><i>|</i><a href="javascript:Dqrcode();">手机浏览</a>
-  {if $head_mobile}<div id="destoon_qrcode" style="display:none;"></div>{/if}
+    <div class="container"><span style="float: right; color: #333;"><a href="{DT_PATH}">返回主站</a><i>|</i><a href="{$MODULE[2][linkurl]}">会员中心</a></span>   
+      {$COM[company]}-{if $city==1}总站{else}{$city_name}分站{/if}
       
     </div>
   </div>
+    
+
 <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-md-8">
-        <h1 class="row_h1">{$COM[company]}-{if $city==1}总站{else}{$city_name}分站{/if}</h1>
-        <h4 class="row_h4">{dsubstr($COM['business'], $logo ? 60 : 80, '...')}</h4>
-      </div>
-      <div id="topsearch" class="col-xs-12 col-sm-4 col-md-4">
+    
+      
+       <div class="col-xs-12 col-sm-8 col-md-8" > 
+       {if $logo}
+         
+            <a href="{userurl($username, 'file=homepage'.$city_url, $domain)}"><img src="{$logo}" class="logo"/></a>
+          
+          {else}
+        
+        
+          <h1 class="row_h1"  >{$COM[company]}-{if $city==1}总站{else}{$city_name}分站{/if}</h1>
+          <h4 class="row_h4" style="display:inline-block;">{dsubstr($COM['business'], 80, '...')}</h4> 
+       {/if}
+       </div>
+      <div id="topsearch" class="col-xs-12 col-sm-4 col-md-4" >
         <form id="searchform" method="get" action="{$MODULE[4][linkurl]}home.php">
-          <div class="input-group search_group">
+          <div class="input-group search_group" style="background-color:#4E74B1;">
             <input type="hidden" name="action" value="search"/>
             <input type="hidden" name="homepage" value="{$username}"/>
-            <input type="text" name="kw" class="form-control input-sm" style="display:inline-block;width:222px;" value="{if $kw}{$kw}{else}输入关键词{/if}">
-            <select name="file" class="form-control" style="display:inline-block;width:90px;">
+            <input type="text" name="kw" class="form-control input-sm" style="display:inline-block;width:60%;" value="{if $kw}{$kw}{/if}">
+            <select name="file" class="form-control" style="display:inline-block;width:40%;">
                 {loop $MENU $k $v}
                 {if in_array($menu_file[$k], array('sell', 'buy', 'news', 'credit', 'job', 'photo', 'info', 'brand', 'video', 'mall'))}<option value="{$menu_file[$k]}"{if $file==$menu_file[$k]} selected{/if}>{$v[name]}</option>{/if}
                 {/loop}
@@ -40,10 +52,10 @@
         <a class="navbar-brand" href="#">导航菜单</a> </div>
       <div id="navbar" class="navbar-collapse collapse" >
         <ul class="nav navbar-nav"  >
-          <li><a href="{$COM[linkurl]}{$city_url1}">网站首页</a></li>
-
+          <li><a href="{userurl($username, 'file=homepage'.$city_url, $domain)}">网站首页</a></li>
+ 
           {loop $MENU $k $v}
-          <li class="dropdown" > <a href="{$v[linkurl]}{$city_url1}">{$v[name]}</a> <a href="{$v[linkurl]}{$city_url1}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
+          <li class="dropdown" > <a href="{userurl($username, 'file='.$v['file'].$city_url, $domain)}">{$v[name]}</a> <a href="{userurl($username, 'file='.$v['file'].$city_url, $domain)}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
           </li>
           {/loop}
         </ul>
@@ -54,8 +66,29 @@
   </nav>
  
 </header>
-
+ 
  <!-- bxslider -->
 {if $banner}
 <img src="{$banner}" style="display: inline-block;width: 100%;"/>
+{/if}
+{if 0 && ($bannert || $banner)}
+<div class="m">
+  <div class="banner">
+  {if $bannert == 2}
+    <div id="slide_banner" style="width:{$bannerw}px;height:{$bannerh}px;background:#FAFAFA;overflow:hidden;">
+      <a {if $bannerlink1}href="{$bannerlink1}" target="_blank"{else}href="###"{/if}><img src="{$banner1}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>
+      <a {if $bannerlink2}href="{$bannerlink2}" target="_blank"{else}href="###"{/if}><img src="{$banner2}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>
+      {if $banner3}<a {if $bannerlink3}href="{$bannerlink3}" target="_blank"{else}href="###"{/if}><img src="{$banner3}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>{/if}
+      {if $banner4}<a {if $bannerlink4}href="{$bannerlink4}" target="_blank"{else}href="###"{/if}><img src="{$banner4}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>{/if}
+      {if $banner5}<a {if $bannerlink5}href="{$bannerlink5}" target="_blank"{else}href="###"{/if}><img src="{$banner5}" width="{$bannerw}" height="{$bannerh}" alt=""/></a>{/if}
+    </div>
+    {load('slide.js')}
+    <script type="text/javascript">new dslide('slide_banner');</script>
+  {elseif $bannert == 1}
+    <embed src="{$bannerf}" quality="high" loop="true" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" width="{$bannerw}" height="{$bannerh}" allowscriptaccess="never"></embed>
+  {elseif $banner}
+    <img src="{$banner}" width="100%"/>
+  {/if}
+  </div>
+</div>
 {/if}

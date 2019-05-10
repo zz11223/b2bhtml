@@ -13,11 +13,13 @@
       <div class="about_content" data-move-y="50px"> 
       	<p>
       	{if $video}
-		{load('player.js')}
-		<div style="width:250px;height:210px;text-align:right;float:right;"><script type="text/javascript">document.write(player('{$video}',240,200,1));</script></div>
-		{else}
-		<img align="left" src="{$COM[thumb]}"  />
-		{/if}
+      		{load('player.js')}
+      		<div style="width:250px;height:210px;text-align:right;float:right;"><script type="text/javascript">document.write(player('{$video}',240,200,1));</script></div>
+      	{else}
+            {if $COM[thumb]}
+      		    <img align="left" src="{$COM[thumb]}"  />
+            {/if}
+		    {/if}
         	<p class="about_contents">{$COM[intro]} </p>
         </p>
         <a href="{userurl($username, 'file=introduce', $domain)}" class="btn btn-info" role="button">查看详细</a>  </div>

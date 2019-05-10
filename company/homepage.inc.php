@@ -48,6 +48,40 @@ if($DT_PC) {
 	}
 	$head_name = $L['com_home'];
 }
+/*添加新闻*/
+$table_news = $DT_PRE.'news';
+$table_data_news = $DT_PRE.'news_data';
+$condition = "username='$username' AND status=3";
+$news_list = array();
+//id,edittime,title
+$result = $db->query("SELECT itemid,edittime,title FROM {$table_news} WHERE $condition ORDER BY addtime DESC LIMIT 3");
+$newids='';
+while($r = $db->fetch_array($result)) {  
+	$newids.=','.$r['itemid'];
+	$r['linkurl'] = userurl($username, "file=news&itemid=$r[itemid]", $domain);
+	$news_list[$r['itemid']] = $r;
+}
+$db->free_result($result);
+if($newids!=''){
+	$newids=substr($newids, 1);
+	$condition="itemid in ($newids)";
+	$result = $db->query("SELECT itemid,content FROM {$table_data_news} WHERE $condition ");
+	while($r = $db->fetch_array($result)) {   
+		 
+		//处理HTML标签和替换空格
+		$r['content']=trim(strip_tags($r['content']));
+		$qian=array(" ","　","\t","\n","\r","\r\n","&nbsp;");
+        $hou=array("","","","","","","");
+        $r['content']=str_replace($qian,$hou,$r['content']); 
+ 
+		$news_list[$r['itemid']]['introduce'] =dsubstr($r['content'], 100,'...');
+		
+	}
+	$db->free_result($result);
+}
+ 
+	 
+	 
 include template('index', $template);
 if(isset($update) && $db->cache_ids && ($username == $_username || $_groupid == 1 || $domain)) {
 	foreach($db->cache_ids as $v) {

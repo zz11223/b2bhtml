@@ -10,8 +10,9 @@
     <h2 class="left_h">{$title}</h2>
     <div class="info">上传时间：{timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
      <div class="content">
-	<table cellpadding="5" cellspacing="1" width="100%" bgcolor="#CCCCCC">
-	<tr>
+    <table class="table table-hover table-bordered margin-top-20">
+	<!-- <table cellpadding="5" cellspacing="1" width="100%" bgcolor="#CCCCCC"> -->
+	<tr >
 	<td bgcolor="#FAFAFA" width="120" class="t_c f_b">发证机构：</td>
 	<td bgcolor="#FFFFFF">&nbsp;&nbsp;{$authority}</td>
 	<td bgcolor="#FAFAFA" width="120" class="t_c f_b">发证时间 ：</td>
