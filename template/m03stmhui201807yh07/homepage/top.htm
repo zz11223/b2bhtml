@@ -40,16 +40,13 @@
         <a class="navbar-brand" href="#">导航菜单</a> </div>
       <div id="navbar" class="navbar-collapse collapse" >
         <ul class="nav navbar-nav"  >
-          <li><a href="{userurl($username, 'file=homepage'.$city_url, $domain)}">网站首页</a></li>
- 
+          <li><a {if $count_menu>8}style="padding:14px 10px 14px 10px"{/if}  href="{userurl($username, 'file=homepage'.$city_url, $domain)}">网站首页</a></li>
           {loop $MENU $k $v}
-          <li class="dropdown" > <a href="{userurl($username, 'file='.$v['file'].$city_url, $domain)}">{$v[name]}</a> <a href="{userurl($username, 'file='.$v['file'].$city_url, $domain)}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
+          <li class="dropdown"> <a  {if $count_menu>8}style="padding:14px 10px 14px 10px"{/if} href="{userurl($username, 'file='.$v['file'].$city_url, $domain)}">{$v[name]}</a> <a href="{userurl($username, 'file='.$v['file'].$city_url, $domain)}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
           </li>
           {/loop}
-           {loop $nav_page $k $v}
-          <li class="dropdown" > <a href="{$v['linkurl']}">{$v[title]}</a> <a href="{$v['linkurl']}" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>  
-          </li>
-          {/loop}
+           
+
         </ul>
       </div>
     
