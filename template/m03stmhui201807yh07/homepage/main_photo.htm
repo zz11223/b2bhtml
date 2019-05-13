@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="case_head" data-move-y="-30px">
-          <h2><a href="{userurl($username, 'file=photo'.$city_url, $domain)}">{$HMAIN[$HM]}</a></h2> 
+          <h2><a href="{userurl($username, 'file=photo'.$city_url, $domain)}">{$main_name[$HM]}</a></h2> 
         </div>
         <div class="case_list">  {loop $tags $i $t}
           <div class="col-sm-4 col-md-4 col-mm-6 product_img" data-move-y="200px"><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=photo&itemid='.$t['itemid'].$city_url, $domain)}{/if}"><img src="{imgurl($t[thumb], 160)}" class="opacity_img" alt="{$t[title]}"></a>
