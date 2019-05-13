@@ -380,5 +380,14 @@ foreach($arr_words as $k=>$v){
 }
 $head_keywords=implode($arr_words, ',');
 $head_keywords1=implode($arr_words, ',');
+//zz添加单页导航
+$nav_page= array();
+$table = $DT_PRE.'page';
+$result = $db->query("SELECT itemid,title FROM {$table} WHERE status=3 AND username='$username' and listorder>1000 ORDER BY listorder DESC,addtime DESC", 'CACHE');
+while($r = $db->fetch_array($result)) {
+	  
+	$r['linkurl'] = userurl($username, "file=introduce&itemid=$r[itemid]".$city_url, $domain);
+	$nav_page[] = $r;
+}
 include DT_ROOT.'/module/company/'.$file.'.inc.php';
 ?>
