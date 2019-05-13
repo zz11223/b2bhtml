@@ -1,7 +1,9 @@
 <!doctype html>
-<html>
+<html lang="zh-cn">
 <head>
-<meta charset="{DT_CHARSET}"/>
+<meta charset="{DT_CHARSET}"/> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{if $city==1}{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$COM[company]}{/if}{else}{$COM[company]}{$zz_keywords}{/if}</title>
 <meta name="keywords" content="{if $city>1}{$COM[company]},{/if}{$head_keywords}"/>
 {if $city==1}
@@ -11,11 +13,10 @@
 {else}
 <meta name="description" content="{$COM[company]}，联系电话：{$COM[telephone]}，{$head_keywords1}。"/>
 {/if}
-<meta name="generator" content="DESTOON B2B - www.destoon.com"/>
+<meta name="applicable-device"content="pc,mobile">
+<meta name="generator" content="B2B - www.chengxin315.com"/>
 <meta name="template" content="{$template}"/>
-{if $head_mobile}
-<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
-{/if}
+ 
 {if $head_canonical}
 <link rel="canonical" href="{$head_canonical}"/>
 {/if}
@@ -39,10 +40,6 @@
 <script src="{DT_STATIC}/company/htmlnew/js/html5shiv.min.js"></script>
 <script src="{DT_STATIC}/company/htmlnew/js/respond.min.js"></script>
 <![endif]-->
-
-<!-- <script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
-<script type="text/javascript" src="{DT_STATIC}file/script/homepage.js"></script>
-<script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script> -->
 
 
  

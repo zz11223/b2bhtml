@@ -1,10 +1,14 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
+ //停止手机端
+//$EXT['mobile_enable']=0;
 if($EXT['mobile_enable']) {
-	if(DT_TOUCH) include DT_ROOT.'/include/mobile.inc.php';
+	$EXT['zzmobile']=1;
+	/*if(DT_TOUCH) include DT_ROOT.'/include/mobile.inc.php';
 	$head_mobile = $DT_URL;
-	$foot = '';
+	$foot = '';*/
 }
+ 
 isset($file) or $file = 'homepage';
 if(isset($update) || isset($preview)) {
 	$db->cids = 1;

@@ -4,18 +4,11 @@
     <div class="dropdown-menu webshare"> 
       
       <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style_32x32">
-	<a class="jiathis_button_qzone"></a>
-	<a class="jiathis_button_tsina"></a>
-	<a class="jiathis_button_tqq"></a>
-	<a class="jiathis_button_weixin"></a>
-	<a class="jiathis_button_renren"></a>
-	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+      <div class="jiathis_style_32x32 bdsharebuttonbox rt"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div> 
+ <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["tsina","weixin","qzone"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","weixin","qzone"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 <!-- JiaThis Button END --></div>
   </div>
-  <div class="foot_nav"><a href="tel:13965035866"><span class="glyphicon glyphicon-phone btn-lg" aria-hidden="true"></span>手机</a></div>
+  <div class="foot_nav"><a href="tel:{$COM[telephone]}"><span class="glyphicon glyphicon-phone btn-lg" aria-hidden="true"></span>手机</a></div>
   <div class="foot_nav"  aria-hidden="true"  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon glyphicon-th-list btn-lg"></span>分类</div>
   <div class="foot_nav"><a id="gototop" href="#"><span class="glyphicon glyphicon-circle-arrow-up btn-lg" aria-hidden="true"></span>顶部</a></div>
 </nav>
@@ -45,10 +38,11 @@
 		<a href="{$MODULE[2][linkurl]}">管理入口</a><i>|</i>
 		 <a href="javascript:void(0);" onclick="$('html, body').animate({scrollTop:0}, 200);">返回顶部</a> 
 	</p>
-	<div  >
-		 <a href="{DT_PATH}" >{$DT[sitename]}</a>
+	 
+	<div >
+			<label style="display:inline-block;padding:1px;margin:0px;"><a style="color:grey;" href="{DT_PATH}" >{$DT[sitename]}</a></label>
 		 {loop $citys $v}
-		 <a href="{userurl($username, 'file='.$file.'&city='.$v['pname'].'_'.$v['id'], $domain)}" >{$v['name']}</a>
+		 	<label style="display:inline-block;padding:1px;margin:0px;"><a style="color:grey;" href="{userurl($username, 'file='.$file.'&city='.$v['pname'].'_'.$v['id'], $domain)}" >{$v['name']}</a></label>
 		 {/loop}
 	</div>
   </div>
@@ -56,10 +50,6 @@
  
  
  
-{if $album_js}<script type="text/javascript" src="{DT_STATIC}file/script/album.js"></script>{/if}
-{if 0 && $api_kf && $kf}
-{php include DT_ROOT.'/api/kf/'.$HOME['kf_type'].'/show.inc.php';}
-{/if}
 </body>
 </html>
 <script>
