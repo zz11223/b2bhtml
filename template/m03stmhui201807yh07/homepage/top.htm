@@ -21,16 +21,13 @@
        </div>
       <div id="topsearch" class="col-xs-12 col-sm-4 col-md-4" >
         <form id="searchform" method="get" action="{$MODULE[4][linkurl]}home.php">
-          <div class="input-group search_group" style="background-color:#4E74B1;">
+          <div class="input-group search_group" >
             <input type="hidden" name="action" value="search"/>
             <input type="hidden" name="homepage" value="{$username}"/>
-            <input type="text" name="kw" class="form-control input-sm" style="display:inline-block;width:60%;" value="{if $kw}{$kw}{/if}">
-            <select name="file" class="form-control" style="display:inline-block;width:40%;">
-                {loop $MENU $k $v}
-                {if in_array($menu_file[$k], array('sell', 'buy', 'news', 'credit', 'job', 'photo', 'info', 'brand', 'video', 'mall'))}<option value="{$menu_file[$k]}"{if $file==$menu_file[$k]} selected{/if}>{$v[name]}</option>{/if}
-                {/loop}
-            </select> 
-            <span class="input-group-btn"><span id="submit_search" onClick="searchform.submit();" title="搜索" class="glyphicon glyphicon-search btn-lg" aria-hidden="true"></span></span></div>
+            <input type="text" id="kw" name="kw" class="form-control input-sm" value="{if $kw}{$kw}{/if}" placeholder="产品搜索" required>
+            
+            <input type="hidden" name="file" value="sell">
+            <span class="input-group-btn"><span id="submit_search" title="产品搜索" class="btn-lg" aria-hidden="true">产品搜索</span></span></div>
         </form>
        
       </div>

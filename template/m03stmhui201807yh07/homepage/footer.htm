@@ -62,3 +62,14 @@
 {/if}
 </body>
 </html>
+<script>
+$('#submit_search').click(function(){
+	var kw=$.trim($('#kw').val());
+	if(kw==''){
+		$('#kw').focus();
+		return false;
+	}
+	$('#searchform').submit();
+});
+
+</script>
