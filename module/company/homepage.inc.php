@@ -54,7 +54,7 @@ $table_data_news = $DT_PRE.'news_data';
 $condition = "username='$username' AND status=3";
 $news_list = array();
 //id,edittime,title
-$result = $db->query("SELECT itemid,edittime,title FROM {$table_news} WHERE $condition ORDER BY addtime DESC LIMIT 3");
+$result = $db->query("SELECT itemid,edittime,title FROM {$table_news} WHERE $condition ORDER BY addtime DESC LIMIT 4");
 $newids='';
 while($r = $db->fetch_array($result)) {  
 	$newids.=','.$r['itemid'];
