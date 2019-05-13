@@ -2,10 +2,8 @@
 </head>
 {template 'top', $template}
 <div class="container">
-  <div class="row"> 
-    
-    <!-- right -->
-    
+  <div class="row">  
+    <!-- right --> 
     <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
     {if $itemid}
       <div class="list_box">
@@ -22,89 +20,51 @@
       <div class="list_box">
         <h2 class="left_h">公司档案</h2>
         <div class="contents"> 
-      		<div class="px14 lh18">
-      			 
-      			 <table class="table zztable-border0" >
-				<!-- <table width="100%" cellpadding="10" cellspacing="1"> -->
-				  
-					<tr >
-					<td  width="100" class="f_b">公司名称：</td>
-					<td width="340">{$COM[company]}</td>
-					<td width="100" class="f_b">公司类型：</td>
-					<td>{$COM[type]} ({$COM[mode]})</td>
-					</tr>
-					<tr>
-					<td class="f_b">所 在 地：</td>
-					<td>{area_pos($COM[areaid], '/')}</td>
-					<td class="f_b">公司规模：</td>
-					<td>{$COM[size]}</td>
-					</tr>
-					<tr>
-					<td class="f_b">注册资本：</td>
-					<td>{if $COM[capital]}{$COM[capital]}万{$COM[regunit]}{else}未填写{/if}</td>
-					<td class="f_b">注册年份：</td>
-					<td>{$COM[regyear]}</td>
-					</tr>
-				 
-				</table>
-				<table class="table zztable-border0" >
-					<!-- <table width="100%" cellpadding="10" cellspacing="1"> -->
-					<tr>
-					<td width="100" class="f_b">资料认证：</td>
-					<td>
-					{if $COM[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="资料通过工商认证"/>{/if}
-					{if $COM[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="资料通过实名认证"/>{/if}
-					{if $COM[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="资料通过银行帐号认证"/>{/if}
-					{if $COM[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="资料通过手机认证"/>{/if}
-					{if $COM[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="资料通过邮件认证"/>{/if}
-					{if $COM[validated]}&nbsp;<img src="{DT_STATIC}file/image/check-ok.png" align="absmiddle"/> 企业资料通过{$COM[validator]}认证{/if}	
-					</td>
-					</tr>
+      		<div class="px14 lh18"> 
+      			<ul class="product_info">
+					<li >公司名称：{$COM[company]}
+					</li>
+					<li>公司类型：{$COM[type]} ({$COM[mode]})
+					</li>
+					<li>所 在 地：{area_pos($COM[areaid], '/')}
+					</li>
+					<li>公司规模：{$COM[size]}
+					</li>
+					<li>注册资本：{if $COM[capital]}{$COM[capital]}万{$COM[regunit]}{else}未填写{/if}
+					</li>
+					<li>注册年份：{$COM[regyear]}
+					</li>
+				   
 					{if $COM[deposit]}
-					<tr>
-					<td class="f_b">保 证 金：</td>
-					<td>已缴纳 <strong class="f_green">{$COM[deposit]}</strong> {$DT[money_unit]}</td>
-					</tr>
+					<li>保 证 金：已缴纳 <sliong class="f_green">{$COM[deposit]}</sliong> {$DT[money_unit]}
+					</li>
 					{/if}
 					{if $COM[mode]}
-					<tr>
-					<td class="f_b">经营模式：</td>
-					<td>{$COM[mode]}</td>
-					</tr>
+					<li>经营模式：{$COM[mode]}
+					</li>
 					{/if}
 					{if $COM[business]}
-					<tr>
-					<td class="f_b">经营范围：</td>
-					<td>{$COM[business]}</td>
-					</tr>
+					<li>经营范围：{$COM[business]}
+					</li>
 					{/if}
 					{if $COM[sell]}
-					<tr>
-					<td class="f_b">销售的产品：</td>
-					<td>{$COM[sell]}</td>
-					</tr>
+					<li>销售的产品：{$COM[sell]}
+					</li>
 					{/if}
 					{if $COM[buy]}
-					<tr>
-					<td class="f_b">采购的产品：</td>
-					<td>{$COM[buy]}</td>
-					</tr>
+					<li>采购的产品：{$COM[buy]}
+					</li>
 					{/if}
 					{if $COM[catid]}
-					<tr>
-					<td class="f_b">主营行业：</td>
-					<td>  
+					<li>主营行业：
 						{php $catids = explode(',', substr($COM['catid'], 1, -1));}
 						{loop $catids $i $c} 
 						 	{cat_pos(get_cat($c), ' / ', '_blank')} 
 							 &nbsp;&nbsp;&nbsp; 
 						{/loop} 
-						 
-					</td>
-					</tr>
-					 
+					</li> 
 					{/if}
-				</table>
+				</ul>
 			</div> 
          </div>
        </div>  

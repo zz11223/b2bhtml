@@ -8,20 +8,20 @@
 <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
   <div class="list_box">
     <h2 class="left_h">{$title}</h2>
-    <div class="info">上传时间：{timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
+    <div class="zz-hits"><label>发布时间：{timetodate($addtime, 3)}</label> <label>浏览次数：{$hits}</label> <label><a href="{$MENU[$menuid][linkurl]}">返回列表</a></label></div>
      <div class="contents">
-    <table class="table table-hover table-bordered margin-top-20">
+    <table class="table table-hover table-bordered margin-top-20 table-responsive ">
 	<!-- <table cellpadding="5" cellspacing="1" width="100%" bgcolor="#CCCCCC"> -->
 	<tr >
-	<td bgcolor="#FAFAFA" width="120" class="t_c f_b">发证机构：</td>
+	<td bgcolor="#FAFAFA" width="120" class="t_c f_b">发证机构</td>
 	<td bgcolor="#FFFFFF">&nbsp;&nbsp;{$authority}</td>
-	<td bgcolor="#FAFAFA" width="120" class="t_c f_b">发证时间 ：</td>
+	<td bgcolor="#FAFAFA" width="120" class="t_c f_b">发证时间</td>
 	<td bgcolor="#FFFFFF">&nbsp;&nbsp;{timetodate($fromtime, 3)}</td>
 	</tr>
 	<tr>
-	<td bgcolor="#FAFAFA" class="t_c f_b">上传时间 ：</td>
+	<td bgcolor="#FAFAFA" class="t_c f_b">上传时间</td>
 	<td bgcolor="#FFFFFF">&nbsp;&nbsp;{timetodate($addtime, 3)}</td>
-	<td bgcolor="#FAFAFA" class="t_c f_b">有效期至 ：</td>
+	<td bgcolor="#FAFAFA" class="t_c f_b">有效期至</td>
 	<td bgcolor="#FFFFFF">&nbsp;&nbsp;{if $totime}{timetodate($totime, 3)}{else}永久{/if}</td>
 	</tr>
 	</table>
@@ -34,7 +34,7 @@
 	{/if}
 	<div class="main_head"><div><strong>证书图片</strong></div></div>
 	<div class="main_body">
-		<br/><center><a href="{$image}" target="_blank"><img src="{$image}" onload="if(this.width>600) this.width=600;" alt="{$title}"/></a></center><br/>
+		<br/><center><a href="{$image}" target="_blank"><img class="img-responsive center-block" src="{$image}"  alt="{$title}"/></a></center><br/>
 	</div>
 
   </div>
