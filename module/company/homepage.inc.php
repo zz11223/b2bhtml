@@ -74,7 +74,7 @@ if($newids!=''){
         $hou=array("","","","","","","");
         $r['content']=str_replace($qian,$hou,$r['content']); 
  
-		$news_list[$r['itemid']]['introduce'] =dsubstr($r['content'], 120,'...');
+		$news_list[$r['itemid']]['introduce'] =dsubstr($r['content'], 50,'...');
 		
 	}
 	$db->free_result($result);
