@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="X-UA-Compatible" content="IE10">
+<meta charset="{DT_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
+{/if}
+<meta name="generator" content="template - 慧一科技"/>
+<link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+{if $EXT[archiver_enable]}
+<link rel="archives" title="{$DT[sitename]}" href="{$EXT[archiver_url]}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style/css/common.css">
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style/css/style.css">
+{if $moduleid>4}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$module}.css"/>
+{/if}
+{if $CSS}
+{loop $CSS $css}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$css}.css"/>
+{/loop}
+{/if}
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+<![endif]-->
+{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
+<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_SKIN}style/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<!--[if lte IE 9]><!-->
+<script type="text/javascript" src="{DT_SKIN}style/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!-->
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="{DT_SKIN}style/js/so.js"></script>
+<script type="text/javascript" src="{DT_SKIN}style/js/page.js"></script>
+<script type="text/javascript" src="{DT_SKIN}style/js/yuyan.js"></script>
+{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+{if $JS}
+{loop $JS $js}
+<script type="text/javascript" src="{DT_STATIC}file/script/{$js}.js"></script>
+{/loop}
+{/if}
+{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}
+<script type="text/javascript">
+{if $head_mobile && $EXT[mobile_goto]}
+GoMobile('{$head_mobile}');
+{/if}
+var searchid = {$searchid};
+{if $itemid && $DT[anticopy]}
+document.oncontextmenu=function(e){return false;};
+document.onselectstart=function(e){return false;};
+{/if}
+</script>
+<script type="text/javascript">
+function removeElement(id)
+{
+document.getElementById(id).style.display="none";
+}
+</script>
+<!--[以上为系统关键代码，除非您明确其含义，否则请勿修改或删除，否则会导致系统错误]-->
+<!--[模板中所有带id的元素，请勿修改或删除，否则会导致部分JS代码无法运行]-->
+<!--[以上类似的注释，在编译模板时，系统会自动移除，不会显示在实际的页面中]-->
+</head>
+<body>
+<div class="StoreIndex">
+<a name="top"></a> 
+{template 'mini_top_buy'}
+<div class="logo2 pt10 pb10"> 
+{php $searchids = array(5,6,4,21,13,8);}
+  {if !in_array($searchid, $searchids)}
+  {php $searchids[] = $searchid;}
+  {/if} 
+  <script type="text/javascript">var searchid = {$searchid};</script>
+  <div class="logobody w1000 conBox clearfix">
+     <p class="top_logo">
+     <a href="{DT_PATH}"><img class="fl" src="{if $MODULE[$moduleid][logo]}{DT_SKIN}image/logo_{$moduleid}.gif{elseif $DT[logo]}{$DT[logo]}{else}{DT_SKIN}image/logo.gif{/if}" alt="{$DT[sitename]}" title="{$DT[sitename]}"></a> 
+     <span> 
+     {if $moduleid==16}
+     <a class="logo_teng" target="_blank" href="{$MODULE[16][linkurl]}" title="网上购物上{$DT[sitename]}" rel="nofollow">
+      <img src="{DT_SKIN}style/images/logo_tengmall.png" alt="网上商城">
+      </a>
+      {else}
+       <a class="logo_teng" target="_blank" href="{DT_PATH}" title="找货源上{$DT[sitename]}" rel="nofollow">
+      <img src="{DT_SKIN}style/images/logo_teng.png" alt="找货源上{$DT[sitename]}">
+      </a>
+      {/if}
+      </span>
+       </p>
+    <form id="destoon_search" action="{$MODULE[$searchid][linkurl]}search.php" onsubmit="return Dsearch(1);">
+      <input type="hidden" name="moduleid" value="{$searchid}" id="destoon_moduleid"/>
+      <input type="hidden" name="spread" value="0" id="destoon_spread"/>
+      <div class="fr ml20 search mt20">
+        <ul class="clearfix">
+          {loop $searchids $s}
+          {if isset($MODULE[$s])}
+          <li class="Themetxthover {if $searchid == $s}Themefont{/if}" placeholder="找{$MODULE[$s][name]}，请输入您要查找的关键词" onclick="xiaoheiModule({$s}, this);">{$MODULE[$s][name]}</li>
+          {/if}
+          {/loop}
+        </ul>
+        <div class="searchInput mt10 clearfix">
+          <input type="text" class="fl searchText"  placeholder="找产品，请输入您要查找的关键词" name='kw' id="destoon_kw" value="" onfocus="if(this.value=='请输入关键词') this.value='';" onkeyup="STip(this.value);" autocomplete="off" x-webkit-speech speech>
+          <input type="submit" value="搜&nbsp;索" class="btnInput fl Themebg white" style="width: 90px;background: #dd2726;border: medium none;color: #fff;cursor: pointer;height: 40px;font-size: 14px;"/>
+          &nbsp;
+          {if $moduleid==16}
+           <div class="btnInput ml20 fl white" style='cursor:pointer;'><a href="{$MODULE[16][linkurl]}cart.php" target="_blank"><img src="{DT_SKIN}image/ico_cart.gif" alt="">我的购物车</a></div>
+          {else}
+          <div class="btnInput ml20 fl white" style='cursor:pointer;'><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" target="_blank">发布产品</a></div>
+          {/if}
+        </div>
+        <div class="hottxt overflow clearfix"> 
+          <!--{tag("moduleid=$searchid&table=keyword&condition=moduleid=$searchid and status=3&pagesize=5&order=total_search desc&template=list-search_kwindex")}--> 
+          <a class="Themefont fr" href="{$MODULE[1][linkurl]}spread/" target="_blank">搜索竞价&gt;&gt;</a> </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+        $(function() {
+             $('.searchText').attr('placeholder',$('.search1').attr('placeholder'));
+             $("form[role='search']").attr('action',$('.search1').attr('data-role'));
+            $('.search').find("ul[class='clearfix'] li").on('click', function() {
+                if (!$(this).hasClass('Themefont')) {
+                    $(this).addClass('Themefont');
+                    $(this).siblings('li').removeClass('Themefont');
+                    $(this).addClass('search1');
+                    $(this).siblings('li').removeClass('search1');
+                }
+                    $('.searchText').attr('placeholder',$(this).attr('placeholder'));
+                    $(this).parents("form[role='search']").attr('action',$(this).attr('data-role'));
+            })
+           
+        }) 
+       
+     
+    </script> 
+{template 'nav_so'} 
+{template 'nav-tongyong-buy'}
+<div class="m b10">&nbsp;</div>
