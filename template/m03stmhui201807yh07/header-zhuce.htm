@@ -1,55 +1,1 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns=http://www.w3.org/1999/xhtml>
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
-{if $head_keywords}
-<meta name="keywords" content="{$head_keywords}"/>
-{/if}
-{if $head_description}
-<meta name="description" content="{$head_description}"/>
-{/if}
-{if $head_mobile}
-<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
-{/if}
-<meta name="generator" content="template - 慧一科技"/>
-<link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
-<link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
-{if $head_canonical}
-<link rel="canonical" href="{$head_canonical}"/>
-{/if}
-{if $EXT[archiver_enable]}
-<link rel="archives" title="{$DT[sitename]}" href="{$EXT[archiver_url]}"/>
-{/if}<link rel="stylesheet" type="text/css" href="{DT_SKIN}style/css/common.css"><link rel="stylesheet" type="text/css" href="{DT_SKIN}style/css/style.css">
-<link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/style.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/header.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/footer.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/css_index.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/zhuce.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/member.css"/>{if $CSS}{loop $CSS $css}<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$css}.css"/>{/loop}{/if}<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/><![endif]-->{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script><script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script><!--[if lte IE 9]><!--><script type="text/javascript" src="{DT_SKIN}js/jquery-1.11.1.min.js"></script><!--<![endif]--><!--[if (gte IE 10)|!(IE)]><!--><script type="text/javascript" src="{DT_STATIC}file/script/jquery-2.1.1.min.js"></script><!--<![endif]--><script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script><script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script><script type="text/javascript" src="{DT_SKIN}js/jquery.SuperSlide.2.1.1.js"></script>{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}{if $JS}{loop $JS $js}<script type="text/javascript" src="{DT_STATIC}file/script/{$js}.js"></script>{/loop}{/if}{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}<script type="text/javascript">
-{if $head_mobile && $EXT[mobile_goto]}
-GoMobile('{$head_mobile}');
-{/if}
-var searchid = {$searchid};
-{if $itemid && $DT[anticopy]}
-document.oncontextmenu=function(e){return false;};
-document.onselectstart=function(e){return false;};
-{/if}
-</script>
-<!--[以上为系统关键代码，除非您明确其含义，否则请勿修改或删除，否则会导致系统错误]-->
-<!--[模板中所有带id的元素，请勿修改或删除，否则会导致部分JS代码无法运行]-->
-<!--[以上类似的注释，在编译模板时，系统会自动移除，不会显示在实际的页面中]-->
-</head>
-<body>
-<div class="nav_hd_top">
-<div class="nav_top">
-{if $head_mobile}<div id="destoon_qrcode" style="display:none;"></div>{/if}
-<div id="destoon_space"></div>
-<div class="hd_logo fl"><a href="{$MODULE[1][linkurl]}"><img src="{if $MODULE[$moduleid][logo]}{DT_SKIN}image/logo_{$moduleid}.gif{elseif $DT[logo]}{$DT[logo]}{else}{DT_SKIN}image/logo.gif{/if}" alt="{$DT[sitename]}"/></a></div>
-<div class="zhucename">{if $head_title==会员登录}会员登录{else}免费注册{/if}</div>
-<div class="fr dianhua">
-<div class="dianhua_img fl"><img src="{DT_SKIN}images/member/tel.gif" /></div>
-<div class="fl">
-<p class="dianhua_time">客户服务热线：9:00-18:00</p>
-<p class="dianhua_tel">{$DT[telephone]}</p>     
-</div>
- </div>
- </div>
-<div class="clear"></div>
-</div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=http://www.w3.org/1999/xhtml><head><meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/><meta http-equiv="X-UA-Compatible" content="IE=edge" /><title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}{if $head_description}<meta name="description" content="{$head_description}"/>{/if}{if $head_mobile}<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">{/if}<link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/><link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>{if $head_canonical}<link rel="canonical" href="{$head_canonical}"/>{/if}{if $EXT[archiver_enable]}<link rel="archives" title="{$DT[sitename]}" href="{$EXT[archiver_url]}"/>{/if}<link rel="stylesheet" type="text/css" href="{DT_SKIN}style/css/common.css"><link rel="stylesheet" type="text/css" href="{DT_SKIN}style/css/style.css"><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/style.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/header.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/footer.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/css_index.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/zhuce.css"/><link rel="stylesheet" type="text/css" href="{DT_SKIN}css/zhuce/member.css"/>{if $CSS}{loop $CSS $css}<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$css}.css"/>{/loop}{/if}<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/><![endif]-->{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script><script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script><!--[if lte IE 9]><!--><script type="text/javascript" src="{DT_SKIN}js/jquery-1.11.1.min.js"></script><!--<![endif]--><!--[if (gte IE 10)|!(IE)]><!--><script type="text/javascript" src="{DT_STATIC}file/script/jquery-2.1.1.min.js"></script><!--<![endif]--><script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script><script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script><script type="text/javascript" src="{DT_SKIN}js/jquery.SuperSlide.2.1.1.js"></script>{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}{if $JS}{loop $JS $js}<script type="text/javascript" src="{DT_STATIC}file/script/{$js}.js"></script>{/loop}{/if}{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}<script type="text/javascript">{if $head_mobile && $EXT[mobile_goto]}GoMobile('{$head_mobile}');{/if}var searchid = {$searchid};{if $itemid && $DT[anticopy]}document.oncontextmenu=function(e){return false;};document.onselectstart=function(e){return false;};{/if}</script><!--[以上为系统关键代码，除非您明确其含义，否则请勿修改或删除，否则会导致系统错误]--><!--[模板中所有带id的元素，请勿修改或删除，否则会导致部分JS代码无法运行]--><!--[以上类似的注释，在编译模板时，系统会自动移除，不会显示在实际的页面中]--></head><body><div class="nav_hd_top"><div class="nav_top">{if $head_mobile}<div id="destoon_qrcode" style="display:none;"></div>{/if}<div id="destoon_space"></div><div class="hd_logo fl"><a href="{$MODULE[1][linkurl]}"><img src="{if $MODULE[$moduleid][logo]}{DT_SKIN}image/logo_{$moduleid}.gif{elseif $DT[logo]}{$DT[logo]}{else}{DT_SKIN}image/logo.gif{/if}" alt="{$DT[sitename]}"/></a></div><div class="zhucename">{if $head_title==会员登录}会员登录{else}免费注册{/if}</div><div class="fr dianhua"><div class="dianhua_img fl"><img src="{DT_SKIN}images/member/tel.gif" /></div><div class="fl"><p class="dianhua_time">客户服务热线：9:00-18:00</p><p class="dianhua_tel">{$DT[telephone]}</p>     </div> </div> </div><div class="clear"></div></div>
