@@ -1,0 +1,132 @@
+<div class="clear"> </div>
+<div class="footerIndex mt20">
+<div class="conBox clearfix">
+<div class="friendLink">
+<div class="titlenew clearfix">
+<ul>
+<li class="Themebg li1">友情链接</li>
+<li class="li2">行业分站</li>
+<li class="li3">合作网站</li>
+<li class="li4">综合网站</li>
+</ul>
+</div>
+<div class="LinkBox LinkBox1"> 
+<!--{tag("table=link&condition=status=3 and level>0 and thumb='' and username=''&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder desc,itemid desc&template=list-link&cols=9")}--> </div>
+<div class="LinkBox LinkBox2"> 
+<!--{tag("table=link&condition=status=3 and level=1 and thumb='' and username=''&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder desc,itemid desc&template=list-link&cols=9")}--></div>
+<div class="LinkBox LinkBox3"> 
+<!--{tag("table=link&condition=status=3 and level=2 and thumb='' and username=''&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder desc,itemid desc&template=list-link&cols=9")}--></div>
+<div class="LinkBox LinkBox4"> 
+<!--{tag("table=link&condition=status=3 and level=3 and thumb='' and username=''&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder desc,itemid desc&template=list-link&cols=9")}--></div>
+</div>
+</div>
+  <div class="footerBottom mt20">
+      <div class="conBox">
+        <div class="homepage_footer_logo">
+			<a href="{DT_PATH}" title="{$DT[sitename]}">
+					<img src="{DT_SKIN}style/images/foot_logo.png" width="170" height="52" alt="{$DT[sitename]}">
+			</a>
+		</div>
+    <div class="homepage_footer_main">
+      <div class="topBox">
+        <ul class="first" style="border-right: 1px solid #212121;border-left: 1px solid #454545;">
+          <li class="txt">新手指南</li>
+          <li><a target="_blank" href="{$MODULE[24][linkurl]}" rel="nofollow">帮助中心</a></li>
+          <li><a target="_blank" href="{$MODULE[1][linkurl]}sitemap/">网站导航</a></li>
+          <li><a target="_blank" href="{$MODULE[2][linkurl]}{$DT[file_register]}">企业入驻</a></li>
+          <li><a target="_blank" href="{$MODULE[2][linkurl]}">会员中心</a></li>
+        </ul>
+        <ul class="second">
+          <li class="txt">采购商服务</li>
+          <li><a target="_blank" href="{$MODULE[4][linkurl]}">找供应商</a></li>
+          <li><a target="_blank" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" rel="nofollow">发布采购单</a></li>
+          <li><a target="_blank" href="{$MODULE[5][linkurl]}" rel="nofollow">最新产品</a></li>
+        </ul>
+        <ul class="third">
+          <li class="txt">供应商服务 </li>
+          <li><a target="_blank" href="{$MODULE[4][linkurl]}">找采购商</a></li>
+          <li><a target="_blank" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" rel="nofollow">发布产品</a></li>
+          <li><a target="_blank" href="{$MODULE[6][linkurl]}" rel="nofollow">最新采购</a></li>
+        </ul>
+        <ul class="ourth0">
+          <li class="txt">关于我们</li>
+          <li><a target="_blank" href="{DT_PATH}about/index.html">关于我们</a></li>
+          <li><a target="_blank" href="{DT_PATH}about/service.html">客户服务</a></li>
+          <li><a target="_blank" href="{DT_PATH}about/products.html">合作代理</a></li>
+          <li><a target="_blank" href="{DT_PATH}about/contact.html">联系我们</a></li>
+          <!--<li><a href="#">平台</a></li>-->
+        </ul>
+          <ul class="ourth1">
+            <li class="txt">手机登录</li>
+            <li>手机网站: <a href="{DT_PATH}">http://www.chengxin315.com/mobile</a></li>
+                </div>
+
+      <div class="hotline">
+            	<ul class="fhotLink">
+                	<li>客服咨询热线：</li>
+                    <li>132-9551-3333</li>
+                    <li>工作时间：8:30-18:00</li>
+                </ul>
+                <ul class="midmg">
+                
+                </ul>
+               	<ul class="fhotLink">
+                	<li>投诉热线：</li>
+                    <li>18109691871</li>
+                    <li>15609693058</li>
+                </ul>
+            </div>
+      <div class="indexes">
+<strong>按字母分类：</strong>
+{php $LETTER = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');}
+ {loop $LETTER $i $L}<span style="color: #444;padding: 0 5px;"><a href="{DT_PATH}sitemap/index.php?mid=5&letter={$L}" target="_blank">{$L}</a></span>{/loop} 
+  </div>
+      <div class="bottomBox">
+      <a href="{DT_PATH}">首页</a>
+      <!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}--> 
+<a href="{$MODULE[1][linkurl]}sitemap/">网站地图</a>
+ | <a href="{$EXT[spread_url]}">排名推广</a> 
+{if $EXT[ad_enable]} | <a href="{$EXT[ad_url]}">广告服务</a>{/if}
+{if $EXT[gift_enable]} | <a href="{$EXT[gift_url]}index2.php" target="_blank" rel="nofollow">积分商城</a>{/if}
+{if $EXT[guestbook_enable]} | <a href="{$EXT[guestbook_url]}" target="_blank" rel="nofollow">留言反馈</a>{/if}
+       <span style="display:none"> 
+        <!--放统计代码--> 
+        </span>
+        <div class="copytxt">
+        <p class="mt20">{$DT[sitename]} {$DT[copyright]}</p>
+        <p class="mt5">版权所有：{if $DT[icpno]}&nbsp;{$DT[icpno]}&nbsp;{/if}Copyright&copy;2019-2020&nbsp;{$DT[sitename]}&nbsp;All Rights Reserved </p>
+        </div>
+        </div>
+      <div class="authentication">
+<div class="authentication_bg">
+<a rel="nofollow" target="_blank" class="cert-1" href="#" title="网络警察"></a>
+<a rel="nofollow" target="_blank" class="cert-2" href="#" title="网警备案"></a>
+<a rel="nofollow" target="_blank" class="cert-3" href="#" title="网络工商"></a>
+<a rel="nofollow" target="_blank" class="cert-4" href="#" title="浙江省网站信用联盟"></a>
+<a rel="nofollow" target="_blank" class="cert-5" href="#" title="可信网站"></a>
+<a rel="nofollow" target="_blank" class="cert-6" href="#" title="违法和不良信息举报中心"></a>
+<a rel="nofollow" target="_blank" class="cert-7" href="#" title="违法和不良信息举报中心APP下载"></a>
+</div>
+<div class="mt20"> </div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<style>
+.lxgf{margin:auto;display:block;bottom:0;text-align:center;height:30px;width:100%;position:fixed;z-index:999;background-color:#000}
+.botcontact{color:#FFFFFF;text-align:center;font-family:"Microsoft Yahei";font-size:16px}
+.botcontact a{color:#FFFFFF;text-align:center;font-family:"Microsoft Yahei";font-size:16px;text-decoration:underline}
+</style>
+<script src="{DT_SKIN}style/js/effect.js"></script> 
+<script type="text/javascript">
+{if $destoon_task}
+show_task('{$destoon_task}');
+{else}
+{php include DT_ROOT.'/api/task.inc.php';}
+{/if}
+{if $lazy}$(function(){$("img").lazyload();});{/if}
+</script>
+</body>
+</html>
