@@ -49,13 +49,16 @@
 	{if $COM[gzhqr]}
 	<li>扫码关注： <img src="{$COM[gzhqr]}"/></li>
 	{/if}
+	{if 0 && $COM[username] && $DT[im_web]}
 	<li class="zztalk">即时通讯： 
-	{if $COM[username] && $DT[im_web]}{im_web($COM[username])}&nbsp;{/if}
-	{if $COM[qq] && $DT[im_qq]}{im_qq($COM[qq])}&nbsp;{/if}
-	{if $COM[wx] && $DT[im_wx]}{im_wx($COM[wx], $COM[username])}&nbsp;{/if}
-	{if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
-	{if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}
+	{im_web($COM[username])}
 	</li>
+	{/if}
+	{if $COM[qq] && $DT[im_qq]}<li class="zztalk">QQ：{im_qq($COM[qq])}</li>{/if}
+	{if $COM[wx] && $DT[im_wx]}<li class="zztalk">微信：{im_wx($COM[wx], $COM[username])}</li>{/if}
+	{if $COM[ali] && $DT[im_ali]}<li class="zztalk">阿里旺旺：{im_ali($COM[ali])}</li>{/if}
+	{if $COM[skype] && $DT[im_skype]}<li class="zztalk">skype：{im_skype($COM[skype])}</li>{/if}
+	 
 	{if 0 && $could_message}
 	<li>在线状态： {if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if} </li>
 	{/if}
