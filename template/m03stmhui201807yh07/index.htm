@@ -1,0 +1,715 @@
+{php $CSS = array('index');}
+{template 'header_index'}
+<div id="ipad_tips" style="display:none;"></div>
+<!--首页导航-->
+{template 'nav-index'} 
+<!--main-->
+<div class="conBox xcmain">
+  <div class="IndexTop clearfix">
+    <div class="Center fl">
+      <div id="myCarousel" class="carousel slide"> 
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+          <div class="item active" > <a href='/.' target='_blank'><img src="{DT_SKIN}style/images/banner1.png" alt=""></a> </div>
+          <div class="item " > <a href='/.' target='_blank'><img src="{DT_SKIN}style/images/banner2.jpg" alt=""></a> </div>
+          <div class="item " > <a href='/.' target='_blank'><img src="{DT_SKIN}style/images/banner3.jpg" alt=""></a> </div>
+        </div>
+        <!-- 轮播（Carousel）导航左右 --> 
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a><a class="carousel-control right" href="#myCarousel" data-slide="next"></a> </div>
+      <div class="smallBanner relative mt20">
+        <!--5大推荐滚动广告-->
+        <ul class="clearfix" id="register" style="width:762px;height:176px;overflow:hidden;">
+          <li class="goods"> <a href="#" target="_blank" >
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg1.jpg" alt=""> </div>
+            </a>
+            <div class="child">
+               <div class="child-text">
+                                <p>仙草<em>铁皮</em>石斛</p>
+                                <span>源头好货品质无忧</span>
+                            </div></div>
+          </li>
+          <li class="goods"> <a  href="#" target="_blank" >
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg2.jpg" alt=""> </div>
+            </a>
+           <div class="child">
+               <div class="child-text">
+                               <p>复方<em>树莓</em>果酒</p>
+                                <span>新品特惠上市</span>
+                            </div></div>
+          </li>
+          <li class="goods"> <a  href="#" target="_blank" >
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg3.jpg" alt=""> </div>
+            </a>
+            <div class="child">
+               <div class="child-text">
+                                <p>味丰<em>果制</em>工业品</p>
+                                <span>产地直销品优价廉</span>
+                            </div></div>
+          </li>
+          <li class="goods"> <a  href="#" target="_blank" >
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg2.jpg" alt=""> </div>
+            </a>
+           <div class="child">
+               <div class="child-text">
+                               <p>复方<em>树莓</em>果酒</p>
+                                <span>新品特惠上市</span>
+                            </div></div>
+          </li>
+          <li class="goods"> <a  href="#" target="_blank" >
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg4.jpg" alt=""> </div>
+            </a>
+            <div class="child">
+               <div class="child-text">
+                                <p>莱芜<em>生姜</em>精选</p>
+                                <span>全场精品特惠</span>
+                            </div></div>
+          </li>
+          <li class="goods"> <a  href="#" target="_blank" rel='nofollow'>
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg5.jpg" alt=""> </div>
+            </a>
+            <div class="child">
+               <div class="child-text">
+                                <p>山阳<em>核桃</em>产业带</p>
+                                <span>健康补脑好零食</span>
+                            </div></div>
+          </li>
+           <li class="goods"> <a  href="#" target="_blank" >
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg4.jpg" alt=""> </div>
+            </a>
+            <div class="child">
+               <div class="child-text">
+                                <p>莱芜<em>生姜</em>精选</p>
+                                <span>全场精品特惠</span>
+                            </div></div>
+          </li>
+          <li class="goods"> <a  href="#" target="_blank" rel='nofollow'>
+            <div class="imgBox"> <img src="{DT_SKIN}style/images/gg5.jpg" alt=""> </div>
+            </a>
+            <div class="child">
+               <div class="child-text">
+                                <p>山阳<em>核桃</em>产业带</p>
+                                <span>健康补脑好零食</span>
+                            </div></div>
+          </li>
+        </ul>
+        <!--5大推荐广告--> 
+<div class="leftBtn iconfont icon-leftd" id="LeftArr"></div>
+<div class="rightBtn iconfont icon-rightd" id="RightArr"></div>
+      </div>
+      
+    </div>
+    <div class="RightBox fr">
+      <div class="user clearfix" id="rightUser">
+        <div class="headImg">
+          <div class="imgBox fl mr10"> {if $_userid} <a target="_blank" href="{$MODULE[2][linkurl]}"><img src="{useravatar($_username, 'large')}&time={$DT_TIME}" width="50" height="50" alt="会员头像"/></a> {else} <img class="img100" src="{DT_SKIN}style/images/head_picture.png" alt="会员头像"> {/if}</div>
+          <p class="Themefont01">Hi，<script language="javaScript"> 
+now = new Date(),hour = now.getHours() 
+if(hour < 6){document.write("凌晨好！")} 
+else if (hour < 9){document.write("早上好！")} 
+else if (hour < 12){document.write("上午好！")} 
+else if (hour < 13){document.write("中午好！")} 
+else if (hour < 17){document.write("下午好！")} 
+else if (hour < 19){document.write("傍晚好！")} 
+else if (hour < 23){document.write("晚上好！")} 
+else  {document.write("夜里好！")} 
+</script></p>
+          <p class="Themefont">欢迎来 到{$DT[sitename]}</p>
+        </div>
+        <div class="clear"></div>
+        <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="login Themebg iconfont icon-Supplier">登 录</a> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="regist OrangeBg">免费注册</a></div>
+      <div class="centantBox">
+        <h3 class="titlenew clearfix" id="table">
+          <ul>
+            <li class="active li1">我是供应商</li>
+            <li class="li2">我是采购商</li>
+          </ul>
+        </h3>
+        <ul class="Control pl5 box1">
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" target="_blank" rel="nofollow">发布产品</a></li>
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}home.php" target="_blank" rel="nofollow">商铺管理</a></li>
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5" target="_blank" rel="nofollow">产品管理</a></li>
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}favorite.php" target="_blank" rel="nofollow">收藏管理</a></li>
+ <span class="btnnew Themebg mt10"> <a href="{$MODULE[2][linkurl]}message.php" target="_blank" rel="nofollow">收到的询价单</a></span>
+        </ul>
+        <ul class="Control pl5 box2">
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" target="_blank" rel="nofollow">发布采购单</a></li>
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}friend.php" target="_blank" rel="nofollow">商友管理</a></li>
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6" target="_blank" rel="nofollow">管理采购单</a></li>
+          <li class="Themebghover"><a href="{$MODULE[2][linkurl]}chat.php" target="_blank" rel="nofollow">留言管理</a></li>
+    <span class="btnnew Themebg mt10"> <a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" target="_blank" rel="nofollow">发布的采购单</a></span>
+        </ul>
+      </div>
+      <div class="centantBox mt10">
+        <h3 class="titlenew clearfix">
+          <ul>
+            <li class="active">公告</li>
+          </ul>
+        </h3>
+        <ul class="bulletin mt10 BulletinBox">
+          <!--{tag("table=announce&condition=totime=0 or totime>$today_endtime-86400&areaid=$cityid&pagesize=3&class=dot&order=listorder desc,addtime desc&target=_blank&length=20&cname=公告&template=xiaohei-index02")}-->
+        </ul>
+      </div>
+      <div class="centantBox mt5">
+        <h3 class="titlenew clearfix">
+          <ul id="table2">
+            <li class="active li4">已发产品</li>
+            <li class="li5">入驻企业</li>
+          </ul>
+        </h3>
+        <div class="num box4 mt10 pb10 text-center OrangeFont">
+          <ul class="tongji">
+            {php echo number_format(2532333+($db->count($DT_PRE.'sell_5', 'status=3', 1800)));}
+          </ul>
+        </div>
+        <div class="num box5 mt10 pb10 text-center OrangeFont">
+          <ul class="tongji2">
+            {php echo number_format(23303+($db->count($DT_PRE.'company', '1', 1800)));}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"> 
+    <!--1楼-->
+    <!--广告区-->
+    <div class="clear"></div>
+    {template 'index-aa01', 'aa'} 
+    <div class="clear"></div>
+    <div class="cBanner mt20 clearfix"> <a class="f1"></a> <a class="fl" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/1f1.jpg" alt=""> </a> <a class="fr" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/1f2.jpg" alt=""> </a> </div>
+    <!--广告区-->
+    {php $mid=5}
+    {php $child = get_maincat(0, $mid, 1);}
+    {loop $child $i $c}
+    {php $kk=$i+1}
+	{if $i < 16}
+    <div class="building buildingNew {if $i%2==1}active{/if}" dataid="f{$i}">
+      <div class="buildingBox ThemeFborderhover clearfix">
+        <div class="left fl"> <a href="{$MODULE[5][linkurl]}{$c[linkurl]}" target="_blank"><img src="{DT_SKIN}style/images/class{$i}.jpg" alt=""></a> 
+          <!--分类推荐图标--> 
+          {if $kk==1}
+          <div class="YBRecommend"><img src="{DT_SKIN}style/aa/indexfftj.png"></div>
+          {elseif $kk==2}
+          <div class="YBRecommend02"><img src="{DT_SKIN}style/css/img/Promotion.png"></div>
+          {elseif $kk==3}
+          <div class="YBRecommend"><img src="{DT_SKIN}style/aa/indexfftj.png"></div>
+          {elseif $kk==5}
+          <div class="YBRecommend"><img src="{DT_SKIN}style/aa/indexfftj.png"></div>
+          {elseif $kk==6}
+          <div class="YBRecommend02"><img src="{DT_SKIN}style/css/img/Promotion.png"></div>
+          {elseif $kk==8}
+          <div class="YBRecommend"><img src="{DT_SKIN}style/aa/indexfftj.png"></div>
+          {elseif $kk==9}
+          <div class="YBRecommend"><img src="{DT_SKIN}style/aa/indexfftj.png"></div>
+          {elseif $kk==11}
+          <div class="YBRecommend02"><img src="{DT_SKIN}style/css/img/Promotion.png"></div>
+          {elseif $kk==13}
+          <div class="YBRecommend"><img src="{DT_SKIN}style/aa/indexfftj.png"></div>
+          {elseif $kk==14}
+          <div class="YBRecommend"><img src="{DT_SKIN}style/aa/indexfftj.png"></div>
+          {elseif $kk==15}
+          <div class="YBRecommend02"><img src="{DT_SKIN}style/css/img/Promotion.png"></div>
+          {/if} 
+          <!--分类推荐图标--> 
+        </div>
+        <div class="content fl">
+          <div class="top">
+            <h3 class="titlenew f14"> {$c[catname]} <a href="{$MODULE[5][linkurl]}{$c[linkurl]}" class="Themefont fr f12" target="_blank">更多>></a>
+              <p class="f12 overflow">热卖： 
+                <!--{tag("moduleid=5&catid=$catid&condition=status=3&group=username&pagesize=5&order=addtime desc&length=8&template=xiaohei-indexf04")}--> </p>
+            </h3>
+          </div>
+          <div class="bottom clearfix">
+            <div class="leftClass"> 
+            {php $catid= $c[catid] ;}
+			{php $child = get_maincat($catid, 5,1);}
+			{loop $child $i $c}
+			{if $i < 8}
+			<ul class="clearfix overflow">
+			<li class="active"><a href="{$MODULE[5][linkurl]}{$c[linkurl]}" target="_blank" title="{set_style($c[catname], $c[style])}" rel="nofollow">{set_style($c[catname], $c[style])}</a></li>
+			{if $c[child]}
+			{php $sub = get_maincat($c[catid], 5, 1);}
+			{loop $sub $j $s}{if $j < 2}  <li><a rel="nofollow" target="_blank" href="{$MODULE[5][linkurl]}{$s[linkurl]}" title="{set_style($s[catname], $s[style])}">{set_style($s[catname], $s[style])}</a>  </li>{/if}
+			{/loop}
+			{/if} 
+			</ul>
+			{/if}
+			{/loop} 
+               </div>
+               <!--楼层中的4小企业图-->
+               <div class="logoClass fr clearfix"> 
+            <ul>
+            {if $kk==1}
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==2}
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==3}
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==4}
+                <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==5}
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==6}
+                <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==7}
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==8}
+                <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==9}
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==10}
+                <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==11}
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==12}
+                <li>
+                <div class="imgBox"> <a target="_blank" href=http://www.chengxin315.com/skin/m03sred/style/aa/index/4-4.jpg"#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==13}
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+              {elseif $kk==14} 
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+               {elseif $kk==15} 
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 2 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 4 </div>
+              </li>
+               {elseif $kk==16} 
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa1.jpg" alt=""></a> 1 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa4.jpg" alt=""></a> 2 </div>
+              </li>
+               <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa2.jpg" alt=""></a> 3 </div>
+              </li>
+              <li>
+                <div class="imgBox"> <a target="_blank" href="#" rel="nofollow"><img class="img100" src="{DT_SKIN}style/aa/index/aa3.jpg" alt=""></a> 4 </div>
+              </li>
+              {/if}
+            </ul>
+             </div>
+             <!--楼层中小广告结束-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--楼层中分类下面的广告图-->
+    {if $kk==2}
+    <div class="clear"></div>
+    <div class="cBanner mt20  clearfix"> <a class="f3"></a><a href="#" target="_blank"> <img class="img100" src="{DT_SKIN}style/aa/ff/4f.jpg" alt=""> </a> </div>
+    {elseif $kk==4}
+    <div class="clear"></div>
+    <div class="cBanner mt20 clearfix"> <a class="f5"></a> <a class="fl" href="#"  target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/2f1.jpg" alt=""> </a> <a class="fr" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/2f2.gif" alt=""> </a> </div>
+    {elseif $kk==6}
+    <div class="clear"></div>
+    <div class="cBanner mt20  clearfix"><a class="f7"></a> <a href="#" target="_blank"> <img class="img100" src="{DT_SKIN}style/aa/ff/5f.jpg" alt=""> </a> </div>
+    {elseif $kk==8}
+    <div class="clear"></div>
+    <div class="cBanner mt20 clearfix"> <a class="f9"></a> <a class="fl" href="#"  target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/3f1.jpg" alt=""> </a> <a class="fr" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/3f2.gif" alt=""> </a> </div>
+    {elseif $kk==10}
+    <div class="clear"></div>
+    <div class="cBanner mt20  clearfix"> <a class="f11"></a><a href="#" target="_blank"> <img class="img100" src="{DT_SKIN}style/aa/ff/6f.jpg" alt=""> </a> </div>
+    {elseif $kk==12}
+    <div class="clear"></div>
+    <div class="cBanner mt20 clearfix"> <a class="f13"></a> <a class="fl" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/4f1.jpg" alt=""> </a> <a class="fr" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/4f2.jpg" alt=""> </a> </div>
+    {elseif $kk==14}
+    <div class="clear"></div>
+    <div class="cBanner mt20  clearfix"> <a class="f15"></a><a href="#" target="_blank"> <img class="img100" src="{DT_SKIN}style/aa/ff/7f.jpg" alt=""> </a> </div>
+    {/if}
+	{/if}
+    {/loop}
+	</div>
+  <div class="cBanner mt20 "> <a href="#" target="_blank"> <img class="img100" src="{DT_SKIN}style/aa/ff/8f.gif" alt=""> </a> </div>
+  <div class="building">
+    <h3 class="titlenew f14"> <span class="Themebg white f20 mr10 iconfont icon-News"></span> 行业资讯 <a href="{$MODULE[21][linkurl]} " class="ml20 Themefont fr f12" target="_blank">更多新闻</a> </h3>
+    <div class="buildingBox clearfix pb10"> 
+      <!--{php $tags=tag("moduleid=21&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=4&order=addtime desc&length=36&introduce=250&width=240&height=160&template=null");}--> 
+      {loop $tags $i $t}
+      <div class="col-md-6 NewsBox">
+        <div class="topBox pt15">
+          <div class="imgBox fl"><a href="{$t[linkurl]}" target="_blank"><img class="img100" src="{$t[thumb]}" width="{$width}" height="{$height}" alt="{$t[title]}"></a></div>
+          <div class="name"> <a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></div>
+          <p>{$t[introduce]}</p>
+        </div>
+      </div>
+      {/loop}
+      <div class="clear"></div>
+      <div class="zxlb NewsBox mt10">
+        <ul class="clearfix ">
+          <!--{php $tags=tag("moduleid=21&condition=status=3&areaid=$cityid&pagesize=15&order=addtime desc&length=50&template=null");}--> 
+          {loop $tags $i $t}
+          <li class="col-md-5"><a href="{$t[linkurl]}" target="_blank"><i class="Themefont">·</i>{$t[title]}<span class="time">{timetodate($t[addtime], 3)} </span></a></li>
+          {/loop}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--最新供求-->
+<div class="topnew oh mt20">
+    <div class="product themeborder">
+        <p class="title fw12 themefontc"><span class="Themebg white f20 mr10 iconfont icon-chanpin"></span>最新产品 <a href="{$MODULE[5][linkurl]}" class="ml20 Themefont fr f12 mt10" target="_blank">更多产品</a></p>			
+        <div class="scroll_vertical">
+            <div class="box" id="company">
+                <ul class="list">
+           <!--{tag("moduleid=5&condition=status=3&group=username&pagesize=12&order=addtime desc&length=30&template=xiaohei-indexdi1")}--> 
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="product themeborder ml20">
+        <p class="title fw12 themefontc"><span class="Themebg white f20 mr10 iconfont icon-passport"></span>最新公司<a href="{$MODULE[4][linkurl]}" class="ml20 Themefont fr f12 mt10" target="_blank">更多公司</a></p>
+        <div class="scroll_vertical">
+            <div class="box">
+                <ul class="list">
+                  <!--{tag("moduleid=4&condition=groupid>5 and catids<>''&areaid=$cityid&pagesize=12&order=userid desc&template=xiaohei-indexdi2")}-->  
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--最新供求END-->
+<div class="Floor" id="Floor">
+  <div class="Themebg titlenew">行业导航</div>
+  <ul>
+    <li> <a class="f1" href="javascript:void(0)" onclick="clickA(1)">
+      <div class="FloorLi"> <i class="iconfont icon-jixieqimo"></i><span class="Themebg">行业设备</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-shangwuquan"></i><span class="Themebg">农业产品</span> </div>
+      </a> </li>
+    <li> <a class="f3" href="javascript:void(0)" onclick="clickA(3)">
+      <div class="FloorLi"> <i class="iconfont icon-nongye"></i><span class="Themebg cen">建筑</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-baozhuangyinshua"></i><span class="Themebg cen">冶金</span> </div>
+      </a> </li>
+    <li> <a class="f5" href="javascript:void(0)" onclick="clickA(5)">
+      <div class="FloorLi"> <i class="iconfont icon-shipin"></i><span class="Themebg">电工电气</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-wujingongju"></i><span class="Themebg">五金工具</span> </div>
+      </a> </li>
+    <li> <a class="f7" href="javascript:void(0)" onclick="clickA(7)">
+      <div class="FloorLi"> <i class="iconfont icon-jiajujiafang"></i><span class="Themebg cen">礼品</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-icon"></i><span class="Themebg cen">汽配</span> </div>
+      </a> </li>
+    <li> <a class="f9" href="javascript:void(0)" onclick="clickA(9)">
+      <div class="FloorLi"> <i class="iconfont icon-jingxihuaxue"></i><span class="Themebg cen">包装</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-yejinkuangchan"></i><span class="Themebg cen">家居</span> </div>
+      </a> </li>
+    <li> <a class="f11" href="javascript:void(0)" onclick="clickA(11)">
+      <div class="FloorLi"> <i class="iconfont icon-diangongdianqi"></i><span class="Themebg cen">安防</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-xiangjiaosuliao"></i><span class="Themebg cen">仪器</span> </div>
+      </a> </li>
+    <li> <a class="f13" href="javascript:void(0)" onclick="clickA(13)">
+      <div class="FloorLi"> <i class="iconfont icon-iconfontanquanfanghu"></i><span class="Themebg cen">灯饰</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-qicheyongpin"></i><span class="Themebg cen">电子</span> </div>
+      </a> </li>
+    <li> <a class="f15" href="javascript:void(0)" onclick="clickA(15)">
+      <div class="FloorLi"> <i class="iconfont icon-tubiao"></i><span class="Themebg cen">环保</span> </div>
+      <div class="FloorLi"> <i class="iconfont icon-iconjiayongdianqi"></i><span class="Themebg cen">印刷</span> </div>
+      </a> </li>
+    <!-- <li><a href="#f16"><i class="iconfont icon-News"></i><span class="Themebg">行业资讯</span></a></li> -->
+  </ul>
+</div>
+<div class="r_sidebar_wrap">
+  <div class="r_sidebar">
+    <div class="Right_side_button">
+      <ul>
+        <li class="Themebghover clearfix"><a href="{$MODULE[2][linkurl]}" ><span class="text mr5">我的贸易</span><i class="iconfont icon-Supplier"></i></a></li>
+        {if isset($MODULE[16])}
+        <li class="Themebghover clearfix"><a href="{$MODULE[2][linkurl]}cart.php" ><span class="text mr5">购物车</span><i class="iconfont icon-mall"></i></a></li>
+        {/if}
+        <li class="Themebghover clearfix"><a href="{$MODULE[2][linkurl]}favorite.php" ><span class="text mr5">我的收藏</span><i class="iconfont icon-collection"></i></a></li>
+        <li class="Themebghover clearfix"><a href="{$MODULE[24][linkurl]}" ><span class="text mr5">帮助中心</span><i class="iconfont icon-bangzhu"></i></a></li>
+        <li class="Themebghover clearfix"><a href="{$MODULE[1][linkurl]}sitemap/" ><span class="text mr5">网站导航</span><i class="iconfont icon-ditudingwei"></i></a></li>
+      </ul>
+    </div>
+    <div class="Right_side_button Right_side_button2">
+      <ul>
+        <li class="Themebghover clearfix" style="background-color: #dd2726;"><a href="{$EXT[guestbook_url]}"><span class="text mr5">用户反馈</span><i class="iconfont icon-unie62a"></i></a></li>
+        <li class="Themebghover clearfix"><a href="javascript:;"><span class="code text mr5"><img class="img100" src="{DT_SKIN}style/images/wxlogo.png" alt=""></span><i class="iconfont icon-code"></i></a></li>
+        <li class="Themebghover clearfix" id="return_top"><a href="javascript:void(0)"><span class="text mr5">返回顶部</span><i class="iconfont icon-shifttop"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+//左侧菜单的滚动事件
+    $(window).scroll(function () {
+       var scrollTop = $(document).scrollTop();
+       var contentItems = $(".xcmain").find(".building");
+       var currentItem = "";
+       if (scrollTop>=755 && scrollTop<3990 && $("#Floor").css('display')=='block'){
+            $('#Floor').show();
+            setTimeout(function(){
+                $("#Floor").addClass('active');
+            },10);
+            
+       }else if ((scrollTop>=3991 || scrollTop<754) && $("#Floor").css('display')=='block'){
+            $('#Floor').removeClass('active');
+            setTimeout(function(){
+                $('#Floor').hide();
+            },200);
+       }
+       contentItems.each(function () {
+           var offsetTop = $(this).offset().top;
+           if (scrollTop > offsetTop - 300) {
+               currentItem = $(this).attr("dataid");
+           }
+       });
+       if (currentItem!='' && currentItem!=$("#Floor").find(".active").attr("class") && scrollTop>=755 && scrollTop<3990) {
+           $("#Floor ").find(".active").removeClass("active");
+           $("#Floor").find("." + currentItem + "").addClass("active");
+           $('#Floor').show();
+            setTimeout(function(){
+                $("#Floor").addClass('active');
+            },10);
+       }
+    });
+    function clickA(e){
+        var Divbox = $('.cBanner').find('.f'+e+'').offset().top;
+        $('html,body').animate({
+            scrollTop:Divbox
+        },500);
+    }
+    //回到顶部
+    $("#return_top").click(function(){
+        $('html,body').animate({
+            scrollTop:'0'
+        },1000);
+    });
+	//弹出底部注册
+	$(function() {
+	    $("#zhuce").hide();
+	    $(window).bind('scroll resize', function() {
+		if ($(window).scrollTop() <= 248) {
+		    $("#zhuce").hide();
+		} else {
+		    $("#zhuce").show();
+		}
+	    })
+		});
+</script> 
+<!--客服--> 
+<!-- 弹出底部注册 -->
+<div id="zhuce" class="hide_layer"  style="display: none;"> 
+<div id="gonggao">
+	<a href="{$MODULE[2][linkurl]}{$DT[file_register]}" target="_blank">
+    	<div class="layer_bj"></div>
+        <div class="wrap">
+        	<div class="layer_txt">
+            	<ul>
+                	<li>每日<span class="font1">300万</span>流量曝光</li>
+                    <li>立送<span class="font1">5个</span>精准买家</li>
+                    <li>超<span class="font2">低利</span>率无息贷款</li>
+                    <li>人工<span class="font2">免费</span>帮你找货</li>
+                </ul>
+            </div>            
+        </div>
+    </a>
+    <p class="close_foot" onclick="removeElement('gonggao')"></p>
+</div>
+</div>
+<!--footer--> 
+<script type="text/javascript" src="{DT_STATIC}file/script/marquee.js"></script>
+<script type="text/javascript" src="{DT_SKIN}style/js/tongji.js"></script> 
+<script type="text/javascript" src="{DT_STATIC}file/script/index.js"></script> 
+<script type="text/javascript" src="{DT_SKIN}style/js/scrollPic.js"></script>
+ <script type="text/javascript">
+            playMarquee();
+            function playMarquee()
+            {
+                //触发图片滚动
+                var scrollPic_01 = new ScrollPic();
+                scrollPic_01.scrollContId   = "register"; //内容容器ID
+                scrollPic_01.arrLeftId      = "LeftArr";//左箭头ID
+                scrollPic_01.arrRightId     = "RightArr"; //右箭头ID
+                scrollPic_01.frameWidth     = 762;//显示框宽度
+                scrollPic_01.pageWidth      = 153; //翻页宽度
+                scrollPic_01.speed          = 30; //移动速度(单位毫秒，越小越快)
+                scrollPic_01.space          = 30; //每次移动像素(单位px，越大越快)
+                scrollPic_01.autoPlay       = true; //自动播放
+                scrollPic_01.autoPlayTime   = 3; //自动播放间隔时间(秒)
+                scrollPic_01.initialize(); //初始化
+            }
+        </script>
+<script type="text/javascript">
+new dmarquee(24, 10, 3000, 'pic_txt');
+new dmarquee(22, 10, 3000, 'site_stats');
+new dmarquee(22, 30, 3000, 'company');
+if(get_cookie('auth')) {
+	$('.iuser_l')[0].title = '商务中心';
+	$('.iuser_l')[0].href = '{$MODULE[2][linkurl]}';
+	$('.iuser_l')[0].className = 'iuser_u';
+	$('.iuser_r')[0].title = '完善我的会员资料';
+	$('.iuser_r')[0].href = '{$MODULE[2][linkurl]}edit.php';
+	$('.iuser_r')[0].className = 'iuser_e';
+}
+</script> 
+{template 'footer'}
