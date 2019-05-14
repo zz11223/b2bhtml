@@ -3,7 +3,7 @@ defined('IN_DESTOON') or exit('Access Denied');
 $content_table = content_table(4, $userid, is_file(DT_CACHE.'/4.part'), $DT_PRE.'company_data');
 $r = $db->get_one("SELECT content FROM {$content_table} WHERE userid=$userid");
 $COM['content'] = $r['content'];
-$intro_length = isset($HOME['intro_length']) && $HOME['intro_length'] ? intval($HOME['intro_length']) : 1000;
+$intro_length = isset($HOME['intro_length']) && $HOME['intro_length'] ? intval($HOME['intro_length']) : 400; 
 $COM['intro'] = nl2br(dsubstr(trim(strip_tags($r['content'])), $intro_length, '...'));
 $COM['thumb'] = $COM['thumb'] ? $COM['thumb'] : DT_SKIN.'image/company.jpg';
 if($COMGROUP['main_d']) {
@@ -74,7 +74,7 @@ if($newids!=''){
         $hou=array("","","","","","","");
         $r['content']=str_replace($qian,$hou,$r['content']); 
  
-		$news_list[$r['itemid']]['introduce'] =dsubstr($r['content'], 50,'...');
+		$news_list[$r['itemid']]['introduce'] =dsubstr($r['content'], 100,'...'); 
 		
 	}
 	$db->free_result($result);
