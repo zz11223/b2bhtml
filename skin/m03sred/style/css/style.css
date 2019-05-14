@@ -355,7 +355,7 @@ text-overflow:ellipsis;-o-text-overflow:ellipsis;-moz-overflow:ellipsis;-ms-over
 .shoplogo a img{ width: 200px; height: 75px;}
 .logobody{ margin-top:30px;}
 .top_logo {float: left;position: relative;height: 97px;overflow: hidden; width:320px;}
-.top_logo img{margin-top: 28px;}
+.top_logo img{margin-top: 8px;}
 .top_logo span a.logo_teng img {margin-left:5px;margin-top:18px;}
 .xccomtitle{ font-size: 18px !important; color: #3e3e3e; line-height: 40px; padding-top:4px;}
 .logobody .xccomjs{max-width: 246px;width: auto; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
