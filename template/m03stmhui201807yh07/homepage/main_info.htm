@@ -9,9 +9,9 @@
           <h2><a href="{userurl($username, 'file=info'.$city_url, $domain)}">
           	{$main_name[$HM]}</a></h2> 
         </div>
-        <!--{php $tags=tag("moduleid=22&condition=status=3 and username='$username'&pagesize=".$main_num[$HM]."&order=edittime desc&template=null");}-->
-       <!--  <div class="col-sm-4 col-md-4 col-mm-6 news_img" style="background-image: url({DT_STATIC}/company/htmlnew/images/57344e66ec33d.jpg);"></div> -->
-        <div class="col-sm-12 col-md-8 col-mm-12" style="width:100%;">
+        <!--{php $tags=tag("moduleid=22&condition=status=3 and username='$username'&pagesize=4&order=edittime desc&template=null");}-->
+         <div class="col-sm-4 col-md-4 col-mm-6 news_img" style="background-image: url({$COM[jpginfo]});"></div>
+        <div class="col-sm-12 col-md-8 col-mm-12">
           <ul class="news_index" >
            
 			      {loop $tags $t}

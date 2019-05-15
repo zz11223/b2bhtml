@@ -5,7 +5,6 @@ login();
 if(empty($admin_user)){
 	dalert(lang('message->without_permission_and_upgrade'), 'goback');
  }
-var_dump($admin_user);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 require DT_ROOT.'/include/post.func.php';
 include load('homepage.lang');
@@ -40,7 +39,7 @@ switch($action) {
 		$need_captcha = $MOD['captcha_home'] == 2 ? $MG['captcha'] : $MOD['captcha_home'];
 		if($submit) {
 			captcha($captcha, $need_captcha);
-			foreach(array('background', 'logo', 'video', 'banner', 'bannerf', 'banner1', 'banner2', 'banner3', 'banner4', 'banner5', 'bannerlink1', 'bannerlink2', 'bannerlink3', 'bannerlink4', 'bannerlink5') as $v) {
+			foreach(array('background', 'logo','video', 'banner', 'bannerf', 'banner1', 'banner2', 'banner3', 'banner4', 'banner5', 'bannerlink1', 'bannerlink2', 'bannerlink3', 'bannerlink4', 'bannerlink5') as $v) {
 				is_url($setting[$v]) or $setting[$v] = '';
 			}
 			$HOME = get_company_setting($_userid);

@@ -14,7 +14,9 @@
 <meta name="description" content="{$COM[company]}，联系电话：{$COM[telephone]}，{$head_keywords1}。"/>
 {/if}
 <meta name="applicable-device"content="pc,mobile">
-<meta name="generator" content="B2B - www.chengxin315.com"/>
+{if $COM[comlogo]}
+<link rel="shortcut icon" type="image/x-icon" href="{$COM[comlogo]}"/>
+{/if}
 <meta name="template" content="{$template}"/>
  
 {if $head_canonical}
