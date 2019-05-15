@@ -20,7 +20,7 @@
 	 <ul class="product_info">
 	<!-- <table width="100%" cellpadding="10" cellspacing="1"> -->
 	<li>公司名称： {$COM[company]}</li>
-	<li>公司地址： <a href="{DT_PATH}api/address.php?auth={encrypt($COM[address].'|'.$COM[company], DT_KEY.'MAP')}" target="_blank">{$COM[address]}</a></li>
+	<li>公司地址：{$COM[address]}</li>
 	<li>所在地区： {area_pos($COM[areaid], '/')}</li>
 	{if $COM[postcode]}
 	<li>邮政编码： {$COM[postcode]}</li>
