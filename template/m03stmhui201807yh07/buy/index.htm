@@ -1,0 +1,190 @@
+{template 'header_index'}
+{template 'nav-buy'}
+<style>
+.carousel-inner>.item>a>img,.carousel-inner>.item {width: 958px !important;}
+.baojia{
+border: 1px solid #f0cd73;
+background: #ffffde;
+width: 93px;
+height: 22px;
+line-height: 22px;
+color: #c87431;
+margin: 4px 0 0 22.5px; padding: 3px;
+}
+</style>
+<!--main-->
+<div class="conBox xcmain ">
+<div class="IndexTop clearfix">
+<div class="Center fl Caigou_ban">
+<div id="myCarousel" class="carousel slide"> 
+<!-- 轮播（Carousel）指标 -->
+<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+</ol>
+<!-- 轮播（Carousel）项目 -->
+<div class="carousel-inner">
+<div class="item active"> <a href='#' target='_blank' ><img src="{DT_SKIN}style/aa/buy/banner1.png" alt=""></a> </div>
+<div class="item "> <a href='#' target='_blank' ><img src="{DT_SKIN}style/aa/buy/banner2.png" alt=""></a> </div>
+<div class="item "> <a href='#' target='_blank' ><img src="{DT_SKIN}style/aa/buy/banner3.png" alt=""></a> </div>
+</div>
+<!-- 轮播（Carousel）导航 --> 
+<a title="" class="carousel-control left" href="#myCarousel"
+data-slide="prev"></a> <a title="" class="carousel-control right" href="#myCarousel"
+data-slide="next"></a> </div>
+</div>
+<div class="RightBox fr">
+<div class="centantBox">
+<h3 class="titlenew clearfix" id="table">
+<ul>
+<li class="active li1">我是供应商</li>
+<li class="li2">我是采购商</li>
+</ul>
+</h3>
+<ul class="Control pl5 box1">
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" class="btnnew Themebg mt10" style="margin-left:10px;" target="_blank" rel="nofollow">发布产品</a>
+<div class="Cgou_mai">卖家帮助</div>
+<ul class="mjbz ml10">
+<!--{tag("moduleid=24&catid=44496&condition=status=3&pagesize=5&order=addtime desc&length=40&template=xiaohei-sellindexbz")}-->
+</ul>
+</ul>
+<ul class="Control pl5 box2">
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" class="btnnew Themebg mt10" style="margin-left:10px;" target="_blank" rel="nofollow">发布采购单</a>
+<div class="Cgou_mai">买家帮助</div>
+<ul class="mjbz ml10">
+<!--{tag("moduleid=24&catid=44497&condition=status=3&pagesize=5&order=addtime desc&length=40&template=xiaohei-sellindexbz")}-->
+</ul>
+</ul>
+</div>
+<div class="Smallbutton clearfix" style="border-bottom:none;"> <a href="{$MODULE[2][linkurl]}cart.php" class="iconfont icon-shopCar"></a> <a href="{DT_PATH}spread" class="iconfont icon-laba"></a> <a href="{$MODULE[2][linkurl]}" class="iconfont icon-menu6"></a> </div>
+</div>
+</div>
+<!--原材料区-->
+<div class="cBanner mt20 "> <a href='#' target='_blank'><img class="img100" src="{DT_SKIN}style/aa/buy/0f.jpg" alt=""></a> </div>
+{php $mid=6}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{php $kk=$i+1}
+{if $i < 6}
+<div class="yuancailiao mt20">
+<div class="caigou_ltitle fl">
+<div class="caigou_ltitle_name"><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" title="{$c[catname]}" target="_blank">{$kk}F {$c[catname]}速采</a></div>
+</div>
+<div class="caigou_right fl">
+<ul class="caigou_fenlei">
+{php $catid=$c[catid]}
+{php $child = get_maincat($catid, 6);}
+{loop $child $i $c}
+{if $i < 6}
+<li class="caigou_fenlei1 fl">
+<div class="cgfl_name"><span><a title="" href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" class="Themefont" target="_blank" rel="nofollow">更多>></a></span><a title="{$c[catname]}" href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" class="Themetxthover" target="_blank">{$c[catname]}</a></div>
+{if $c[child]}
+{php $sub = get_maincat($c[catid], 6, 1);}
+{loop $sub $j $s}{if $j < 8}
+<a title="{set_style($s[catname], $s[style])}" href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" class="Themetxthover" target="_blank">{set_style($s[catname], $s[style])}</a> | {/if}{/loop}
+{/if}
+</li>
+{/if}
+{/loop} 
+</ul>
+<div class="caigou_news">
+<div class="caigou_newstt"> <span class="ThemeFborder02">最新采购信息</span><a title="" href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" class="Themefont" target="_blank">更多 >></a> </div>
+<table cellspacing="0" cellpadding="0">
+<!--{php $tags=tag("moduleid=6&catid=$catid&length=30&condition=status=3&areaid=$cityid&pagesize=6&order=addtime desc&template=null");}--> 
+{loop $tags $i $t}
+<tr>
+<td width="485" style="text-align:left;"><a title="{$t[title]}" href="{$t[linkurl]}" class="Themetxthover" target="_blank">{$t[title]}</a></td>
+<td width="100">大量</td>
+<td width="150">{area_pos($t[areaid], '')}</td>
+<td width="220">
+<?php
+$ti = $DT_TIME - $t[edittime];
+$di = floor($ti/60/60/24);
+$hi = floor($ti/60/60);
+$ii = floor($ti/60);
+$si = floor($ti/1);
+if(1<$di){
+echo "$di 天前";
+}
+elseif(1<$hi)
+{
+echo "$hi 时前";
+}
+elseif(1<$ii)
+{
+echo "$ii 分前";
+}
+elseif(1<$si)
+{
+echo "$si 秒前";
+}
+?>
+</td>
+<td width="100" ><a title="{$t[title]}" href="{$t[linkurl]}" class="baojia" target="_blank">我要报价</a></td>
+</tr>
+{/loop} 
+</table>
+</div>
+</div>
+</div>
+{/if}
+{if $kk==1}
+<div class="cBanner mt20 "> <a href='#' target="_blank"><img class="img100" src="{DT_SKIN}style/aa/buy/1f.jpg" alt=""></a> </div>
+{elseif $kk==2}
+<div class="cBanner mt20 "> <a href='#' target="_blank"><img class="img100" src="{DT_SKIN}style/aa/buy/2f.jpg" alt=""></a> </div>
+{elseif $kk==3}
+<div class="cBanner mt20 "> <a href='#' target="_blank"><img class="img100" src="{DT_SKIN}style/aa/buy/3f.jpg" alt=""></a> </div>
+{elseif $kk==4}
+<div class="cBanner mt20 "> <a href='#' target="_blank"><img class="img100" src="{DT_SKIN}style/aa/buy/4f.jpg" alt=""></a> </div>
+{elseif $kk==5}
+<div class="cBanner mt20 "> <a href='#' target="_blank"><img class="img100" src="{DT_SKIN}style/aa/buy/5f.jpg" alt=""></a> </div>
+{elseif $kk==6}
+<div class="cBanner mt20 "> <a href='#' target="_blank"><img class="img100" src="{DT_SKIN}style/aa/buy/6f.jpg" alt=""></a> </div>
+{/if}
+{/loop} 
+<!--end-->
+<div class="purchase_guide mt20">
+<div class="purchase_guide_con">
+<ul class="clr">
+<li class="stepicon icon1"><a href="{$MODULE[2][linkurl]}{$DT[file_register]}" title="登录/注册" target="_blank">登录/注册</a></li>
+<li class="icon"></li>
+<li class="stepicon icon2"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" title="发布产品" target="_blank">发布产品</a></li>
+<li class="icon"></li>
+<li class="stepicon icon3"><a href="{$MODULE[5][linkurl]}" title="寻找商机" target="_blank">寻找商机</a></li>
+</ul>
+</div>
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" class="btn" target="_blank" title="立即发布">立即发布</a>
+</div>
+</div>
+<script>
+
+//小banner滚动
+var num = $('.smallBanner li').size(),
+w = $('.smallBanner li').width();
+$('.smallBanner ul').css('width',w*num),
+i = 1;
+function moverRight(){
+$('.smallBanner ul').animate({ right:w*i},500);
+if(num-i<=5){
+i=0;
+}else{
+i++;
+}
+}
+function moverLeft(){
+$('.smallBanner ul').animate({ right:-w*i},500);
+if(i=1){
+i=0;
+}else{
+i--;
+}
+}
+$('.leftBtn').on('click',function(){
+moverLeft();
+}); 
+$('.rightBtn').on('click',function(){
+moverRight();
+});     
+</script> 
+{template 'footer'}

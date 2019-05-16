@@ -1,0 +1,474 @@
+{template 'header_index'} 
+<script type="text/javascript" src="{DT_SKIN}style/js/jquery.SuperSlide.2.1.1.js"></script> 
+<script type="text/javascript" src="{DT_SKIN}style/js/brand.js"></script>
+<div id="ipad_tips" style="display:none;"></div>
+<!--首页导航--> 
+{template 'nav-info'} 
+<!--main-->
+<div class="conBox xcmain">
+  <div class="IndexTop clearfix">
+    <div class="Center fl">
+      <div id="myCarousel" class="carousel slide"> 
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+          <div class="item active" > <a href='/.' target='_blank'><img src="{DT_SKIN}style/aa/info/banner1.jpg" alt=""></a> </div>
+          <div class="item " > <a href='/.' target='_blank'><img src="{DT_SKIN}style/aa/info/banner2.jpg" alt=""></a> </div>
+          <div class="item " > <a href='/.' target='_blank'><img src="{DT_SKIN}style/aa/info/banner3.jpg" alt=""></a> </div>
+        </div>
+        <!-- 轮播（Carousel）导航左右 --> 
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a><a class="carousel-control right" href="#myCarousel" data-slide="next"></a> </div>
+      <div class="smallBanner relative mt10"> 
+        <!--3大推荐滚动广告-->
+        <div class="banner_bottom clear"> 
+          <!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=3&order=addtime desc&template=null");}--> 
+          {loop $tags $i $t} <a href="{$t[linkurl]}" title="{$t[title]}" target="_blank" class="fl" {if $i==0}style="margin-left: 0px;"{/if}>
+          <dl class="clear">
+            <dd class="fl">
+              <h2>{$t[title]}</h2>
+              <p class="p_look f12" style="background: rgb(255, 177, 161);">查看详情&nbsp;&gt;</p>
+            </dd>
+            <dt class="fr"><img src="{if $t[thumb]}{str_replace('thumb', 'middle', $t[thumb])}{else}{DT_SKIN}image/nopic100.gif{/if}" alt="{$t[alt]}" onerror="this.src='{DT_SKIN}image/nopic100.gif'"></dt>
+          </dl>
+          <p class="p2 f14">{dsubstr($t[introduce], 22, '..')}</p>
+          </a> {/loop}</div>
+        <!--3大推荐广告--> 
+        
+      </div>
+    </div>
+    <div class="RightBox fr">
+      <div class="user clearfix" id="rightUser">
+        <div class="headImg">
+          <div class="imgBox fl mr10"> {if $_userid} <a target="_blank" href="{$MODULE[2][linkurl]}"><img src="{useravatar($_username, 'large')}&time={$DT_TIME}" width="50" height="50" alt="会员头像"/></a> {else} <img class="img100" src="{DT_SKIN}style/images/head_picture.png" alt="会员头像"> {/if}</div>
+          <p class="Themefont01">Hi，<script language="javaScript"> 
+now = new Date(),hour = now.getHours() 
+if(hour < 6){document.write("凌晨好！")} 
+else if (hour < 9){document.write("早上好！")} 
+else if (hour < 12){document.write("上午好！")} 
+else if (hour < 13){document.write("中午好！")} 
+else if (hour < 17){document.write("下午好！")} 
+else if (hour < 19){document.write("傍晚好！")} 
+else if (hour < 23){document.write("晚上好！")} 
+else  {document.write("夜里好！")} 
+</script></p>
+          <p class="Themefont">欢迎来 到{$DT[sitename]}</p>
+        </div>
+        <div class="clear"></div>
+       <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="login Themebg iconfont icon-Supplier">登 录</a> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="regist OrangeBg">免费注册</a></div>
+      <div class="centantBox">
+        <ul class="ul_bidu mt10">
+          <li class="li1"><em>98%</em>的人找项目必看</li>
+          <li class="li2"><span class="span_biD f14">加盟必读</span><span class="span_sX">|</span><a href="#" title="5招教你规避加盟风险">5招教你规避加盟风险</a></li>
+        </ul>
+      </div>
+      <div class="ul_jianB clear"> <a href="#" title="项目鉴别"> <i class="zong_icon i26"></i> <span>项目鉴别</span> </a> <a href="#" title="顾问指导"> <i class="zong_icon i27"></i> <span>顾问指导</span> </a> <a href="#" title="考察评测"> <i class="zong_icon i28"></i> <span>考察评测</span> </a> </div>
+      <div class="centantBox mt5">
+        <ul class="ul_bidu" style="height:39px;">
+          <li class="li2"><span class="span_biD f14">招商必读</span><span class="span_sX">|</span><a href="#" title="3招教你开上百加盟店">3招教你开上百加盟店</a></li>
+        </ul>
+        <ul class="ul_six clear">
+          <a href="#" title="品牌包装" class=""> <i class="zong_icon i29"></i>品牌包装</a> <a href="#" title="认证留言" class=""> <i class="zong_icon i30"></i>认证留言</a> <a href="#" style="border-right:none;" title="招商展会" class=""> <i class="zong_icon i31"></i>招商展会 </a> <a href="#" title="创投服务" class=""> <i class="zong_icon i32"></i>创投服务 </a> <a href="#" title="项目呈现" class=""> <i class="zong_icon i33"></i>项目呈现 </a> <a href="#" style="border-right:none;" title="精准推荐" class=""> <i class="zong_icon i34"></i>精准推荐 </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"> 
+    <!--1楼--> 
+    <!--广告区-->
+    <div class="clear"></div>
+    <div class="slide_special mt20 clearfix">
+	  <div  class="home_special">
+		<div class="bd">
+		  <ul>
+			<li> <a href="/" target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-1.jpg" title="单品通APP 为单品移动营销而生" alt="单品通APP 为单品移动营销而生" onerror="reloadImage(this);"></a> </li>
+			<li> <a href="/ " target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-2.jpg" title="佣金单品通" alt="佣金单品通" onerror="reloadImage(this);"></a> </li>
+			<li> <a href="/" target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-3.jpg" title="佣金单品通" alt="佣金单品通" onerror="reloadImage(this);"></a> </li>
+			<li><a href="/" target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-4.jpg" title="营销商机" alt="营销商机" onerror="reloadImage(this);"></a> </li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
+    <div class="clear"></div>
+    <div class="cBanner mt20 clearfix"> <a class="f1"></a> <a class="fl" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/1f1.jpg" alt=""> </a> <a class="fr" href="#" target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/1f2.jpg" alt=""> </a> </div>
+    <!--广告区--> 
+  </div>
+</div>
+<div class="main">
+  <div class="wrap_mar"> 
+    <!-- 品牌推荐 --> 
+    <script type="text/javascript"> 
+					window.onload = function(){
+						document.getElementById("asdfg").focus();
+					}
+					
+				</script>
+    <div class="pinPai">
+      <div class="p_tuijian clear">
+        <h2 class="fl f22">招商推荐</h2>
+        <a href="{$MODULE[13][linkurl]}earch.php" target="_blank" class="fr f12">查看更多&nbsp;&gt;</a> </div>
+      <div class="clear mb20 tuijian_dl">
+        <div class="clear tuijian_dl"> 
+          <!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=8&order=addtime desc&template=null");}--> 
+          {loop $tags $i $t}
+          <dl class="fl" style="margin-left:0; {if $i%7==3}margin-right: 0px;{/if}">
+            <dt class="pr"> <a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"> <img src="{if $t[thumb]}{str_replace('thumb', 'middle', $t[thumb])}{else}{DT_SKIN}image/nopic200.gif{/if}" onerror="this.src='{DT_SKIN}image/nopic200.gif'" width="306" height="204" alt="{$t[alt]}">
+              <p class="p_black pa"></p>
+              <p class="p_black2 pa f14" style="width:275px;">{$t[title]}</p>
+              </a> </dt>
+            <dd class="dd1 f12"><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{dsubstr($t[introduce], 40, '…')}</a></dd>
+            <dd class="dd2 clear"> <a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">
+              <p class="fl p_money f12"><span class="span_red">{$DT[money_sign]}<em>{$t[tzed]}</em></span><span class="span2">(资金)</span></p>
+              </a>
+              <p class="fr f14 p_iCan" onclick="Go('{$t[linkurl]}');" target="_blank">我要加盟</p>
+            </dd>
+          </dl>
+          {/loop} </div>
+      </div>
+    </div>
+    <!-- 珂兰 广告 --> 
+    <a class="keLan" href="#" target="_blank" title="爱代驾加盟" ad_need_click="true" ad_id="21228"><img alt="爱代驾（购买）" src="{DT_SKIN}style/aa/info/b2.gif" width="1200" height="80"></a> 
+    <!-- 品牌专区 -->
+    <div class="zhuanQu clear" style="margin-bottom:20px;">
+      <div class="zhuanQu_left fl">
+        <div class="p_zhuanQ clear">
+          <div class="fl p1">
+            <h2>招商专区<em>/BRAND ZONE</em></h2>
+          </div>
+          <div class="yd_m42 fr">
+            <p class="fl li1">播报:</p>
+            <div id="bOdemo" class="qimo8 fl">
+              <div class="qimo fl">
+                <div id="bOdemo1">
+                  <ul>
+                    <!--{php $tags=tag("moduleid=$moduleid&length=40&condition=status=3&areaid=$cityid&pagesize=10&showcat=1&order=addtime desc&template=null");}--> 
+                    {loop $tags $i $t}
+                    <li><a href="{$t[linkurl]}"><span style="color: rgb(255,0,0)">{$t[catname]}</span>{$t[title]}</a></li>
+                    {/loop}
+                  </ul>
+                </div>
+                <div id="bOdemo2">
+                  <ul>
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p_zhuanQ2 clear">
+          <div class="p_zhuanQ2_left fl">
+            <div class="tou_hot"> 
+              <!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3&areaid=$cityid&pagesize=1&order=addtime desc&template=null");}--> 
+              {loop $tags $i $t}
+              <dl class="clear">
+                <dt class="fl pr"> <i class="pa i37"><img src="{DT_SKIN}style/info/hot.png"></i> <a href="{$t[linkurl]}" title="{$t[title]}" target="_blank" >
+                  <div class="pa opacity_black"></div>
+                  <img src="{if $t[thumb]}{str_replace('thumb', 'middle', $t[thumb])}{else}{DT_SKIN}image/nopic100.gif{/if}" onerror="this.src='{DT_SKIN}image/nopic100.gif'" width="180" height="100" alt="{$t[alt]}">
+                  <p class="p_black pa"></p>
+                  <p class="p_black2 p_decoration p_blackZhong pa f14">{$t[title]}</p>
+                  </a> </dt>
+                <dd class="fl">
+                  <p class="tou_p1 f12">投资额度(资金)</p>
+                  <p class="tou_p2 tou_p1 f12">{$DT[money_sign]}<em>{$t[tzed]}</em></p>
+                  <p class="tou_p3 f12"><a href="{$t[linkurl]}" title="{$t[title]}" target="_blank"><i class="zong_icon i38 fl"></i>查看详情</a></p>
+                  <p class="tou_p3 f12" onclick="Go('{$MODULE[2][linkurl]}message.php?action=send&touser={$t[username]}');" target="_blank"><i class="zong_icon i39 fl"></i>在线咨询</p>
+                </dd>
+              </dl>
+              <p class="p_zhiM">{dsubstr($t[introduce], 80, '…')}</p>
+              {/loop} </div>
+            <!-- 类似加盟招商6小广告 -->
+            <div class="leiSi">
+              <p class="leiSi_p clear"> <span class="fl span1"></span> <span class="fl span2">热门品牌加盟</span> <span class="fr span3"></span> </p>
+              <ul class="clear many_logo">
+			  <!--{php $tags=tag("moduleid=13&condition=status=3&areaid=$cityid&pagesize=6&order=addtime desc&template=null");}-->
+			  {loop $tags $i $t}
+                <li {if $i%3 == 2}style="border-right:none;"{/if}><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img src="{$t[thumb]}" alt="{$t[alt]}" width="108px" height="74px">
+                  <div class="logo_opacity pa"></div>
+                  </a></li>
+			  {/loop}
+              </ul>
+            </div>
+          </div>
+          <!-- 类似品牌加盟右侧  太子龙加盟new -->
+          <div class="p_zhuanQ2_right fr"> 
+            <!--{php $tags=tag("moduleid=$moduleid&length=30&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=2&order=hits desc&template=null");}--> 
+            {loop $tags $i $t}
+            <div class="taiZi_new{if $i==1} mt10{/if}">
+              <dl class="clear">
+                <dt class="fl pr"> <i class="pa i37_2"><img src="{DT_SKIN}style/info/new.png"></i> <a href="{$t[linkurl]}" title="{$t[title]}" target="_blank">
+                  <div class="opacity_black pa" style="display: none;"></div>
+                  <img src="{if $t[thumb]}{str_replace('thumb', 'middle', $t[thumb])}{else}{DT_SKIN}image/nopic100.gif{/if}" onerror="this.src='{DT_SKIN}image/nopic100.gif'" width="175" height="131" alt="{$t[alt]}">
+                  <p class="p_black pa"></p>
+                  </a>
+                  <p class="p_black2 p_blackZhong pa f14"><a href="{$t[linkurl]}" title="{$t[title]}" target="_blank" ></a><a href="{$t[linkurl]}" title="{$t[title]}" target="_blank">{$t[title]}</a></p>
+                </dt>
+                <dd class="fr"> <a class="a_title" href="{$t[linkurl]}" title="{$t[title]}">{$t[title]}</a>
+                  <ul class="jm_ul f12 clear">
+                    <li class="xiangM"><a href="{$t[linkurl]}" target="_blank" title="项目介绍">项目介绍</a></li>
+                    <li class="xiangM"><a href="{$t[linkurl]}" target="_blank" title="品加盟费用">加盟费用</a></li>
+                    <li class="tou_p3 pr"><a onclick="Go('{$MODULE[2][linkurl]}message.php?action=send&touser={$t[username]}');" title="在线咨询"><i class="zong_icon fl i39"></i>在线咨询<i class="gif pa"><img src="{DT_SKIN}style/info/message_new.gif"></i></a></li>
+                  </ul>
+                  <p class="f14 p_china"><span>{dsubstr($t[introduce], 100, '…')}<a href="{$t[linkurl]}" title="详情">详情&gt; </a> </span><span class="f12 fr eye">{$t[hits]}</span></p>
+                </dd>
+              </dl>
+            </div>
+            {/loop} </div>
+        </div>
+      </div>
+      <div class="zhuanQu_right fr">
+        <div class="p_zhuanQ">
+          <h2>招商加盟<em>排行榜</em></h2>
+        </div>
+        <ul class="ul_top">
+          <!--{php $tags=tag("moduleid=$moduleid&length=10&condition=status=3&pagesize=10&showcat=1&order=hits desc&template=null");}--> 
+          {loop $tags $i $t}
+          <li class="clear"> <i class="zong_icon {if $i<3}i41{else}i42{/if} fl">{$i+1}</i>
+            <p class="fl"><a href="{$t[linkurl]}" title="{$t[title]}" class="a1">{$t[title]}</a><a href="{$t[caturl]}" class="fr a2" title="{$t[catname]}加盟">{$t[catname]}</a></p>
+            <span class="fr">{$t[hits]}</span> </li>
+          {/loop}
+        </ul>
+      </div>
+    </div>
+    <!-- 珂兰 广告 --> 
+    <a class="keLan" href="#" target="_blank" title="学乐儿童英语加盟" ad_need_click="true" ad_id="21258"><img alt="" src="{DT_SKIN}style/aa/info/b1.gif" width="1200" height="80"></a> 
+    <!-- 最新加盟项目 -->
+    <div class="zuiXin_JM">
+      <div class="p_zhuanQ clear" style="border-bottom:none;">
+        <h2 class="fl p1">最新招商项目</h2>
+        <ul class="yd_m4 fr">
+          <li class="fl li1">特招加盟:</li>
+          <li class="fl marqueeUP"> 
+            <!--{php $tags=tag("moduleid=$moduleid&length=40&condition=status=3&areaid=$cityid&pagesize=10&order=addtime desc&template=null");}--> 
+            {loop $tags $i $t}
+            <p style="margin-top: 0px;"><a href="{$t[linkurl]}">{$t[title]}</a></p>
+            {/loop} </li>
+        </ul>
+      </div>
+      <!-- 最新项目选项卡 -->
+      <div class="zuiXin_list pr clear">
+        <div class="left_zuiXin pr fl">
+          <p class="pic_woman"><img src="{DT_SKIN}style/aa/info/d1.png" alt="源动力餐饮加盟"></p>
+          <div class="pa touMing1"></div>
+          <div class="pa touMing2">
+            <p class="p1">勾馋麻辣烫加盟</p>
+            <p class="p2">全国招商加盟</p>
+            <a href="#" target="_blank" title="勾馋麻辣烫加盟">查看详情&gt;</a> </div>
+        </div>
+        <div class="foucebox pa">
+          <div class="hd">
+            <ul class="canY_ul pa fl">
+              {loop $maincat $k $v}
+              {if $k<10}
+              <li class=""> <a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a> </li>
+              {/if}
+              {/loop}
+            </ul>
+          </div>
+          <div class="bd" style="position: relative; width: 933px; height: 502px;"> 
+            <!-- 隐藏块 -->
+			{loop $maincat $k $v}
+			{if $k<10}
+            <div class="showDiv" style="position: absolute; width: 933px; left: 0px; top: 0px; {if $v == 0}display: block;{else}display: none;{/if}">
+              <div class="canY_con1 clear"> 
+                <!--{tag("moduleid=$moduleid&catid=".$v[catid]."&length=40&condition=status=3&areaid=$cityid&pagesize=6&order=addtime desc&template=xiaohei-info")}--> 
+              </div>
+            </div>
+			{/if}
+            {/loop}
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+	jQuery(".foucebox").slide({ effect:"fold", autoPlay:true, delayTime:300, startFun:function(i){jQuery(".foucebox .showDiv").eq(i).find("h2").css({display:"none",bottom:0}).animate({opacity:"show",bottom:"60px"},300);jQuery(".foucebox .showDiv").eq(i).find("p").css({display:"none",bottom:0}).animate({opacity:"show",bottom:"0px"},300);}});
+	</script> 
+    <!-- 招商资讯推荐 -->
+    <div class="ziXun_JM">
+      <div class="p_zhuanQ clear">
+        <h2><span class="fl p1"><a href="javascript:;" target="_blank" style="color:#333;">招商推荐</a></span></h2>
+        <p class="fr yanJiu"><span>数据研究 : </span><a href="#" title="2018招商加盟领域最新数据研究报告">2018招商加盟领域最新数据研究报告</a></p>
+      </div>
+      <div class="ziXun_all clear">
+	  {php $mid=22}
+	  {php $maincat = get_maincat(0,$mid,1)}
+	  {loop $maincat $i $t}
+	  {if $i<8}
+        <div class="ziXun_first fl" id="news{if $i < 8}<?php echo $i+1?>{/if}" {if $i%4 == 3}style="margin-right:0px;"{/if}>
+          <ul class="tit clear">
+            <li class="xian_select"><a href="{$MODULE[$mid][linkurl]}{$t[linkurl]}" target="_blank" title="{$t[catname]}">{$t[catname]}</a></li>
+          </ul>
+          <!-- 滑图片显示说明 -->
+		  <!--{php $tags=tag("moduleid=$moduleid&catid=".$t[catid]."&length=28&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=1&order=addtime desc&template=null");}-->
+		 {loop $tags $i $t}
+          <div class="jiuLinH pr">
+            <div class="jiuL_pic1 pr">
+              <p class="blackPic"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img src="{$t[thumb]}" alt="{$t[alt]}" width="261px" height="105px"></a></p>
+              <div class="pa show_black">
+                <div class="jiuLinH_black pa"></div>
+                <div class="jiuLinH_black2 pa">
+                  <h3><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></h3>
+                  <div class="clear money_div">
+                    <p class="fl p_money p_money3 f12"><span class="span_red fl">￥<em>{$t[tzed]}</em></span><span class="span2 fl">(不含房租)</span></p>
+                    <p class="fr p_iCan p_iCan2 p_iCan3 f12"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">我要加盟</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+		  {/loop}
+          <!-- 选项卡 -->
+          <div class="tit_con">
+            <ul class="f14 dis_b">
+             <!--{php $tags=tag("moduleid=$moduleid&catid=".$t[catid]."&length=28&condition=status=3&areaid=$cityid&pagesize=4&order=addtime desc&template=null");}--> 
+            {loop $tags $t}
+            <li class="clear"><a href="{$t[linkurl]}" class="fl" target="_blank">{$t[title]}</a> <span class="fr f12">{$t[hits]}人关注</span></li>
+            {/loop}
+            </ul>
+          </div>
+        </div>
+		{/if}
+		{/loop}
+      </div>
+    </div>
+  </div>
+  <!-- 加盟招商大全 --> 
+  <!-- 广告 --> 
+  <a class="keLan" href="#" target="_blank" title="可可鸭童装加盟"><img alt="可可鸭童装8.19" src="{DT_SKIN}style/aa/info/b3.gif" width="1200" height="80"></a> 
+  <!-- 加盟招商大全 -->
+  <div class="daQuan_JM" style="overflow:hidden;">
+    <ul class="hot_JM clear">
+      <li class="fl hotHover_li li346" style="text-align:left;">加盟招商大全</li>
+      <li class="fl li_shuXian"></li>
+      <li class="fl hotHover_li li109"><a href="javascript:;" target="_blank">热门加盟项目</a></li>
+      <li class="fl li_shuXian">|</li>
+      <li class="fl hotHover_li li116"><a href="javascript:;" target="_blank">热门加盟行业</a></li>
+      <li class="fl li_shuXian">|</li>
+      <li class="fl hotHover_li li106"><a href="javascript:;" target="_blank">热门项目库</a></li>
+      <li class="fl li_shuXian">|</li>
+      <li class="fl hotHover_li li106"><a href="javascript:;" target="_blank">视频看项目</a></li>
+      <li class="fl li_shuXian">|</li>
+      <li class="fl hotHover_li li106"><a href="javascript:;" target="_blank">创业播报站</a></li>
+      <li class="fl li_shuXian">|</li>
+      <li class="fl hotHover_li li90"><a href="javascript:;" target="_blank">创业讲坛</a></li>
+      <li class="fl li_shuXian">|</li>
+      <li class="fl hotHover_li li90"><a href="javascript:;" target="_blank">高端访谈</a></li>
+      <li class="fl li_shuXian">|</li>
+      <li class="fl hotHover_li li90"><a href="javascript:;" target="_blank">新品发布</a></li>
+    </ul>
+    <!-- 正常显示的加盟品牌 -->
+    <div class="Manycon_JM">
+      <div class="many_jiaM pr dis_b" style="height: 207px; overflow: hidden; display: block;">
+        <div class="many_jiaMLbt">
+          <div class="many_jiaMLbtCon pa" style="left: 0px; position: relative;">
+            <div class="jsNav_bottomBoss">
+              <div class="jsNav_bottom dis_n" style="display: block;">
+                <ul class="zhengMo_ul clear">
+				<!--{php $tags=tag("moduleid=13&condition=status=3&areaid=$cityid&pagesize=20&order=addtime desc&length=28&template=null");}-->
+				{loop $tags $i $t}
+                  <li><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{$t[thumb]}" alt="{$t[alt]}" width="111px" height="87px"></a></li>
+				  {/loop}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 热门加盟项目选项卡 -->
+      <div class="many_jiaM dis_n" style="height:128px; overflow:hidden; ">
+        <ul class="reMen_ul clear">
+          <!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&pagesize=30&order=hits desc&length=28&template=null");}--> 
+          {loop $tags $t}
+          <li><a href="{$t[linkurl]}" title="{$t[title]}" target="_blank">{$t[title]}</a></li>
+          {/loop}
+        </ul>
+      </div>
+      <!-- 热门加盟行业 选项卡 -->
+      <div class="many_jiaM dis_n" style="height:128px; overflow:hidden; ">
+        <ul class="reMen_ul clear">
+          {loop $maincat $k $v}
+          <li><a href="{$MOD[linkurl]}{$v[linkurl]}" target="_blank">{set_style($v[catname],$v[style])}</a> </li>
+          {/loop}
+        </ul>
+      </div>
+      <!-- 热门项目库 选项卡 -->
+      <div class="many_jiaM dis_n" style="height:128px; overflow:hidden; ">
+        <ul class="reMen_ul clear">
+          <!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&pagesize=30&order=addtime desc&length=28&template=null");}--> 
+          {loop $tags $t}
+          <li><a href="{$t[linkurl]}" title="{$t[title]}" target="_blank">{$t[title]}</a></li>
+          {/loop}
+        </ul>
+      </div>
+      <!-- 视频看项目 -->
+      <div class="many_jiaM dis_n">
+        <div class="tit_con tit_crea clear" style="padding-top:0;">
+          <ul class="f14 clear" style="margin-right: 0px;">
+            <!--{php $tags=tag("moduleid=14&condition=status=3&areaid=$cityid&pagesize=16&order=addtime desc&length=28&template=null");}--> 
+            {loop $tags $t}
+            <li><a href="{$t[linkurl]}" class="fl" title="{$t[title]}" target="_blank">{$t[title]}</a> <span class="fr f12">{$t[hits]}人关注</span></li>
+            {/loop}
+          </ul>
+        </div>
+      </div>
+      <!-- 创业播报站 -->
+      <div class="many_jiaM dis_n">
+        <div class="tit_con tit_crea clear" style="padding-top:0;">
+          <ul class="f14 clear" style="margin-right: 0px;">
+            <!--{php $tags=tag("moduleid=21&condition=status=3 and level>0&areaid=$cityid&pagesize=16&order=addtime desc&length=28&template=null");}--> 
+            {loop $tags $t}
+            <li><a href="{$t[linkurl]}" class="fl" title="{$t[title]}" target="_blank">{$t[title]}</a> <span class="fr f12">{$t[hits]}人关注</span></li>
+            {/loop}
+          </ul>
+        </div>
+      </div>
+      <!-- 创业讲坛 -->
+      <div class="many_jiaM dis_n">
+        <div class="tit_con tit_crea clear" style="padding-top:0;">
+          <ul class="f14 clear" style="margin-right: 0px;">
+            <!--{php $tags=tag("moduleid=21&condition=status=3&areaid=$cityid&pagesize=16&order=edittime desc&length=28&template=null");}--> 
+            {loop $tags $t}
+            <li><a href="{$t[linkurl]}" class="fl" title="{$t[title]}" target="_blank">{$t[title]}</a> <span class="fr f12">{$t[hits]}人关注</span></li>
+            {/loop}
+          </ul>
+        </div>
+      </div>
+      <!-- 高端访谈 -->
+      <div class="many_jiaM dis_n">
+        <div class="tit_con clear" style="padding-top:0;">
+          <ul class="f14 clear" style="margin-right: 0px;">
+            <!--{php $tags=tag("moduleid=21&condition=status=3 and level>0&areaid=$cityid&pagesize=16&order=edittime desc&length=28&template=null");}--> 
+            {loop $tags $t}
+            <li><a href="{$t[linkurl]}" class="fl" title="{$t[title]}" target="_blank">{$t[title]}</a> <span class="fr f12">{$t[hits]}人关注</span></li>
+            {/loop}
+          </ul>
+        </div>
+      </div>
+      <!-- 新品发布 -->
+      <div class="many_jiaM dis_n">
+        <div class="tit_con clear" style="padding-top:0;">
+          <ul class="f14 clear" style="margin-right: 0px;">
+            <!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&pagesize=16&order=addtime desc&length=28&template=null");}--> 
+            {loop $tags $t}
+            <li><a href="{$t[linkurl]}" class="fl" title="{$t[title]}" target="_blank">{$t[title]}</a> <span class="fr f12">{$t[hits]}人关注</span></li>
+            {/loop}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<script type="text/javascript" src="{DT_STATIC}file/script/index.js"></script> 
+<script type="text/javascript" src="{DT_SKIN}style/js/scrollPic.js"></script> 
+<script>
+	jQuery(".foucebox").slide({ effect:"fold", autoPlay:true, delayTime:300, startFun:function(i){jQuery(".foucebox .showDiv").eq(i).find("h2").css({display:"none",bottom:0}).animate({opacity:"show",bottom:"60px"},300);jQuery(".foucebox .showDiv").eq(i).find("p").css({display:"none",bottom:0}).animate({opacity:"show",bottom:"0px"},300);}});
+	</script> 
+{template 'footer'}
