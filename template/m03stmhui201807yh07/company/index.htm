@@ -1,0 +1,230 @@
+{php $CSS = array('catalog');}
+{template 'header_index'}
+{template 'nav-com'}
+<script src="{DT_SKIN}style/js/com_scroll.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#scrollDiv").Scroll({line:1,speed:500,timer:3000,up:"but_up",down:"but_down"});
+});
+</script>
+
+<div class="conBox xcmain CompanyBox">
+<div class="IndexTop clearfix">
+<div class="Center fl">
+<div id="myCarousel" class="carousel slide"> 
+<!-- 轮播（Carousel）指标 -->
+<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+</ol>
+<!-- 轮播（Carousel）项目 -->
+<div class="carousel-inner">
+<div class="item active" > <a href='/.' target='_blank' ><img src="{DT_SKIN}style/images/banner1.png" alt=""></a> </div>
+<div class="item " > <a href='/.' target='_blank' ><img src="{DT_SKIN}style/images/banner2.jpg" alt=""></a> </div>
+<div class="item " > <a href='/.' target='_blank' ><img src="{DT_SKIN}style/images/banner3.jpg" alt=""></a> </div>
+</div>
+<!-- 轮播（Carousel）导航 --> 
+<a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+<a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+</div>
+<div class="mt10 borderdc">
+<p class="ptitle_tabs clearfix borderb"> <span class="fl dsp fw f14 color33">推荐商家</span>
+{php $mid=4}
+{php $child = get_maincat(0, $mid);}
+{loop $child $i $c}
+{php $kk=$i+1}
+{if $i < 11}
+<span id="click{$kk}" class="cl{$kk}" onmouseover="setTab({$kk}, 11);">{dsubstr($c[catname], 6)}</span>
+{/if}
+{/loop} 
+</p>
+{php $mid=4}
+{php $child = get_maincat(0, $mid);}
+{loop $child $i $c}
+{php $kk=$i+1}
+{if $i < 11}
+<div id="con_click_{$kk}" class="ptabs_box" {if $i == 0}{else}style='display:none;'{/if}>
+<ul class="productindexbox ovh">
+<!--{tag("moduleid=4&catid=".$c[catid]."&condition=groupid>5 and catids<>'' and thumb<>''&child=1&areaid=$cityid&pagesize=4&order=userid desc&length=40&width=95&height=95&template=xiaohei-comindex01")}-->
+</ul>
+</div>
+{/if}
+{/loop}
+</div>
+</div>
+<div class="RightBox bordern fr">
+<div class="borderdc">
+<div class="centantBox">
+<h3 class="titlenew clearfix" id="table">
+<ul>
+<li class="active li1">我是供应商</li>
+<li class="li2">我是采购商</li>
+</ul>
+</h3>
+<ul class="Control pl5 box1">
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" class="btnnew Themebg mt10" style="margin-left:10px;" target="_blank" rel="nofollow">发布产品</a>
+<div class="Cgou_mai">卖家帮助</div>
+<ul class="mjbz ml10">
+<!--{tag("moduleid=24&catid=44496&condition=status=3&pagesize=5&order=addtime desc&length=40&template=xiaohei-sellindexbz")}-->
+</ul>
+</ul>
+<ul class="Control pl5 box2">
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" class="btnnew Themebg mt10" style="margin-left:10px;" target="_blank" rel="nofollow">发布采购单</a>
+<div class="Cgou_mai">买家帮助</div>
+<ul class="mjbz ml10">
+<!--{tag("moduleid=24&catid=44497&condition=status=3&pagesize=5&order=addtime desc&length=40&template=xiaohei-sellindexbz")}-->
+</ul>
+</ul>
+</div>
+<div class="Smallbutton clearfix" style="border-bottom:none;"> <a href="{$MODULE[16][linkurl]}cart.php" class="iconfont icon-shopCar"></a> <a href="{DT_PATH}spread" class="iconfont icon-laba"></a> <a href="{$MODULE[2][linkurl]}" class="iconfont icon-menu6"></a> </div>
+
+
+</div>
+<div class="borderdc mt10">
+<div class="xcititle oh">
+<div class="pititle">最新企业<small id="but_down" class="fr mr10">↓向下</small><small id="but_up" class="fr mr10">↑向上</small></div>
+</div>
+<div style="height:250px;overflow:hidden;" id="scrollDiv">
+<ul class="aboutPrount">
+<!--{tag("moduleid=$moduleid&condition=groupid>5 and catids<>''&pagesize=32&order=userid desc&length=40&template=xiaohei-comindexzx")}-->
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+<!--1楼-->
+<div class="cBanner mt20 "> <a href="{cat_url(1)}" target='_blank'><img class="img100" src="{DT_SKIN}style/aa/com/0f.jpg" alt=""></a> </div>
+{php $mid=4}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{php $kk=$i+1}
+{if $i<10}
+<div class="building company_list_box">
+<h3 class="titlenew f14 clearfix company_listmenu"> <span class="fl Themebg white f20 mr10">{$i+1}F</span>
+<p class="fl overflow"><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank">{$c[catname]}</a></p>
+<a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="ml20 Themefont fr f12" target="_blank" rel="nofollow">免费加入{$c[catname]}企业</a>
+<div class="fl classifiBuilding ">
+<ul class="company_topmenu">
+<li class="gstjhy"><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank" class="padding5 Themetxthover titlenew">热门行业：</a></li>
+{if $c[child]}
+{php $sub = get_maincat($c[catid], 5);}
+{loop $sub $j $s}
+{if $j<9}
+<li class="tjhy"> <a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank" class="padding5 Themetxthover titlenew">{set_style($s[catname], $s[style])}</a></li>{/if}
+{/loop}
+{/if} 
+</ul>
+</div>
+</h3>
+<div class="buildingBox clearfix">
+<div class="left fl padding10">
+<div class="compan_left_img"> <a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank" rel="nofollow"> <img src="{DT_SKIN}style/aa/com/{$kk}f.jpg"> </a> </div>
+<div class="Classification">
+<h3 class="titlenew f12">推荐企业</h3>
+<div class="classBox">
+<ul class="mt5">
+<!--{php $tags=tag("moduleid=$moduleid&catid=".$c[catid]."&condition=groupid>5 and catids<>''&child=1 and level=1&areaid=$cityid&pagesize=4&order=vip desc,userid desc&template=null")}-->
+{loop $tags $i $t}
+<li><a class="overflow Themetxthover" href="{$t[linkurl]}" target='_blank' title="{$t[company]}"><i class="Themefont">{$i+1}</i>&nbsp;{$t[company]}</a></li>
+{/loop}  
+
+</ul>
+</div>
+</div>
+</div>
+<div class="content fl">
+<div class="top">
+<ul class="clearfix">
+<!--{php $tags=tag("moduleid=$moduleid&catid=".$c[catid]."&condition=groupid>5 and catids<>'' and thumb<>''&areaid=$cityid&pagesize=6&order=vip desc,userid desc&template=null")}-->
+{loop $tags $t}
+<li class="col-md-6">
+<div class="imgBox"><a href="{$t[linkurl]}" target='_blank'><img alt="{$t[company]}" title="{$t[company]}" class="img126" src="{if $t[thumb]}{str_replace('thumb', 'middle', $t[thumb])}{else}{DT_SKIN}image/nopic100.gif{/if}" onerror="this.src='{DT_SKIN}image/nopic100.gif'"></a></div>
+<div class="name"><a href="{$t[linkurl]}" target='_blank' title="{$t[company]}">{$t[company]}</a>
+<p>简介：{dsubstr($t[introduce], 40, '..')}</p>
+<p>主营：{dsubstr($t[business],40,'...')}</p>
+<p>地址：{area_pos($t[areaid], ' - ')}</p>
+</div>
+</li>
+{/loop}
+</ul>
+</div>
+</div>
+<div class="right fr">
+<div class="newBox">
+<h3 class="titlenew">最新入驻企业<a class="fr Themefont" href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target='_blank'>更多>></a></h3>
+<ul class="mt5">
+<!--{php $tags=tag("moduleid=$moduleid&catid=".$c[catid]."&condition=groupid>5 and catids<>''&areaid=$cityid&pagesize=12&order=userid desc&template=null")}-->
+{loop $tags $t}
+<li><a href="{$t[linkurl]}" target='_blank' title="{$t[company]}"><i class="Themefont">·</i>&nbsp;{$t[company]}</a></li>
+{/loop}  
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+{/if}
+{if $kk==1}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/01f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==2}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/02f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==3}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/03f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==4}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/04f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==5}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/05f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==6}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/06f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==7}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/07f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==8}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/08f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==9}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/09f.jpg" style="display: inline;"></a>
+</div>
+{elseif $kk==10}
+<div class="cBanner mt20 ">
+<a href="/." target="_blank"> <img class="img100" alt="" src="{DT_SKIN}style/aa/com/010f.jpg" style="display: inline;"></a>
+</div>
+{/if}
+{/loop}
+<!--1楼 end--> 
+</div>
+<script type="text/javascript">
+$(function(){
+$("#click1").trigger("onmouseover");
+$.each($(".company_topmenu"),function(n,value){
+$(value).find("li").first().trigger("mouseover");
+})
+})
+//选项卡特效
+function setTab(cursel, n) {
+for(var i = 1; i <=11 ; i++){
+$("#click"+i).removeClass("Themebg");
+$("#con_click_" + i).hide();
+}
+$("#click"+cursel).addClass("Themebg");
+$("#con_click_" + cursel).show();
+};
+</script> 
+{template 'footer'}

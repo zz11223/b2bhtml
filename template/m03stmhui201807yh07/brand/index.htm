@@ -1,0 +1,181 @@
+{template 'header_index'}
+<style>
+.StoreIndex{background: #ffffff;}
+</style>
+<script type="text/javascript" src="{DT_SKIN}style/js/jquery.SuperSlide.2.1.1.js"></script> 
+<script type="text/javascript" src="{DT_SKIN}style/js/brand.js"></script>
+<div id="ipad_tips" style="display:none;"></div>
+<!--首页导航--> 
+{template 'nav-brand'} 
+<!--main-->
+<div class="conBox xcmain">
+<div class="IndexTop clearfix">
+<div class="Center fl">
+<div id="myCarousel" class="carousel slide"> 
+<!-- 轮播（Carousel）指标 -->
+<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+</ol>
+<!-- 轮播（Carousel）项目 -->
+<div class="carousel-inner">
+<div class="item active"> <a href='#' target='_blank'><img src="{DT_SKIN}style/aa/brand/banner1.jpg" alt=""></a> </div>
+<div class="item "> <a href='#' target='_blank'><img src="{DT_SKIN}style/aa/brand/banner2.jpg" alt=""></a> </div>
+<div class="item "> <a href='#' target='_blank'><img src="{DT_SKIN}style/aa/brand/banner3.jpg" alt=""></a> </div>
+</div>
+<!-- 轮播（Carousel）导航左右 --> 
+<a class="carousel-control left" href="#myCarousel" data-slide="prev"></a><a class="carousel-control right" href="#myCarousel" data-slide="next"></a> </div>
+<div class="smallBanner relative mt10"> 
+<!--3大推荐滚动广告-->
+<div class="banner_bottom clear"> 
+<!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3&areaid=$cityid&pagesize=3&order=edittime desc,addtime desc&template=null");}--> 
+{loop $tags $i $t} <a href="{$t[linkurl]}" title="{$t[title]}" target="_blank" class="fl" {if $i==0}style="margin-left: 0px;"{/if}>
+<dl class="clear">
+<dd class="fl">
+<h2>{$t[title]}</h2>
+<p class="p_look f12" style="background: rgb(255, 177, 161);">查看详情&nbsp;&gt;</p>
+</dd>
+<dt class="fr"><img src="{if $t[thumb]}{str_replace('thumb', 'middle', $t[thumb])}{else}{DT_SKIN}image/nopic100.gif{/if}" alt="{$t[alt]}" onerror="this.src='{DT_SKIN}image/nopic100.gif'"></dt>
+</dl>
+<p class="p2 f14">{dsubstr($t[introduce], 22, '..')}</p>
+</a> {/loop}</div>
+<!--3大推荐广告--> 
+
+</div>
+</div>
+<div class="RightBox fr">
+<div class="user clearfix" id="rightUser">
+<div class="headImg">
+<div class="imgBox fl mr10"> {if $_userid} <a target="_blank" href="{$MODULE[2][linkurl]}"><img src="{useravatar($_username, 'large')}&time={$DT_TIME}" width="50" height="50" alt="会员头像"/></a> {else} <img class="img100" src="{DT_SKIN}style/images/head_picture.png" alt="会员头像"> {/if}</div>
+<p class="Themefont01">Hi，<script language="javaScript"> 
+now = new Date(),hour = now.getHours() 
+if(hour < 6){document.write("凌晨好！")} 
+else if (hour < 9){document.write("早上好！")} 
+else if (hour < 12){document.write("上午好！")} 
+else if (hour < 13){document.write("中午好！")} 
+else if (hour < 17){document.write("下午好！")} 
+else if (hour < 19){document.write("傍晚好！")} 
+else if (hour < 23){document.write("晚上好！")} 
+else  {document.write("夜里好！")} 
+</script></p>
+<p class="Themefont">欢迎来到{$DT[sitename]}</p>
+</div>
+<div class="clear"></div>
+<a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="login Themebg iconfont icon-Supplier">登 录</a> <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="regist OrangeBg">免费注册</a></div>
+<div class="centantBox">
+<ul class="ul_bidu mt10">
+<li class="li1"><em>98%</em>的人找项目必看</li>
+<li class="li2"><span class="span_biD f14">加盟必读</span><span class="span_sX">|</span><a href='#' title="5招教你规避加盟风险">5招教你规避加盟风险</a></li>
+</ul>
+</div>
+<div class="ul_jianB clear"> <a href='#' title="项目鉴别"> <i class="zong_icon i26"></i> <span>项目鉴别</span> </a> <a href='#' title="顾问指导"> <i class="zong_icon i27"></i> <span>顾问指导</span> </a> <a href='#' title="考察评测"> <i class="zong_icon i28"></i> <span>考察评测</span> </a> </div>
+<div class="centantBox mt5">
+<ul class="ul_bidu" style="height:39px;">
+<li class="li2"><span class="span_biD f14">招商必读</span><span class="span_sX">|</span><a href='#' title="3招教你开上百加盟店">3招教你开上百加盟店</a></li>
+</ul>
+<ul class="ul_six clear">
+<a href='#' title="品牌包装" class=""> <i class="zong_icon i29"></i>品牌包装</a> <a href='#' title="认证留言" class=""> <i class="zong_icon i30"></i>认证留言</a> <a href='#' style="border-right:none;" title="招商展会" class=""> <i class="zong_icon i31"></i>招商展会 </a> <a href='#' title="创投服务" class=""> <i class="zong_icon i32"></i>创投服务 </a> <a href='#' title="项目呈现" class=""> <i class="zong_icon i33"></i>项目呈现 </a> <a href='#' style="border-right:none;" title="精准推荐" class=""> <i class="zong_icon i34"></i>精准推荐 </a>
+</ul>
+</div>
+</div>
+</div>
+<div class="clearfix"> 
+<!--1楼--> 
+<!--广告区-->
+<div class="clear"></div>
+<div class="cBanner mt20 clearfix"> <a class="f1"></a> <a class="fl" href='#' target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/1f1.jpg" alt=""> </a> <a class="fr" href='#' target="_blank" rel='nofollow'> <img class="img100" src="{DT_SKIN}style/aa/ff/1f2.jpg" alt=""> </a> </div>
+<div class="clear"></div>
+<div class="slide_special mt20 clearfix">
+<div  class="home_special">
+<div class="bd">
+<ul>
+<li> <a href='#' target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-1.jpg" title="单品通APP 为单品移动营销而生" alt="单品通APP 为单品移动营销而生" onerror="reloadImage(this);"></a> </li>
+<li> <a href="#" target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-2.jpg" title="佣金单品通" alt="佣金单品通" onerror="reloadImage(this);"></a> </li>
+<li> <a href='#' target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-3.jpg" title="佣金单品通" alt="佣金单品通" onerror="reloadImage(this);"></a> </li>
+<li><a href='#' target="_blank"><img class="noMargin lazy" src="{DT_SKIN}style/aa/index/4-4.jpg" title="营销商机" alt="营销商机" onerror="reloadImage(this);"></a> </li>
+</ul>
+</div>
+</div>
+</div>
+<!--广告区--> 
+</div>
+</div>
+
+<!--主体区--> 
+<div class="main">
+<!--推荐区-->
+<div class="conBox nch-recommend-borand mt20">
+<div class="title-tj" title="推荐品牌"></div>
+<div class="nch-barnd-list">
+<ul>
+<!--{php $tags=tag("moduleid=13&condition=status=3&areaid=$cityid&pagesize=12&target=_blank&order=addtime desc&template=null");}-->
+{loop $tags $i $t}
+<li>
+<dl>
+<dt><a href='{$t[linkurl]}'><img src="{$t[thumb]}" alt="{$t[alt]}" width="150px" height="50px"></a></dt>
+<dd><a href='{$t[linkurl]}'>{$t[title]}</a></dd>
+</dl>
+</li>
+{/loop}
+</ul>
+</div>
+</div>
+<!--推荐区结束-->
+<div class="wrap_mar"> 
+<!--楼层开始-->
+{php $mid=13}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{php $kk=$i+1}
+{if $i < 6} 
+<div class="brand">
+<div class="brandTop">
+<h3>
+<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}">{$kk}F {$c[catname]}</a></h3>
+<a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" class="more"></a>
+</div>
+<div class="brandBot">
+<div class="brandLeft">
+<ul>
+<!--{php $tags=tag("moduleid=$moduleid&catid=".$c[catid]."&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=15&order=addtime desc&length=50&template=null");}--> 
+{loop $tags $i $t}
+<li><a href="{$t[linkurl]}" target="_blank"><img src="{$t[thumb]}" alt="{$t[alt]}" onerror="this.src='{DT_SKIN}image/nopic100.gif'" title="{$t[title]}" border="0" height="89" width="116"></a>
+<span><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{$t[title]}</a></span>
+</li>
+{/loop}
+</ul>
+</div>
+<div class="rank">
+<div class="rankTop" id="tabMain{$kk}">
+<h3>
+<a class="tab_2">关注排行</a>
+</h3>
+</div>
+<div class="active">
+<ul style="display: block;">
+<!--{php $tags=tag("moduleid=$moduleid&catid=".$c[catid]."&condition=status=3&areaid=$cityid&pagesize=10&order=hits desc&length=50&template=null");}--> 
+{loop $tags $i $t}
+<li {if $i<3}class="hot"{/if}>
+<i>{$i+1}</i>
+<p><a href="{$t[linkurl]}" title="{$t[title]}" target="_blank">{$t[title]}</a></p>
+<span>{$t[hits]}</span>
+</li>
+{/loop}	
+</ul>
+</div>
+</div>
+<br class="clear">
+</div>
+</div>
+{/if}
+{/loop}
+<!--ff结束-->     
+</div>
+</div>
+<script type="text/javascript" src="{DT_STATIC}file/script/index.js"></script> 
+<script type="text/javascript" src="{DT_SKIN}style/js/scrollPic.js"></script> 
+<script>
+jQuery(".foucebox").slide({ effect:"fold", autoPlay:true, delayTime:300, startFun:function(i){jQuery(".foucebox .showDiv").eq(i).find("h2").css({display:"none",bottom:0}).animate({opacity:"show",bottom:"60px"},300);jQuery(".foucebox .showDiv").eq(i).find("p").css({display:"none",bottom:0}).animate({opacity:"show",bottom:"0px"},300);}});
+</script> 
+{template 'footer'}
