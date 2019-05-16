@@ -18,7 +18,7 @@
           <ul class="news_index" >
             {loop $news_list $t}
            
-            <li><span><strong>{timetodate($t[edittime], 1)}</strong><i>{timetodate($t[edittime], 2)}</i></span><a href="{userurl($username, 'file=news&itemid='.$t[itemid].$city_url, $domain)}">{$t[title]}</a>
+            <li><span><strong>{timetodate($t[addtime], 1)}</strong><i>{timetodate($t[addtime], 2)}</i></span><a href="{userurl($username, 'file=news&itemid='.$t[itemid].$city_url, $domain)}">{$t[title]}</a>
               <br>
               <!-- len=50 -->
               <em>{$t['introduce']}</em></li>
