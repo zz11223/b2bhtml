@@ -13,8 +13,9 @@
         <div class="contents">  
  
 <div class="main_body">
-	<div class="px14 lh18">
-		  
+	
+	{if empty($COM[comcontactshow]) || $COM[comcontactshow]!=2}	 
+    <div class="px14 lh18"> 
 	 <ul class="product_info">
 	<!-- <table width="100%" cellpadding="10" cellspacing="1"> -->
 	<li>公司名称： {$COM[company]}</li>
@@ -54,7 +55,15 @@
 	{if $COM[skype] && $DT[im_skype]}<li class="zztalk">skype：{im_skype($COM[skype])}</li>{/if}
 	 
 	</ul>
-	</div>
+    </div>
+    {/if}
+   
+    {if !empty($COM[comcontactshow]) && $COM[comcontactshow]>1}
+    <div class="px14 lh18">
+        {$COM[comcontact]}
+    </div>
+    {/if}
+	
 	 
 	{php if(!empty($COM[commap])){$params=explode('|',$COM[commap]);}}
 	 
