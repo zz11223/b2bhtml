@@ -1,7 +1,7 @@
- 
+ {php $tels=explode(' ',$COM[telephone]);}
  <nav class="navbar navbar-default navbar-fixed-bottom footer_nav" style="height:auto">
   <div class="foot_nav"><a href="{userurl($username, 'file=homepage'.$city_url, $domain)}"><span class="glyphicon btn-lg" aria-hidden="true"><img src="{DT_STATIC}/company/htmlnew/images/foot-index.png" ></span>首页</a></div>
-  <div class="foot_nav"><a href="tel:{$COM[telephone]}"><span class="glyphicon btn-lg" aria-hidden="true"><img src="{DT_STATIC}/company/htmlnew/images/foot-phone.png" ></span>手机</a></div>
+  <div class="foot_nav"><a href="tel:{$tels[0]}"><span class="glyphicon btn-lg" aria-hidden="true"><img src="{DT_STATIC}/company/htmlnew/images/foot-phone.png" ></span>手机</a></div>
   <div class="foot_nav"  aria-hidden="true"  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="glyphicon btn-lg"><img src="{DT_STATIC}/company/htmlnew/images/foot-cate.png" ></span>分类</div>
   <div class="foot_nav"><a id="gototop" href="#"><span class="glyphicon  btn-lg" aria-hidden="true"><img src="{DT_STATIC}/company/htmlnew/images/foot-top.png" ></span>顶部</a></div>
 </nav>
@@ -15,8 +15,12 @@
 		{php include DT_ROOT.'/api/stats/'.$HOME['stats_type'].'/show.inc.php';}
 		{/if}
 	</p>
-    <p class="copyright_p">地址：{$COM[address]} &nbsp;
-    	 {if $COM[telephone]}电话：{$COM[telephone]}&nbsp;
+    <p >地址：{$COM[address]} &nbsp;
+    	 {if $COM[telephone]}
+    	 电话：
+			{loop $tels $v}
+    	 <a href="tel:{$tels[0]}">{$v}</a>&nbsp;
+    	 	{/loop}
 	{/if}
 	{if $COM[mail]}
 	 邮件：{$COM[mail]}&nbsp;
