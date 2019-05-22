@@ -395,19 +395,21 @@ while($r = $db->fetch_array($result)) {
  
 $count_menu=count($MENU)+count($nav_page);
  //添加友链
-$links = array();
+
+$ids='';
 $link_nums=20;
 $link_uid=$COM['userid'];
 $table_links=$DT_PRE.'links';
 $table_links_uid=$DT_PRE.'links_uid';
-$sql_links="SELECT l.itemid,l.title,l.linkurl FROM `{$table_links_uid}` as lu ".
-	"join {$table_links}` as l on `lu.userid`={$link_uid} and lu.linkid=l.itemid" ;
-$result = $db->query($sql_links);
+ 
+$sql="SELECT `linkid` FROM `{$table_links_uid}` where `userid`={$link_uid} limit {$link_nums}" ;
+$result = $db->query($sql);
 while($r = $db->fetch_array($result)) {
-    $links[] = $r;
+    $ids.= $r['linkid'].',';
 }
+
 //不存在链接会自动生成
-if(empty($links)){ 
+if(empty($ids)){ 
 	//获取所有link
 	$sql="select `itemid` from `{$table_links}`";
 	$links_all = array();
@@ -431,11 +433,15 @@ if(empty($links)){
 	$db->query($sql);
 	//添加后再读取
 	$ids=implode(',', $rand_keys);
-	$sql_links="SELECT itemid,title,linkurl FROM `{$table_links}` where itemid in({$ids})" ;
-	$result = $db->query($sql_links);
-	while($r = $db->fetch_array($result)) {
-	    $links[] = $r;
-	}
+	 
+}else{
+	$ids=substr($ids, 0,strlen($ids)-1);
+}
+$sql_links="SELECT itemid,title,linkurl FROM `{$table_links}` where itemid in({$ids})" ;
+$result = $db->query($sql_links);
+$links = array();
+while($r = $db->fetch_array($result)) {
+    $links[] = $r;
 }
  
 
