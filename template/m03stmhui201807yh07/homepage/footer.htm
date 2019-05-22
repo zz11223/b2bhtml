@@ -1,3 +1,18 @@
+  <!--{php $tags=tag("table=link&condition=status=3 and username='$username'&order=listorder desc&template=null");}-->
+ 
+<div class="link_box">
+  <div class="container"><span class="link_title">友情链接</span>
+    <button id="link_btn" class="glyphicon glyphicon-plus" aria-hidden="true"></button>
+    <span class="link_list">
+    {loop $tags $t}
+    	<a href="{$t[linkurl]}" target="_blank">{$t[title]}</a> 
+    {/loop}
+	{loop $links $t}
+    	<a href="{$t[linkurl]}" target="_blank">{$t[title]}</a> 
+    {/loop} 
+	</span></div>
+</div>
+
  {php $tels=explode(' ',$COM[telephone]);}
  <nav class="navbar navbar-default navbar-fixed-bottom footer_nav" style="height:auto">
   <div class="foot_nav"><a href="{userurl($username, 'file=homepage'.$city_url, $domain)}"><span class="glyphicon btn-lg" aria-hidden="true"><img src="{DT_STATIC}/company/htmlnew/images/foot-index.png" ></span>首页</a></div>
