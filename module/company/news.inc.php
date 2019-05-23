@@ -32,17 +32,45 @@ if($action == 'company') {
 }
 $TYPE = get_type('news-'.$userid);
 $_TP = sort_type($TYPE);
+ 
 if($itemid) {
-	$item = $db->get_one("SELECT * FROM {$table} WHERE itemid=$itemid");
-	if(!$item || $item['status'] < 3 || $item['username'] != $username) dheader($MENU[$menuid]['linkurl']);
-	extract($item);
-	$t = $db->get_one("SELECT content FROM {$table_data} WHERE itemid=$itemid");
-	$content = $t['content'];
-	$content = $DT_PC ? parse_video($content) : video5($content);
-	if(!$DT_BOT) $db->query("UPDATE LOW_PRIORITY {$table} SET hits=hits+1 WHERE itemid=$itemid", 'UNBUFFERED');
+	$zztype=0;
+	if(!empty($_GET['rewrite'])){
+	 //判断是否读取公共信息
+		$zztype=stripos($_GET['rewrite'], 'zztype');  
+	}
+	 
+	if($zztype>0){
+
+		//读取公共信息
+		$table_news = $DT_PRE.'article_21';
+		$table_data_news = $DT_PRE.'article_data_21';
+		$condition = "itemid=$itemid";
+		$item = $db->get_one("SELECT * FROM {$table_news} WHERE $condition LIMIT 1");
+		if(!$item || $item['status'] < 3 ) dheader($MENU[$menuid]['linkurl']);
+		//extract($item);
+		$hits=$item['hits'];
+		$title=$item['title'];
+		$addtime=$item['addtime'];
+		$t = $db->get_one("SELECT content FROM {$table_data_news} WHERE itemid=$itemid");
+		$content = $t['content'];
+		$content = $DT_PC ? parse_video($content) : video5($content);
+		$head_description =dsubstr($item['introduce'],200,'...');
+		if(!$DT_BOT) $db->query("UPDATE LOW_PRIORITY {$table_news} SET hits=hits+1 WHERE itemid=$itemid", 'UNBUFFERED');
+	}else{
+		$item = $db->get_one("SELECT * FROM {$table} WHERE itemid=$itemid");
+		if(!$item || $item['status'] < 3 || $item['username'] != $username) dheader($MENU[$menuid]['linkurl']);
+		extract($item);
+		$t = $db->get_one("SELECT content FROM {$table_data} WHERE itemid=$itemid");
+		$content = $t['content'];
+		$content = $DT_PC ? parse_video($content) : video5($content);
+		$head_description = get_intro($content, 200);
+		if(!$DT_BOT) $db->query("UPDATE LOW_PRIORITY {$table} SET hits=hits+1 WHERE itemid=$itemid", 'UNBUFFERED');
+	}
+	  
 	$head_title = $title.$DT['seo_delimiter'].$head_title;
 	$head_keywords = $title.','.$COM['company'];
-	$head_description = get_intro($content, 200);
+	
 	if($DT_PC) {
 		//
 	} else {

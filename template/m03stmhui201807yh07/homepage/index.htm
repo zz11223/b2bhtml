@@ -18,31 +18,22 @@
           <ul class="news_index" >
             {loop $news_list $t}
            
-            <li><span><strong>{timetodate($t[addtime], 1)}</strong><i>{timetodate($t[addtime], 2)}</i></span><a href="{userurl($username, 'file=news&itemid='.$t[itemid].$city_url, $domain)}">{$t[title]}</a>
+            <li><span><strong>{timetodate($t[addtime], 1)}</strong><i>{timetodate($t[addtime], 2)}</i></span><a href="{$t['linkurl']}">{$t[title]}</a>
               <br>
               <!-- len=50 -->
               <em>{$t['introduce']}</em></li>
             </li>
             {/loop}
+            <li><span><strong>{timetodate($news_one[addtime], 1)}</strong><i>{timetodate($news_one[addtime], 2)}</i></span><a href="{$news_one['linkurl']}">{$news_one[title]}</a>
+              <br> 
+              <em>{$news_one['introduce']}</em></li>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
- 
-<!--{php $tags=tag("table=link&condition=status=3 and username='$username'&order=listorder desc&template=null");}-->
- 
- {if $tags}
-<div class="link_box">
-  <div class="container"><span class="link_title">友情链接</span>
-    <button id="link_btn" class="glyphicon glyphicon-plus" aria-hidden="true"></button>
-    <span class="link_list">
-    {loop $tags $t}
-    <a href="{$t[linkurl]}" target="_blank">{$t[title]}</a> 
-    {/loop}</span></div>
-</div>
-{/if}
 <script src="{DT_STATIC}/company/htmlnew/js/jquery.smoove.min.js"></script><script>$('.product_head,.product_img,.advantage_head,.advantage_col,.about_head,.about_content,.case_head,.news_head,.news_index').smoove({offset:'10%'});</script> 
   
 {template 'footer', $template}

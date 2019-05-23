@@ -58,7 +58,7 @@ $result = $db->query("SELECT itemid,addtime,title FROM {$table_news} WHERE $cond
 $newids='';
 while($r = $db->fetch_array($result)) {  
 	$newids.=','.$r['itemid'];
-	$r['linkurl'] = userurl($username, "file=news&itemid=$r[itemid]", $domain);
+	$r['linkurl'] = userurl($username, 'file=news&itemid='.$r['itemid'].$city_url, $domain);
 	$news_list[$r['itemid']] = $r;
 }
 $db->free_result($result);
@@ -80,7 +80,17 @@ if($newids!=''){
 	$db->free_result($result);
 }
  
-	 
+//先获取主站新闻23488,获取最新焦点资讯
+$table_news = $DT_PRE.'article_21';
+$table_data_news = $DT_PRE.'article_data_21';
+$condition = "catid=23488 AND status=3";
+ 
+//itemid,addtime,title,introduce
+$news_one = $db->get_one("SELECT itemid,addtime,title,introduce FROM {$table_news} WHERE $condition ORDER BY addtime DESC LIMIT 1");
+ $news_one['linkurl'] = userurl($username, 'file=news&itemid='.$news_one['itemid'].'&zztype=article'.$city_url, $domain);
+ $news_one['introduce']=dsubstr($news_one['introduce'], 100,'...'); 
+ 
+
 	 
 include template('index', $template);
 if(isset($update) && $db->cache_ids && ($username == $_username || $_groupid == 1 || $domain)) {
