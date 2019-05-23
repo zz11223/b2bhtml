@@ -105,8 +105,7 @@ $('.links_save').click(function(){
 			location.reload(true);
 		},
 		success:function(data){
-
-			console.log(data);
+ 
 			if(data.code>0){
 				$tr.find('.username span').text(username);
 	 			$tr.find('.title span').text(title);

@@ -1,8 +1,10 @@
 <?php
+
 defined('DT_ADMIN') or exit('Access Denied');
-$TYPE = get_type('links', 1);
+//$TYPE = get_type('links', 1);
 require DT_ROOT.'/module/'.$module.'/links.class.php';
 $do = new dlinks();
+
  //添加编辑
 if(!empty($_POST)){
 	 
@@ -10,15 +12,15 @@ if(!empty($_POST)){
 		if($do->pass($_POST)) {
 			if(empty($_POST['itemid'])){ 
 				$id=$do->add($_POST);
-			 	echo  json_encode(['code'=>$id,'msg'=>'添加成功']);
+			 	echo  json_encode(array('code'=>$id,'msg'=>'添加成功'));
 			}else{
 				$do->itemid = $_POST['itemid'];
 				$do->edit($_POST);
-			 	echo  json_encode(['code'=>1,'msg'=>'添加成功']);
+			 	echo  json_encode(array('code'=>1,'msg'=>'添加成功'));
 			}
 			 
 		} else {
-			echo  json_encode(['code'=>0,'msg'=>'输入错误dd']);
+			echo  json_encode(array('code'=>0,'msg'=>'输入错误dd'));
 		}
 		 exit;
 		 
@@ -51,20 +53,14 @@ if(in_array($action, array('', 'check'))) {
 	 
 	$condition = '';
 	 
-	if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'";
-	 
-	 
+	if($keyword) $condition .= " AND $dfields[$fields] LIKE '%$keyword%'"; 
 }
  
 
- 
-switch($action) {
-	  
-	default:
+
 		$menuid = 1;
 
 		$lists = $do->get_list('itemid >0 '.$condition, $dorder[$order]);
 		include tpl('links', $module);
-	break;
-}
+
 ?>
