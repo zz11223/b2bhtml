@@ -49,6 +49,15 @@ if($DT_PC) {
 	$head_name = $L['com_home'];
 }
 /*添加新闻*/
+//先获取主站新闻23488,获取最新焦点资讯
+$table_news = $DT_PRE.'article_21'; 
+$condition = "catid=23488 AND status=3";
+ 
+//itemid,addtime,title,introduce
+$news_one = $db->get_one("SELECT itemid,addtime,title,introduce FROM {$table_news} WHERE $condition ORDER BY addtime DESC LIMIT 1");
+$news_one['linkurl'] = userurl($username, 'file=news&itemid='.$news_one['itemid'].'&zztype=article'.$city_url, $domain);
+$news_one['introduce']=dsubstr($news_one['introduce'], 100,'...'); 
+//获取公司新闻
 $table_news = $DT_PRE.'news';
 $table_data_news = $DT_PRE.'news_data';
 $condition = "username='$username' AND status=3";
@@ -56,10 +65,19 @@ $news_list = array();
 //id,edittime,title
 $result = $db->query("SELECT itemid,addtime,title FROM {$table_news} WHERE $condition ORDER BY level desc,addtime DESC LIMIT 4");
 $newids='';
+//标记第几个，在第三个后添加主站新闻
+$i=0;
 while($r = $db->fetch_array($result)) {  
 	$newids.=','.$r['itemid'];
 	$r['linkurl'] = userurl($username, 'file=news&itemid='.$r['itemid'].$city_url, $domain);
+	$i++;
+	if($i==4){
+		$news_list[$news_one['itemid']] = $news_one; 
+	}
 	$news_list[$r['itemid']] = $r;
+}
+if(count($news_list)<4){
+	$news_list[$news_one['itemid']] = $news_one; 
 }
 $db->free_result($result);
 if($newids!=''){
@@ -80,18 +98,8 @@ if($newids!=''){
 	$db->free_result($result);
 }
  
-//先获取主站新闻23488,获取最新焦点资讯
-$table_news = $DT_PRE.'article_21';
-$table_data_news = $DT_PRE.'article_data_21';
-$condition = "catid=23488 AND status=3";
- 
-//itemid,addtime,title,introduce
-$news_one = $db->get_one("SELECT itemid,addtime,title,introduce FROM {$table_news} WHERE $condition ORDER BY addtime DESC LIMIT 1");
- $news_one['linkurl'] = userurl($username, 'file=news&itemid='.$news_one['itemid'].'&zztype=article'.$city_url, $domain);
- $news_one['introduce']=dsubstr($news_one['introduce'], 100,'...'); 
- 
 
-	 
+  
 include template('index', $template);
 if(isset($update) && $db->cache_ids && ($username == $_username || $_groupid == 1 || $domain)) {
 	foreach($db->cache_ids as $v) {
