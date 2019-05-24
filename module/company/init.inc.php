@@ -394,60 +394,6 @@ while($r = $db->fetch_array($result)) {
 }
  
 $count_menu=count($MENU)+count($nav_page);
- //添加友链
-
-$ids='';
-$link_nums=20;
-$link_uid=$COM['userid'];
-$table_links=$DT_PRE.'links';
-$table_links_uid=$DT_PRE.'links_uid';
- 
-$sql="SELECT `linkid` FROM `{$table_links_uid}` where `userid`={$link_uid} limit {$link_nums}" ;
-$result = $db->query($sql);
-while($r = $db->fetch_array($result)) {
-    $ids.= $r['linkid'].',';
-}
-
-//不存在链接会自动生成
-if(empty($ids)){ 
-	//获取所有link
-	$sql="select `itemid` from `{$table_links}`";
-	$links_all = array();
-	$result = $db->query($sql);
-	while($r = $db->fetch_array($result)) { 
-	    $links_all[$r['itemid']] = $r['itemid'];
-	}
-	//随机取20$link_nums个
-	if(count($links_all) < $link_nums){
-		$rand_keys = $links_all;
-	}else{
-		$rand_keys = array_rand($links_all,$link_nums);
-	}
-	 
-	//有链接后添加对应绑定
-	$sql="INSERT INTO `{$table_links_uid}` (userid,linkid) VALUES ";
-	foreach($rand_keys as $v){
-		$sql.=" ({$link_uid},{$v}),";
-	}
-	$sql=substr($sql, 0,strlen($sql)-1);
-	$db->query($sql);
-	//添加后再读取
-	$ids=implode(',', $rand_keys);
-	 
-}else{
-	$ids=substr($ids, 0,strlen($ids)-1);
-}
-$sql_links="SELECT itemid,title,linkurl FROM `{$table_links}` where itemid in({$ids})" ;
-$result = $db->query($sql_links);
-$links = array();
-while($r = $db->fetch_array($result)) {
-    $links[] = $r;
-}
- 
-
-
- 
- 
 
 include DT_ROOT.'/module/company/'.$file.'.inc.php';
 ?>

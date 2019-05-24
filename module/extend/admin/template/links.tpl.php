@@ -9,8 +9,13 @@ show_menu($menus);
 <form action="?" >
 	<div class="btns"> 
 		<input type="button" value="添加" class="btn-g" id="links_add" /> 
+		 <select name="" id="companys" >
+ 	
+
+ 		</select>
 		<span id="links_add_span"></span>
 	</div>
+	 
 <input type="hidden" name="moduleid" value="<?php echo $moduleid;?>"/>
 <input type="hidden" name="file" value="<?php echo $file;?>"/>
 <input type="hidden" name="action" value="<?php echo $action;?>"/>
@@ -28,18 +33,25 @@ show_menu($menus);
  
 <table cellspacing="0" class="tb ls">
 <tr>
- <th>所属会员</th>  
-<th>名称</th> 
-<th>链接</th>
+ <th>所属公司</th>  
+ <th>公司链接</th>
+<th>关键词</th> 
+<th>关键词链接</th>
+
 <th width="180">操作</th>
 </tr>
 <tbody id="tbody">
 <?php foreach($lists as $k=>$v) {?>
 <tr class="links_tr" align="center" title="编辑:<?php echo $v['aname'];?>&#10;添加时间:<?php echo $v['adddate'];?>&#10;更新时间:<?php echo $v['editdate'];?> ">
 	<input type="hidden" class="itemid" value="<?php echo $v['itemid'];?>">
+	<input type="hidden" class="id" value="<?php echo $v['id'];?>">
  <td class="username">
- 	<span class="info1"><?php echo $v['username'];?></span>
-<input class="info2 " style="display:none;" type="text" value="<?php echo $v['username'];?>">
+ 	<span ><?php echo $v['username'];?></span>
+ 
+ </td>
+ <td  class="comurl">
+	<a  href="<?php echo DT_PATH;?>api/redirect.php?url=<?php echo urlencode($v['comurl']);?>" target="_blank"><?php echo $v['comurl'];?></a>
+  
  </td>
  <td class="title">
  	<span class="info1"><?php echo $v['title'];?></span>
@@ -66,12 +78,48 @@ show_menu($menus);
  
 <script>
 var url=location.href; 
+  
+$.ajax({
+	url: url,
+	type:'post', 
+	data:{'actionget':'actionget'},
+	dataType:'json',
+	error:function(data){
+		alert('错误，刷新页面');
+		location.reload(true);
+	},
+	success:function(data){
+		 
+		var options='';
+ 		for(var i in data){
+ 			options+='<option value="'+data[i]['id']+'">'+data[i]['username']+'-'+data[i]['comurl']+'</option>';
+ 		}
+ 		 
+ 		$('#companys').html(options);
+	}
+});
+
 $('#links_add').click(function(){
 	 
 	$('#tbody').prepend($('.links_tr').eq(0).clone(true)); 
-	$('.links_tr').eq(0).find('.info1').hide();
-	$('.links_tr').eq(0).find('.info2').show();
-	$('.links_tr').eq(0).find('.itemid').val(0);
+	var $tr=$('.links_tr').eq(0);
+	$tr.find('.info1').hide();
+	$tr.find('.info2').show();
+	$tr.find('.itemid').val(0);
+	var txt=$.trim($('#companys option:selected').eq(0).text());
+	var id=$('#companys').val(); 
+	 
+	var arrs=txt.split('-');
+	var comurl=arrs[1];
+	var username=arrs[0]; 
+	$tr.find('.itemid').val(0);
+	$tr.find('.id').val(id);
+	$tr.find('.username span').text(username);
+	$tr.find('.comurl a').text(comurl); 
+	$tr.find('.comurl a').attr('href',comurl); 
+	$tr.find('.title input').val('');
+	$tr.find('.linkurl input').text('');
+	
 });
 $('.links_edit').click(function(){
 	var $tr=$(this).parent().parent();
@@ -82,17 +130,16 @@ $('.links_edit').click(function(){
 $('.links_save').click(function(){
 	 
 
-	var $tr=$(this).parent().parent();
- 
-	var username=$.trim($tr.find('.username input').val());
+	var $tr=$(this).parent().parent(); 
 	var title=$.trim($tr.find('.title input').val());
 	var linkurl=$.trim($tr.find('.linkurl input').val());
 	var itemid=parseInt($tr.find('.itemid').val());
-	 var json_data;
+	var company=parseInt($tr.find('.id').val());
+	var json_data;
 	if(itemid>0){
-		json_data={'actionp':'add','username':username,'title':title,'linkurl':linkurl,'itemid':itemid};
+		json_data={'actionp':'add','title':title,'linkurl':linkurl,'itemid':itemid};
 	}else{
-		json_data={'actionp':'add','username':username,'title':title,'linkurl':linkurl};
+		json_data={'actionp':'add','title':title,'linkurl':linkurl,'company':company};
 	}
 	 
 	 $.ajax({
@@ -105,9 +152,10 @@ $('.links_save').click(function(){
 			location.reload(true);
 		},
 		success:function(data){
- 
+
+			console.log(data);
 			if(data.code>0){
-				$tr.find('.username span').text(username);
+				 
 	 			$tr.find('.title span').text(title);
 				$tr.find('.linkurl a').text(linkurl);
 				$tr.find('.linkurl a').attr('href',linkurl);

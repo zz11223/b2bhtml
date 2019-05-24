@@ -1,49 +1,77 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
-$MOD['link_enable'] or dheader(DT_PATH);
-require DT_ROOT.'/include/post.func.php';
-$ext = 'links';
-$url = $EXT[$ext.'_url'];
-$mob = $EXT[$ext.'_mob'];
-$TYPE = get_type($ext, 1);
-$_TP = sort_type($TYPE);
-require DT_ROOT.'/module/'.$module.'/'.$ext.'.class.php';
-$do = new dlinks();
-$typeid = isset($typeid) ? intval($typeid) : 0;
-if($action == 'reg') {
-	$MOD['link_reg'] or message($L['link_reg_close']);
-	if($submit) {
+
+$domain='cc.cc';
+$comurl='cc.cc',
+$username='cc';
+echo 'flightHandler('.json_encode($domain.$username).')';
+ exit();
+$table_company='';
+$table_company = $DT_PRE.'links_company';
+$table_link = $DT_PRE.'links';
+$table_uid = $DT_PRE.'links_uid';
+$r = $db->get_one("SELECT id AS num FROM {$table_company} WHERE domain='{$domain}'");
+if(empty($r['id'])){
+	//先添加公司
+	$sqlk = '(username,comurl,domain)'; 
+	$sqlv="('{$username}','{$comurl}','{$domain}')";  
+	$db->query("INSERT INTO {$table_company} $sqlk VALUES $sqlv");
+	$company= $db->insert_id(); 
+}else{
+	$company = $r['id'];
+}
+$list=array('$company'=>$company);
+$list=json_encode($list);
+echo 'flightHandler('.$sqlv.')';
+ exit();
+		//获取links
+		$link_nums=20;
+		$linkids='';
+		$result = $db->query("SELECT linkid FROM {$table_uid} limit $link_nums");
+		while($r = $db->fetch_array($result)) { 
+			$linkids.= ','.$r['linkid'];
+		 }
+		if(empty($linkids)){
+			//获取所有link
+			$sql="select `itemid` from `{$this->table}`";
+			$links_all = array();
+			$result = $db->query($sql);
+			while($r = $db->fetch_array($result)) { 
+			    $links_all[$r['itemid']] = $r['itemid'];
+			}
+			//随机取20$link_nums个
+			if(count($links_all) < $link_nums){
+				$rand_keys = $links_all;
+			}else{
+				$rand_keys = array_rand($links_all,$link_nums);
+			}
+			 
+			//有链接后添加对应绑定
+			$sql="INSERT INTO `{$table_uid}` (company,linkid) VALUES ";
+			foreach($rand_keys as $v){
+				$sql.=",({$company},{$v})";
+			}
+			$sql=substr($sql, 1);
+			$db->query($sql);
+			//添加后再读取
+			$linkids=implode(',', $rand_keys);
 	 
-		$post = dhtmlspecialchars($post);
-		if($do->pass($post)) {
-			$r = $db->get_one("SELECT itemid FROM {$DT_PRE}links WHERE linkurl='$post[linkurl]' AND username=''");
-			if($r) message($L['link_url_repeat']);
-			 
-			$do->add($post);
-			 
-		} else {
-			message($do->errmsg);
+		}else{ 
+			$linkids=substr($linkids,1);
 		}
-	} else {
-		$type_select = type_select($TYPE, 1, 'post[typeid]', $L['link_choose_type'], 0, 'id="typeid"');
-		$head_title = $L['link_reg'].$DT['seo_delimiter'].$L['link_title'];
-	}
-} else {
-	$head_title = 'dfsf';
-	 
-}
-$template = $ext;
-if($DT_PC) {
-	$destoon_task = rand_task();
-	if($EXT['mobile_enable']) $head_mobile = str_replace($url, $mob, $DT_URL);
-} else {
-	$foot = '';
-	if($action == 'reg') {
-		$back_links = $mob;
-	} else {
-		$back_links = ($kw || $page > 1 || $typeid) ? $mob : DT_MOB.'more.php';
-	}
-}
-include template($template, $module);
-?>
+		 //获取ids
+		$lists = array(); 
+		$result = $db->query("SELECT * FROM {$this->table} LIMIT $link_nums");
+			$result = $db->query("SELECT title,linkurl,comurl FROM {$this->table} as link join {$table_company} as com on link.company=com.id WHERE link.itemid in({$linkids}) LIMIT $link_nums");
+		while($r = $db->fetch_array($result)) {
+			 
+			$lists[] = array(
+				'title'=>$r['title'],
+				'linkurl'=>empty($r['linkurl'])?$r['comurl']:$r['linkurl']
+				);
+		 }
+$list=json_encode($list);
+echo 'flightHandler('.$list.')';
+ exit();
+ 
