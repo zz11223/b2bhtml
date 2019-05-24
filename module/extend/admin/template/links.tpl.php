@@ -85,8 +85,7 @@ $.ajax({
 	data:{'actionget':'actionget'},
 	dataType:'json',
 	error:function(data){
-		alert('错误，刷新页面');
-		location.reload(true);
+		alert('错误，请刷新重试'); 
 	},
 	success:function(data){
 		 
@@ -148,8 +147,7 @@ $('.links_save').click(function(){
 		data:json_data,
 		dataType:'json',
 		error:function(data){
-			alert('错误，刷新页面');
-			location.reload(true);
+			alert('错误，请刷新重试'); 
 		},
 		success:function(data){
 
