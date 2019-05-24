@@ -35,10 +35,12 @@ show_menu($menus);
 <tr>
  <th>所属公司</th>  
  <th>公司链接</th>
+ <th >公司操作</th>
 <th>关键词</th> 
 <th>关键词链接</th>
 
-<th width="180">操作</th>
+<th >关键字操作</th>
+
 </tr>
 <tbody id="tbody">
 <?php foreach($lists as $k=>$v) {?>
@@ -46,13 +48,20 @@ show_menu($menus);
 	<input type="hidden" class="itemid" value="<?php echo $v['itemid'];?>">
 	<input type="hidden" class="id" value="<?php echo $v['id'];?>">
  <td class="username">
- 	<span ><?php echo $v['username'];?></span>
- 
+ 	<span class="com1"><?php echo $v['username'];?></span>
+ <input class="com2" style="display:none;" type="text" value="<?php echo $v['username'];?>">
  </td>
  <td  class="comurl">
-	<a  href="<?php echo DT_PATH;?>api/redirect.php?url=<?php echo urlencode($v['comurl']);?>" target="_blank"><?php echo $v['comurl'];?></a>
-  
+	<a  class="com1" href="<?php echo DT_PATH;?>api/redirect.php?url=<?php echo urlencode($v['comurl']);?>" target="_blank"><?php echo $v['comurl'];?></a>
+   <input class="com2" style="display:none;" type="text" value="<?php echo $v['comurl'];?>">
  </td>
+ <td>
+ 
+ <input type="button" value="公司修改" class="btn-g com_edit"  /> 
+&nbsp;&nbsp;&nbsp;
+ 
+ <input type="button" value="公司保存" class="btn-g com_save"  /> 
+</td>
  <td class="title">
  	<span class="info1"><?php echo $v['title'];?></span>
 <input class="info2" style="display:none;" type="text" value="<?php echo $v['title'];?>">
@@ -62,10 +71,11 @@ show_menu($menus);
  <input class="info2" style="display:none;" type="text" value="<?php echo $v['linkurl'];?>">
  </td>
 <td>
-<img class="links_edit" src="admin/image/edit.png" width="16" height="16" title="修改" alt=""/>
+ 
+ <input type="button" value="关键字修改" class="btn-g links_edit"  /> 
 &nbsp;&nbsp;&nbsp;
  
- <input type="button" value="保存" class="btn-g links_save"  /> 
+ <input type="button" value="关键字保存" class="btn-g links_save"  /> 
 </td>
 </tr>
 <?php }?>
@@ -92,8 +102,7 @@ $.ajax({
 		var options='';
  		for(var i in data){
  			options+='<option value="'+data[i]['id']+'">'+data[i]['username']+'-'+data[i]['comurl']+'</option>';
- 		}
- 		 
+ 		} 
  		$('#companys').html(options);
 	}
 });
@@ -114,8 +123,10 @@ $('#links_add').click(function(){
 	$tr.find('.itemid').val(0);
 	$tr.find('.id').val(id);
 	$tr.find('.username span').text(username);
+	$tr.find('.username input').val(username);
 	$tr.find('.comurl a').text(comurl); 
-	$tr.find('.comurl a').attr('href',comurl); 
+	$tr.find('.comurl a').attr('href',comurl);
+	$tr.find('.comurl input').val(comurl);   
 	$tr.find('.title input').val('');
 	$tr.find('.linkurl input').text('');
 	
@@ -168,6 +179,23 @@ $('.links_save').click(function(){
 			}
 		}
 	});
+});
+$('.com_edit').click(function(){
+	var $tr=$(this).parent().parent();
+	$tr.find('.com1').hide();
+	$tr.find('.com2').show();
+	 
+});
+$('.com_save').click(function(){
+	  
+	var $tr=$(this).parent().parent(); 
+	var username=$.trim($tr.find('.username input').val());
+	var comurl=$.trim($tr.find('.comurl input').val()); 
+	var id=parseInt($tr.find('.id').val());
+	var json_data;
+	 var url=location.href;
+	 location.href=url+'&filedo=company&id='+id+'&username='+username+'&comurl='+encodeURI(comurl); 
+	 return 0; 
 });
   
 </script>

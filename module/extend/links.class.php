@@ -55,6 +55,28 @@ class dlinks {
 		}
 		return $lists;
 	}
+	function edit_company($data) {
+		$table_company = $this->table_company;
+		if(empty($data['id'])){
+			return 0;
+		}
+		$id=intval($data['id']); 
+		$username=trim($data['username']);
+		$comurl=trim($data['comurl']);
+		$domain=$comurl;
+		$len1=strpos($domain,'//'); 
+		if($len1>0){
+			$domain=substr($domain,$len1+2);
+		} 
+		$len2=strrpos($domain,'/');
+		if($len2>0){
+			$domain=substr($domain,0,$len2);
+		} 
+		 $sql="update `{$table_company}` set `username`='{$username}',`comurl`='{$comurl}',`domain`='{$domain}' where `id`={$id}";
+		 
+		$result = DB::query($sql); 
+		return 1;
+	}
 	function get_list($condition = '1', $order = 'itemid DESC') {
 		global $MOD, $TYPE, $pages, $page, $pagesize, $offset, $sum;
 		 

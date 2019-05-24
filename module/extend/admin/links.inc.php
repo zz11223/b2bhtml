@@ -11,15 +11,15 @@ if(!empty($_POST)){
 		if($do->pass($_POST)) {
 			if(empty($_POST['itemid'])){ 
 				$id=$do->add($_POST);
-			 	echo  json_encode(['code'=>$id,'msg'=>'添加成功']);
+			 	echo  json_encode(array('code'=>$id,'msg'=>'添加成功'));
 			}else{
 				$do->itemid = $_POST['itemid'];
 				$do->edit($_POST);
-			 	echo  json_encode(['code'=>1,'msg'=>'添加成功']);
+			 	echo  json_encode(array('code'=>1,'msg'=>'添加成功'));
 			}
 			 
 		} else {
-			echo  json_encode(['code'=>0,'msg'=>'输入错误dd']);
+			echo  json_encode(array('code'=>0,'msg'=>'输入错误dd'));
 		}
 		 exit;
 		 
@@ -33,6 +33,7 @@ if(!empty($_POST)){
 $menus = array (
     array('添加公司', '?moduleid='.$moduleid.'&file='.$file.'&action=add'),
     array('推荐链接列表', '?moduleid='.$moduleid.'&file='.$file),
+    
    
 );
 
@@ -61,8 +62,6 @@ if(in_array($action, array('', 'check'))) {
 	 
 }
  
-
- 
 switch($action) {
 	 case 'add':
 		if($submit) {
@@ -87,7 +86,13 @@ switch($action) {
 			include tpl('links_edit', $module);
 		}
 	break; 
+	 
 	default:
+		if(isset($_GET['filedo'])){
+			 
+			 $do->edit_company($_GET);
+		}
+
 		$menuid = 1;
 
 		$lists = $do->get_list('itemid >0 '.$condition, $dorder[$order]);
