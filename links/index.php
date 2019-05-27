@@ -6,9 +6,10 @@ $moduleid = 3;
 require '../common.inc.php';
 $links = array(); 
 $links[]=array('title'=>'诚信315','linkurl'=>'http://www.chengxin315.com');
+//return $links; 
 if(empty($_GET['url']) || empty($_GET['title'])){
  	$links=json_encode($links);
-	echo 'flightHandler('.$links.')';
+	echo $links;
  	exit();
 }
 //接受数据检测
@@ -85,6 +86,6 @@ while($r = $db->fetch_array($result)) {
 		);
  }
 $links=json_encode($links);
-echo 'flightHandler('.$links.')';
+echo $links;
  exit();
  

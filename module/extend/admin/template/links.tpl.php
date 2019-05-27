@@ -4,7 +4,7 @@ include tpl('header');
 
 show_menu($menus);
 ?>
-
+ 
 <div class="sbox" >
 <form action="?" >
 	<div class="btns"> 
@@ -55,12 +55,24 @@ show_menu($menus);
 	<a  class="com1" href="<?php echo DT_PATH;?>api/redirect.php?url=<?php echo urlencode($v['comurl']);?>" target="_blank"><?php echo $v['comurl'];?></a>
    <input class="com2" style="display:none;" type="text" value="<?php echo $v['comurl'];?>">
  </td>
- <td>
+ <td  class="clickInfo">
  
+							
  <input type="button" value="公司修改" class="btn-g com_edit"  /> 
-&nbsp;&nbsp;&nbsp;
- 
+&nbsp;&nbsp;&nbsp; 
  <input type="button" value="公司保存" class="btn-g com_save"  /> 
+ &nbsp;&nbsp;&nbsp;  
+ <input type="button" value="友链更新" class="btn-r com_uid1"  /> 
+  &nbsp;&nbsp;&nbsp; 
+ <input type="button" value="反链更新" class="btn-r com_uid2"  /> 
+  &nbsp;&nbsp;&nbsp; 
+ <input type="button" value="查看友链" class="btn-g com_links1"  /> 
+ 
+   &nbsp;&nbsp;&nbsp;  
+ <input type="button" value="查看反链" class="btn-g com_links2"  /> 
+ <div class="links1"></div>
+  <div class="links2"></div>
+
 </td>
  <td class="title">
  	<span class="info1"><?php echo $v['title'];?></span>
@@ -73,11 +85,12 @@ show_menu($menus);
 <td>
  
  <input type="button" value="关键字修改" class="btn-g links_edit"  /> 
-&nbsp;&nbsp;&nbsp;
  
  <input type="button" value="关键字保存" class="btn-g links_save"  /> 
 </td>
 </tr>
+ 
+ 
 <?php }?>
 </tbody>
 </table>
@@ -87,12 +100,12 @@ show_menu($menus);
 <?php include tpl('footer');?>
  
 <script>
-var url=location.href; 
-  
+var url_href=location.href; 
+  console.log(url_href);
 $.ajax({
-	url: url,
+	url: url_href,
 	type:'post', 
-	data:{'actionget':'actionget'},
+	data:{'actionp':'get_companys'},
 	dataType:'json',
 	error:function(data){
 		alert('错误，请刷新重试'); 
@@ -153,7 +166,7 @@ $('.links_save').click(function(){
 	}
 	 
 	 $.ajax({
-		url: url,
+		url: url_href,
 		type:'post', 
 		data:json_data,
 		dataType:'json',
@@ -192,10 +205,69 @@ $('.com_save').click(function(){
 	var username=$.trim($tr.find('.username input').val());
 	var comurl=$.trim($tr.find('.comurl input').val()); 
 	var id=parseInt($tr.find('.id').val());
-	var json_data;
-	 var url=location.href;
-	 location.href=url+'&filedo=company&id='+id+'&username='+username+'&comurl='+encodeURI(comurl); 
+	var json_data; 
+	 location.href=url_href+'&filedo=company_save&id='+id+'&username='+username+'&comurl='+encodeURI(comurl); 
 	 return 0; 
 });
-  
+$('.com_uid1').click(function(){
+	  
+	var $tr=$(this).parent().parent(); 
+ 
+	var id=parseInt($tr.find('.id').val()); 
+	 var url=location.href;
+	 location.href=url+'&filedo=company_uid1&id='+id; 
+	 return 0; 
+});
+$('.com_uid2').click(function(){
+	  
+	var $tr=$(this).parent().parent(); 
+ 
+	var id=parseInt($tr.find('.id').val()); 
+	 var url=location.href;
+	 location.href=url+'&filedo=company_uid2&id='+id; 
+	 return 0; 
+});
+$('.com_links1').click(function(){
+	var $tr=$(this).parent().parent();
+	var id=parseInt($tr.find('.id').val()); 
+	$.ajax({
+		url: url_href,
+		type:'post', 
+		data:{'actionp':'get_links1','id':id},
+		dataType:'json',
+		error:function(data){
+			alert('错误，请刷新重试'); 
+		},
+		success:function(data){
+			 console.log(data);
+			var labels='友链：';
+	 		for(var i in data){
+	 			 
+	 			labels+='<label  style="display:inline-block;margin:0;padding:2px 10px;"><a href="'+data[i]['linkurl']+'" target="_blank">'+data[i]['username']+'-'+data[i]['title']+'</a></label>';
+	 		 
+	 		} 
+	 		$tr.find('.links1').html(labels); 
+		}
+	});
+});
+$('.com_links2').click(function(){
+	var $tr=$(this).parent().parent();
+	var id=parseInt($tr.find('.id').val()); 
+	$.ajax({
+		url: url_href,
+		type:'post', 
+		data:{'actionp':'get_links2','id':id},
+		dataType:'json',
+		error:function(data){
+			alert('错误，请刷新重试'); 
+		},
+		success:function(data){ 
+			var labels='反链：';
+	 		for(var i in data){
+	 			labels+='<label  style="display:inline-block;margin:0;padding:2px 10px;"><a href="'+data[i]['comurl']+'" target="_blank">'+data[i]['username']+'</a></label>';
+	 		} 
+	 		$tr.find('.links2').html(labels); 
+		}
+	});
+});
 </script>

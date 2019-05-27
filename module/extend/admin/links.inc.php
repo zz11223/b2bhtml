@@ -3,31 +3,44 @@ defined('DT_ADMIN') or exit('Access Denied');
 //$TYPE = get_type('links', 1);
 
 require DT_ROOT.'/module/'.$module.'/links.class.php';
+ 
 $do = new dlinks();
+ error_reporting(E_ALL);
+
  //添加编辑
-if(!empty($_POST)){
-	 
-	if(isset($_POST['actionp'])){
-		if($do->pass($_POST)) {
-			if(empty($_POST['itemid'])){ 
-				$id=$do->add($_POST);
-			 	echo  json_encode(array('code'=>$id,'msg'=>'添加成功'));
-			}else{
-				$do->itemid = $_POST['itemid'];
-				$do->edit($_POST);
-			 	echo  json_encode(array('code'=>1,'msg'=>'添加成功'));
+if(!empty($_POST) && isset($_POST['actionp'])){
+	$actionp=trim($_POST['actionp']);
+	switch($actionp){
+		case 'add':
+			if($do->pass($_POST)) {
+				if(empty($_POST['itemid'])){ 
+					$id=$do->add($_POST);
+				 	echo  json_encode(array('code'=>$id,'msg'=>'添加成功'));
+				}else{
+					$do->itemid = $_POST['itemid'];
+					$do->edit($_POST);
+				 	echo  json_encode(array('code'=>1,'msg'=>'添加成功'));
+				}
+				 
+			} else {
+				echo  json_encode(array('code'=>0,'msg'=>'输入错误dd'));
 			}
-			 
-		} else {
-			echo  json_encode(array('code'=>0,'msg'=>'输入错误dd'));
-		}
-		 exit;
-		 
-	}elseif(isset($_POST['actionget'])){
-		$list=$do->get_companys();
-		echo  json_encode($list);
-		exit;
+			break;
+		case 'get_companys':
+			$list=$do->get_companys();
+			echo  json_encode($list); 
+			break;
+		case 'get_links1':
+			$list=$do->get_links1(intval($_POST['id']));
+			echo  json_encode($list); 
+			break;
+		case 'get_links2':
+			$list=$do->get_links2(intval($_POST['id']));
+			echo  json_encode($list); 
+			break;
 	}
+	exit;
+	 
 }
 
 $menus = array (
@@ -36,7 +49,6 @@ $menus = array (
     
    
 );
-
 
 $this_forward = '?moduleid='.$moduleid.'&file='.$file;
 if(in_array($action, array('', 'check'))) {
@@ -61,7 +73,7 @@ if(in_array($action, array('', 'check'))) {
 	 
 	 
 }
- 
+
 switch($action) {
 	 case 'add':
 		if($submit) {
@@ -70,8 +82,8 @@ switch($action) {
 				msg($do->errmsg);
 			}
 
- 			$do->add_all($post);
- 			 
+ 			$company=$do->add_company($post);
+ 			$do->uid_add($company);
 			dmsg('添加成功', '?moduleid='.$moduleid.'&file='.$file.'&action='.$action.'&typeid='.$post['typeid']);
 			 
 		} else {
@@ -89,8 +101,18 @@ switch($action) {
 	 
 	default:
 		if(isset($_GET['filedo'])){
-			 
-			 $do->edit_company($_GET);
+			 switch($_GET['filedo']){
+			 	case 'company_save':
+			 		 $do->edit_company($_GET);
+			 		 break;
+			 	case 'company_uid1':
+			 		 $do->uid_add1($_GET['id'],2);
+			 		 break;	
+			 	case 'company_uid2':
+			 		 $do->uid_add2($_GET['id'],2);
+			 		 break; 
+			 }
+			
 		}
 
 		$menuid = 1;
