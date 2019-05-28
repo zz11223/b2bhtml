@@ -183,11 +183,15 @@ class dlinks {
 		if($len1>0){
 		    $domain=substr($domain,$len1+2);
 		} 
-		$len2=strrpos($domain,'/');
+		$len2=strpos($domain,'/');
 		if($len2>0){
 		    $domain=substr($domain,0,$len2);
 		} 
-		
+		//去除www.
+		$len1=stripos($domain,'www.');
+		if($len1===0){
+			$domain=substr($domain,4);
+		}
 		$sqlv="('{$post['username']}','{$comurl}','{$domain}')"; 
 		 
 		DB::query("INSERT INTO {$this->table_company} $sqlk VALUES $sqlv");
@@ -290,6 +294,13 @@ class dlinks {
 		//用linkid做索引，算是去重了
 		while($r = DB::fetch_array($result)) {  
 		   $links_all[$r['linkid']]=$r; 
+		}
+		//没有数据，新增一个
+		if(empty($links_all)){
+			$tmp=key($link_self);
+			$sql_add="INSERT INTO `{$table_uid}` (company,linkid) VALUES ({$company},$tmp)";
+			DB::query($sql_add);
+			return 1;
 		}
 		//随机取$link_nums个，得到linkids
 		$linkids=array();

@@ -5,30 +5,23 @@ define('DT_REWRITE', true);
 $moduleid = 3;
 require '../common.inc.php';
 $links = array(); 
-$links[]=array('title'=>'诚信315','linkurl'=>'http://www.chengxin315.com');
-//return $links; 
-if(empty($_GET['url']) || empty($_GET['title'])){
- 	 
+$links[]=array('title'=>'诚信315','linkurl'=>'http://www.chengxin315.com'); 
+if(empty($_GET['domain'])){ 
  	exit(json_encode($links));
 }
-//接受数据检测
-$comurl=$_GET['url'];
-$username=trim($_GET['title']);
-$domain=$_GET['url'];
-$len1=strpos($domain,'//'); 
-if($len1>0){
-    $domain=substr($domain,$len1+2);
-} 
-$len2=strrpos($domain,'/');
-if($len2>0){
-    $domain=substr($domain,0,$len2);
-} 
+//接受数据检测 
+$domain=trim($_GET['domain']);
+//去除www.
+$len1=stripos($domain,'www.');
+if($len1===0){
+	$domain=substr($domain,4);
+}
 $table_company='';
 $table_company = $DT_PRE.'links_company';
 $table_link = $DT_PRE.'links';
 $table_uid = $DT_PRE.'links_uid';
 $r = $db->get_one("SELECT id FROM {$table_company} WHERE domain='{$domain}' limit 1");
-if(empty($r['id'])){
+if(empty($r['id'])){ 
 	exit(json_encode($links)); 
 }else{
 	$company = $r['id'];
