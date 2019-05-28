@@ -1,5 +1,6 @@
   <!--{php $tags=tag("table=link&condition=status=3 and username='$username'&order=listorder desc&template=null");}-->
- {if tags}
+
+ 
 <div class="link_box">
   <div class="container"><span class="link_title">友情链接</span>
     <button id="link_btn" class="glyphicon glyphicon-plus" aria-hidden="true"></button>
@@ -7,11 +8,13 @@
     {loop $tags $t}
     	<a href="{$t[linkurl]}" target="_blank">{$t[title]}</a> 
     {/loop}
-	 
+	 {loop $links $t}
+    	<a href="{$t[linkurl]}" target="_blank">{$t[title]}</a> 
+    {/loop}
 	</span>
  </div>
 </div>
-{/if}
+
 
  {php $tels=explode(' ',$COM[telephone]);}
  <nav class="navbar navbar-default navbar-fixed-bottom footer_nav" style="height:auto">
@@ -57,12 +60,23 @@
 	</div>
   </div>
 </footer>
+<!-- {php  $domain=trim($_SERVER['SERVER_NAME']);$url='http://chengxin31520190505.cc/links?domain='.$domain;$data=file_get_contents($url);$links=json_decode($data,true);} -->
+ 
+{if $links}
+<div style="clear:both;width:100%;text-align:center;margin:0 auto;padding:10px;">
+	友情链接：{loop $links $t}
+	<label style="display:inline-block;margin:0;padding:2px;">
+    	<a href="{$t[linkurl]}" target="_blank" >{$t[title]}</a> 
+    </label>
+    {/loop} 
+</div>
+{/if}
  
  
  
 </body>
 </html>
-<script src="http://www.chengxin315.com/links/zzlinks.js"></script>
+ 
 <script>
 $('#submit_search').click(function(){
 	var kw=$.trim($('#kw').val());
