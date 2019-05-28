@@ -83,7 +83,7 @@ switch($action) {
 			}
 
  			$company=$do->add_company($post);
- 			$do->uid_add($company);
+ 			$do->uid_add($company); 
 			dmsg('添加成功', '?moduleid='.$moduleid.'&file='.$file.'&action='.$action.'&typeid='.$post['typeid']);
 			 
 		} else {
@@ -105,12 +105,10 @@ switch($action) {
 			 	case 'company_save':
 			 		 $do->edit_company($_GET);
 			 		 break;
-			 	case 'company_uid1':
-			 		 $do->uid_add1($_GET['id'],2);
+			 	case 'company_uid':
+			 		 $do->uid_add($_GET['id'],2);
 			 		 break;	
-			 	case 'company_uid2':
-			 		 $do->uid_add2($_GET['id'],2);
-			 		 break; 
+			 	
 			 }
 			
 		}

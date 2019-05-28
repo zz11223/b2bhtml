@@ -62,10 +62,9 @@ show_menu($menus);
 &nbsp;&nbsp;&nbsp; 
  <input type="button" value="公司保存" class="btn-g com_save"  /> 
  &nbsp;&nbsp;&nbsp;  
- <input type="button" value="友链更新" class="btn-r com_uid1"  /> 
+ <input type="button" value="友链反链更新" class="btn-r com_uid"  /> 
   &nbsp;&nbsp;&nbsp; 
- <input type="button" value="反链更新" class="btn-r com_uid2"  /> 
-  &nbsp;&nbsp;&nbsp; 
+
  <input type="button" value="查看友链" class="btn-g com_links1"  /> 
  
    &nbsp;&nbsp;&nbsp;  
@@ -209,13 +208,13 @@ $('.com_save').click(function(){
 	 location.href=url_href+'&filedo=company_save&id='+id+'&username='+username+'&comurl='+encodeURI(comurl); 
 	 return 0; 
 });
-$('.com_uid1').click(function(){
+$('.com_uid').click(function(){
 	  
 	var $tr=$(this).parent().parent(); 
  
 	var id=parseInt($tr.find('.id').val()); 
 	 var url=location.href;
-	 location.href=url+'&filedo=company_uid1&id='+id; 
+	 location.href=url+'&filedo=company_uid&id='+id; 
 	 return 0; 
 });
 $('.com_uid2').click(function(){

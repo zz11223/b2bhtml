@@ -218,12 +218,141 @@ class dlinks {
         
 		return $company;
 	}
+	//更新友链和反链,添加友链后对应添加反链
+	function uid_add($company,$type=1) {
+		 
+		$table_uid=$this->table_uid;
+		$links_num=$this->links_num; 
+		$table_link=$this->table;
+		$table_company=$this->table_company;
+		//先获取所有linkid,用于反链的删除和生成
+		$result = DB::query("SELECT itemid FROM {$table_link} WHERE company={$company}");
+		$link_self0='';
+		$link_self=array();
+		while($r = DB::fetch_array($result)) {
+			$link_self0.=','.$r['itemid'];
+			$link_self[$r['itemid']]=$r['itemid'];
+		}
+		if($link_self0==''){
+			return 1;
+		} 
+		$link_self0=substr($link_self0,1);
+		//先检测是否删除
+		if($type==2){
+			//删除后其他网站链接也缺失了，要补救？?可以把自己的反链和友链调换
+			//获取自己的友链
+			$sql="select linkid from {$table_uid} where company={$company}";
+			//原有友链
+			$links0=array();
+			$result = DB::query($sql); 
+			while($r = DB::fetch_array($result)) {  
+			   $links0[]=$r['linkid']; 
+			}
+			//获取自己的反链
+			$sql="select company from {$table_uid} where linkid in({$link_self0})";
+			//原有反链
+			$links1=array();
+			$result = DB::query($sql); 
+			while($r = DB::fetch_array($result)) {  
+			   $links1[]=$r['company']; 
+			}
+			
+			
+			//循环反链，把反链更新为友链的公司
+			if(!empty($links0) && !empty($links1)){
+				$sqlv='';
+				//重新添加反链数据 
+				 foreach($links1 as $k=>$v){
+				 	if(isset($links0[$k])){
+				 		$sqlv.=",({$v},{$links0[$k]})";
+				 	}else{
+				 		$sqlv.=",({$v},{$links0[0]})";
+				 	}
+				 }
+				 $sqlv=substr($sqlv,1);
+				 $sql="INSERT INTO `{$table_uid}` (company,linkid) VALUES ";
+				 DB::query($sql.$sqlv);
+			}  
+			//删除友链
+			if(!empty($links0)){
+				DB::query("delete from {$table_uid} where company={$company}");
+			} 
+			//删除反链
+			if(!empty($links1)){
+				DB::query("delete from {$table_uid} where linkid in({$link_self0})");
+			}
+		}
+		//从友链数据中选取10个公司
+		$sql="select itemid,company,linkid from {$table_uid} group by company";
+		//所有外站链接
+		$links_all = array(); 
+		$result = DB::query($sql);
+		//用linkid做索引，算是去重了
+		while($r = DB::fetch_array($result)) {  
+		   $links_all[$r['linkid']]=$r; 
+		}
+		//随机取$link_nums个，得到linkids
+		$linkids=array();
+		//得到comids,这样添加的链接也会对应添加友链
+		$comids=array(); 
+		$len=count($links_all); 
+		if($len <= $links_num){  
+			$linkids=array_keys($links_all);
+		}else{
+			//多选1倍用于去重
+			if($len<($links_num*2)){
+				$linkids =array_keys($links_all);
+			}else{
+				$linkids = array_rand($links_all,$links_num*2); 
+			}
+		 
+			//检测linkid是否是同一公司，同公司要重新选
+			$linkids0=implode(',', $linkids);
+			$sql="select itemid from {$table_link} where itemid in({$linkids0}) group by company";
+			$linkids = array(); 
+			$result = DB::query($sql);
+			//用linkid做索引，算是去重了
+			while($r = DB::fetch_array($result)) {   
+			   $linkids[$r['itemid']]=$r['itemid'];  
+			} 
+			//少了就不管了
+			if(count($linkids) > $links_num){
+				$linkids = array_rand($linkids,$links_num); 
+			}
+			 
+		}
+		 
+		//linkids全部添加为友链，
+		//添加友链
+		$sql_add1="INSERT INTO `{$table_uid}` (company,linkid) VALUES ";
+		$sqlv_add1='';
+		//原友链删除
+		$sql_del2="delete from `{$table_uid}` where itemid in ";
+		$sqlv_del2='';
+		//反链添加
+		$sqlv_add2='';
+		foreach($linkids as $v){
+			$sqlv_add1.=",({$company},{$v})";
+			$link_add=array_rand($link_self,1);
+			$sqlv_add2.=",({$links_all[$v]['company']},{$link_add})";
+			$sqlv_del2.=','. $links_all[$v]['itemid'];
+		}
+		//删除
+		$sqlv_del2=substr($sqlv_del2, 1); 
+		DB::query($sql_del2.'('.$sqlv_del2.')');  
+	   //添加
+		$sqlv_add1=substr($sqlv_add1, 1); 
+		DB::query($sql_add1.$sqlv_add1.$sqlv_add2);  
+ 
+		return 1;
+	}
 	//添加对其他公司的链接
 	function uid_add1($company,$type=1) {
 		 
 		$table_uid=$this->table_uid;
 		$links_num=$this->links_num;
 		$table_link=$this->table;
+		 
 		//先检测是否删除
 		if($type==2){
 			  DB::query("delete from {$table_uid} where company={$company}"); 
@@ -237,8 +366,11 @@ class dlinks {
 		}
 		//随机取$link_nums个，得到linkids
 		$linkids=array();
+		//得到comids,这样添加的链接也会对应添加友链
+		$comids=array();
 		if(count($links_all) <= $links_num){ 
 			$linkids=$links_all;
+			$comids==array_keys($links_all);
 		}else{
 			$rand_coms = array_rand($links_all,$links_num); 
 			foreach ($rand_coms as $value) {
@@ -275,7 +407,7 @@ class dlinks {
 			return 1;
 		} 
 		$link_ids0=substr($link_ids0,1);
-		//先检测是否删除
+		//先检测是否删除原友链
 		if($type==2){
 			DB::query("delete from {$table_uid} where linkid in({$link_ids0})");
 		}
@@ -295,7 +427,20 @@ class dlinks {
 		}else{
 			$comids = array_rand($com_all,$links_num); 
 		}
-		 
+		 //获取选中公司的一条友链
+		$comids0=implode(',', $comids);
+		$sql="select itemid from {$table_uid} where company in({$comids0}) group by company";
+		$id_dels = '';
+		$result = DB::query($sql);
+		while($r = DB::fetch_array($result)) { 
+		    $id_dels.= ','.$r['itemid'];
+		}
+		//删除友链公司的原友链
+		if($id_dels!=''){
+			$id_dels=substr($id_dels,1);
+			$sql="delete from {$table_uid} where itemid in({$id_dels})"; 
+			DB::query($sql);
+		}
 		//有链接后添加对应绑定
 		$sql="INSERT INTO `{$table_uid}` (company,linkid) VALUES ";
 		$sqlv='';
