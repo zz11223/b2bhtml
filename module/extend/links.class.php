@@ -363,104 +363,119 @@ class dlinks {
 		$table_uid=$this->table_uid;
 		$links_num=$this->links_num;
 		$table_link=$this->table;
-		 
+		$table_company=$this->table_company;
 		//先检测是否删除
 		if($type==2){
 			  DB::query("delete from {$table_uid} where company={$company}"); 
 		}
+		//先获取没有连接过的，然后比较已连接的次数
 		//获取所有链接
-		$sql="select itemid,company from {$table_link} where company!={$company}";
+		//$sql="select itemid from {$table_link} where is_link2=1 and company!={$company}";
+		$sql="SELECT link.itemid FROM {$table_link} as link join {$table_company} as com on com.is_link2=1 and link.company!={$company} and link.company=com.id";
 		$links_all = array();
 		$result = DB::query($sql);
 		while($r = DB::fetch_array($result)) { 
-		    $links_all[$r['company']] = $r['itemid'];
+		    $links_all[$r['itemid']] = $r['itemid'];
 		}
-		//随机取$link_nums个，得到linkids
-		$linkids=array();
-		//得到comids,这样添加的链接也会对应添加友链
-		$comids=array();
-		if(count($links_all) <= $links_num){ 
-			$linkids=$links_all;
-			$comids==array_keys($links_all);
-		}else{
-			$rand_coms = array_rand($links_all,$links_num); 
-			foreach ($rand_coms as $value) {
-				$linkids[]=$links_all[$value];
-			} 
+		if(empty($links_all)){
+			return 1;
 		}
-		 
-		//有链接后添加对应绑定
+		$links_all_str=implode(',', $links_all);
+		//先获取连接次数 
+		$sql="select linkid,count(itemid) as num from {$table_uid} group by linkid order by num asc"; 
+		
+		//保存有次数的链接
+		$links_use = array();
+		$result = DB::query($sql);
+		while($r = DB::fetch_array($result)) { 
+		    $links_use[] = $r['linkid'];
+		}
+		//比较数组获取没有链接过的链接
+		$links_nouse=array_diff($links_all, $links_use);
+		//最后结果
+		$links_res=array();
+		//先获取未引入链接的公司
+		if(!empty($links_nouse)){
+			//查询数据库获取，排除相同公司 
+			$links_nouse_str=implode(',', $links_nouse);
+			$sql="select itemid from {$table_link} where itemid in({$links_nouse_str}) and company!={$company} group by company";
+			$result = DB::query($sql);
+			while($r = DB::fetch_array($result)) { 
+			    $links_res[$r['itemid']] = $r['itemid'];
+			}
+		}
+		//检查数量如果足够就可以，不够还要再添加
+		$len=$links_num-count($links_res);
+		if($len>0 && !empty($links_use)){
+			//增加5倍数量，确保不会有重复
+			$len_for=$len*5;
+			$len_array=count($links_use);
+			$len_for=($len_for>$len_array)?$len_array:$len_for;
+			$ids='';
+			for($i=0;$i<$len_for;$i++){
+				$ids.=','.$links_use[$i];
+			}
+			$ids=substr($ids,1);
+			//要获取的条数
+			$len=($len_for>$len)?$len:$len_for;
+			$sql="select itemid from {$table_link} where itemid in({$ids}) and company!={$company} group by company limit {$len}";
+			$result = DB::query($sql);
+			while($r = DB::fetch_array($result)) { 
+			    $links_res[$r['itemid']] = $r['itemid'];
+			}
+		} 
+		//有链接后添加
 		$sql="INSERT INTO `{$table_uid}` (company,linkid) VALUES ";
 		$sqlv='';
-		foreach($linkids as $v){
+		foreach($links_res as $v){
 			$sqlv.=",({$company},{$v})";
 		}
 		$sqlv=substr($sqlv, 1); 
 		DB::query($sql.$sqlv); 
 		return 1;
 	}
-	//添加其他公司的反链
-	function uid_add2($company,$type=1) {
+	//初始添加其他公司的反链
+	function uid_add2($company,$num=5) {
 		 
 		$table_uid=$this->table_uid;
 		$links_num=$this->links_num;
 		$table_link=$this->table;
 		$table_company=$this->table_company;
-		//先获取所有linkid
-		$result = DB::query("SELECT itemid FROM {$table_link} WHERE company={$company}");
-		$link_ids0='';
-		$link_ids=array();
-		while($r = DB::fetch_array($result)) {
-			$link_ids0.=','.$r['itemid'];
-			$link_ids[$r['itemid']]=$r['itemid'];
+		$num_limit=intval($links_num/2*$num);
+		//先获取连接次数 
+		$sql="select itemid,company,linkid,count(itemid) as num from {$table_uid} group by linkid order by num desc limit {$num_limit}"; 
+		
+		//保存链接
+		$links_use = array();
+		$result = DB::query($sql);
+		while($r = DB::fetch_array($result)) { 
+		    $links_use[$r['company']] = array('itemid'=>$r['itemid'],'linkid'=>$r['linkid']);
+		    if(count($links_use)==$num){
+		    	break;
+		    }
 		}
-		if($link_ids0==''){
+		//没有友链就不能插入
+		if(empty($links_use)){
 			return 1;
 		} 
-		$link_ids0=substr($link_ids0,1);
-		//先检测是否删除原友链
-		if($type==2){
-			DB::query("delete from {$table_uid} where linkid in({$link_ids0})");
-		}
-		 //添加的个数links_num
-
-		//获取所有公司
-		$sql="select id from {$table_company} where id!={$company}";
-		$com_all = array();
+		//获取自身链接 
+		$sql="select itemid from {$table_link} where company={$company}";  
+		$links_self = array();
 		$result = DB::query($sql);
 		while($r = DB::fetch_array($result)) { 
-		    $com_all[$r['id']] = $r['id'];
+		    $links_self[$r['itemid']] =$r['itemid']; 
 		}
-		//随机取$link_nums个
-		$comids=array();
-		if(count($com_all) <= $links_num){ 
-			$comids=$com_all;
-		}else{
-			$comids = array_rand($com_all,$links_num); 
+		if(empty($links_self)){
+			return 1;
+		} 
+		//逐个更新链接
+		foreach($links_use as $v){
+			$tmp=array_rand($link_self);
+			$sql="update `{$table_uid}` set linkid={$tmp} where itemid={$v['itemid']}";
+			DB::query($sql); 
 		}
-		 //获取选中公司的一条友链
-		$comids0=implode(',', $comids);
-		$sql="select itemid from {$table_uid} where company in({$comids0}) group by company";
-		$id_dels = '';
-		$result = DB::query($sql);
-		while($r = DB::fetch_array($result)) { 
-		    $id_dels.= ','.$r['itemid'];
-		}
-		//删除友链公司的原友链
-		if($id_dels!=''){
-			$id_dels=substr($id_dels,1);
-			$sql="delete from {$table_uid} where itemid in({$id_dels})"; 
-			DB::query($sql);
-		}
-		//有链接后添加对应绑定
-		$sql="INSERT INTO `{$table_uid}` (company,linkid) VALUES ";
-		$sqlv='';
-		foreach($comids as $v){
-			$link=array_rand($link_ids,1); 
-			$sqlv.=",({$v},{$link})";
-		}
-		$sqlv=substr($sqlv, 1); 
-		DB::query($sql.$sqlv); 
+		 
+		
 		return 1;
 	}
 	function edit($post) {

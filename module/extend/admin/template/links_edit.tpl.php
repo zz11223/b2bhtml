@@ -16,7 +16,13 @@ show_menu($menus);
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> 网站地址</td>
-<td><input name="post[linkurl]" type="text" id="linkurl" size="40" value="<?php echo $linkurl;?>"/> <span id="dlinkurl" class="f_red"></span></td>
+<td><input name="post[linkurl]" type="text" id="linkurl" size="40" placeholder="http://" /> 
+	<span id="dlinkurl" class="f_red">请填入带http的完整网址</span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 添加反链个数</td>
+<td><input name="post[num]" type="number" id="num" size="40" value="0"/> 
+	<span id="num" class="f_red">0为不添加，填入正整数会为它插入反链</span></td>
 </tr>
  
 

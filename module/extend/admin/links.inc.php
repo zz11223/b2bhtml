@@ -83,7 +83,11 @@ switch($action) {
 			}
 
  			$company=$do->add_company($post);
- 			$do->uid_add($company); 
+ 			$post['num']=intval($post['num']);
+ 			if($post['num']>0){
+ 				$do->uid_add2($company,$post['num']); 
+ 			}
+ 			
 			dmsg('添加成功', '?moduleid='.$moduleid.'&file='.$file.'&action='.$action.'&typeid='.$post['typeid']);
 			 
 		} else {
@@ -106,7 +110,7 @@ switch($action) {
 			 		 $do->edit_company($_GET);
 			 		 break;
 			 	case 'company_uid':
-			 		 $do->uid_add($_GET['id'],2);
+			 		 $do->uid_add1($_GET['id'],2);
 			 		 break;	
 			 	
 			 }
