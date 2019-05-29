@@ -112,6 +112,12 @@ switch($action) {
 			 	case 'company_uid':
 			 		 $do->uid_add1($_GET['id'],2);
 			 		 break;	
+			 	case 'company_link21':
+			 		 $do->uid_link2($_GET['id'],1);
+			 		 break;	
+			 	case 'company_link20':
+			 		 $do->uid_link2($_GET['id'],0);
+			 		 break;	
 			 	
 			 }
 			

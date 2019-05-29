@@ -35,6 +35,7 @@ show_menu($menus);
 <tr>
  <th>所属公司</th>  
  <th>公司链接</th>
+  <th>添加反链</th>
  <th >公司操作</th>
 <th>关键词</th> 
 <th>关键词链接</th>
@@ -43,6 +44,7 @@ show_menu($menus);
 
 </tr>
 <tbody id="tbody">
+<?php $is_link2s=array(0=>'否',1=>'是');?>
 <?php foreach($lists as $k=>$v) {?>
 <tr class="links_tr" align="center" title="编辑:<?php echo $v['aname'];?>&#10;添加时间:<?php echo $v['adddate'];?>&#10;更新时间:<?php echo $v['editdate'];?> ">
 	<input type="hidden" class="itemid" value="<?php echo $v['itemid'];?>">
@@ -55,9 +57,16 @@ show_menu($menus);
 	<a  class="com1" href="<?php echo DT_PATH;?>api/redirect.php?url=<?php echo urlencode($v['comurl']);?>" target="_blank"><?php echo $v['comurl'];?></a>
    <input class="com2" style="display:none;" type="text" value="<?php echo $v['comurl'];?>">
  </td>
+  <td  class="is_link2">
+	 <span ><?php echo $is_link2s[$v['is_link2']];?></span>
+ 
+ </td>
  <td  class="clickInfo">
  
-							
+ <input type="button" value="允许反链" class="btn-g com_link21"  /> 
+&nbsp;&nbsp;&nbsp; 
+ <input type="button" value="禁止反链" class="btn-g com_link20"  /> 
+&nbsp;&nbsp;&nbsp; 							
  <input type="button" value="公司修改" class="btn-g com_edit"  /> 
 &nbsp;&nbsp;&nbsp; 
  <input type="button" value="公司保存" class="btn-g com_save"  /> 
@@ -99,8 +108,7 @@ show_menu($menus);
 <?php include tpl('footer');?>
  
 <script>
-var url_href=location.href; 
-  console.log(url_href);
+var url_href=location.href;  
 $.ajax({
 	url: url_href,
 	type:'post', 
@@ -218,6 +226,22 @@ $('.com_uid').click(function(){
 	 return 0; 
 });
 
+$('.com_link21').click(function(){
+	  
+	var $tr=$(this).parent().parent();  
+	var id=parseInt($tr.find('.id').val()); 
+	 var url=location.href;
+	 location.href=url+'&filedo=company_link21&id='+id; 
+	 return 0; 
+});
+$('.com_link20').click(function(){
+	  
+	var $tr=$(this).parent().parent();  
+	var id=parseInt($tr.find('.id').val()); 
+	 var url=location.href;
+	 location.href=url+'&filedo=company_link20&id='+id; 
+	 return 0; 
+});
 $('.com_links1').click(function(){
 	var $tr=$(this).parent().parent();
 	var id=parseInt($tr.find('.id').val()); 

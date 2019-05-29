@@ -20,9 +20,16 @@ show_menu($menus);
 	<span id="dlinkurl" class="f_red">请填入带http的完整网址</span></td>
 </tr>
 <tr>
+<td class="tl"><span class="f_red">*</span>是否作为反链</td>
+<td><label><input name="post[is_link2]" type="radio" value="0"/>否 </label>
+	&nbsp;&nbsp;&nbsp;
+	<label><input name="post[is_link2]" type="radio" value="1" checked/>是</label>
+	<span class="f_red">选否则其他网站不会引入该公司为友情链接</span></td>
+</tr>
+<tr>
 <td class="tl"><span class="f_red">*</span> 添加反链个数</td>
 <td><input name="post[num]" type="number" id="num" size="40" value="0"/> 
-	<span id="num" class="f_red">0为不添加，填入正整数会为它插入反链</span></td>
+	<span id="num" class="f_red">0为不立刻添加，填入正整数会即刻为它插入反链</span></td>
 </tr>
  
 

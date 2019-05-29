@@ -14,7 +14,7 @@ class dlinks {
 		$this->table = DT_PRE.'links';
 		$this->table_company = DT_PRE.'links_company';
 		$this->table_uid = DT_PRE.'links_uid';
-		$this->fields = array('company','title','addtime','edittime','linkurl');
+		$this->fields = array('company','title','addtime','edittime','linkurl','is_link2');
     }
 
     function dlinks() {
@@ -176,7 +176,7 @@ class dlinks {
 		global $DT, $MOD, $module;
 
 		//先添加公司
-		$sqlk = '(username,comurl,domain)';
+		$sqlk = '(username,comurl,domain,is_link2)';
 		$comurl=$post['linkurl'];
 		$domain=$post['linkurl'];
 		$len1=strpos($domain,'//'); 
@@ -192,7 +192,8 @@ class dlinks {
 		if($len1===0){
 			$domain=substr($domain,4);
 		}
-		$sqlv="('{$post['username']}','{$comurl}','{$domain}')"; 
+		$is_link2=intval($post['is_link2']);
+		$sqlv="('{$post['username']}','{$comurl}','{$domain}',{$is_link2})"; 
 		 
 		DB::query("INSERT INTO {$this->table_company} $sqlk VALUES $sqlv");
 		$company= DB::insert_id();
@@ -221,6 +222,13 @@ class dlinks {
         DB::query("INSERT INTO {$this->table} {$sqlk} VALUES {$sqlv}"); 
         
 		return $company;
+	}
+	//更新友链和反链,添加友链后对应添加反链
+	function uid_link2($company,$is_link2) {
+		 $is_link2=intval($is_link2);
+		 DB::query("update {$this->table_company} set is_link2={$is_link2}"); 
+        
+		return 1;
 	}
 	//更新友链和反链,添加友链后对应添加反链
 	function uid_add($company,$type=1) {
