@@ -27,14 +27,8 @@
 </div>
 </div>
 {if $COM['isinfonext']}
-<div class="about_index">
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-       {$COM['infonext']}
- 
-    </div>
-  </div>
-</div>
-</div>
+{if $EXT['mobile_enable']}
+<img src="{$COM['infonext2']}" style="display: inline-block;width: 100%;"/>
+{else} 
+<img src="{$COM['infonext1']}" style="display: inline-block;width: 100%;"/> 
 {/if}
